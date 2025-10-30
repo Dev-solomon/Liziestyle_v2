@@ -20,7 +20,7 @@ catalog = []
 # AI function to create description for a product
 def write_description(title, image_link):
     # Read API key from environment variables
-    api_key = os.getenv('OPENAI_KEY') #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
+    api_key = os.getenv('OPENAI_KEY') 
     client = OpenAI(api_key=api_key)
 
     completion = client.chat.completions.create(
