@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="it">
+{% include 'user/head.html' %}
+
+<body>
+  <header>
+    {% include 'user/header.html' %}
+    <!-- search -->
+    <div class="mx-5 mt-4 md:mx-[60px] md:mt-[52px] lg:hidden">
+      {% include 'user/search_bar.html' %}
+    </div>
+    <!-- Banner -->
+    <div
+      class="relative mt-8 flex h-36 items-center rounded-xl bg-[#C5D8FD33] md:mt-[42px] md:h-44 lg:mx-[5%] lg:mt-[60px] lg:h-80">
+      <img loading="lazy" src="../../static/user/assets/images/banner/unsplash_TdDvd7To4IU.webp" alt="banner image"
+        class="absolute -left-5 h-full w-[100px] md:left-0 md:w-auto" />
+      <img loading="lazy" src="../../static/user/assets/icons/graphic.svg" alt="banner graphic"
+        class="absolute -top-2 left-8 -z-10 size-[80px] md:-top-5 md:left-16 md:size-[137px] lg:-top-10 lg:left-32 lg:size-[250px]" />
+      <img loading="lazy" src="../../static/user/assets/images/banner/unsplash_H1SgBRy5xVs.webp" alt="banner image"
+        class="absolute right-[8%] h-full w-[200px] md:right-[15%] lg:w-auto" />
+
+      <img loading="lazy" src="../../static/user/assets/images/banner/unsplash_u0TFS_wnqPE.webp" alt="banner image"
+        class="absolute right-0 h-full w-[100px] md:w-auto" />
+      <div class="z-10 ml-[18%] md:ml-[30%]">
+        <h2 class="font-bold text-[#275ECD] md:text-2xl lg:text-4xl">
+          Get up to 50% off
+          <p>selected dresses!</p>
+        </h2>
+        <button class="primary-btn--large mt-3">
+          Explore the <span class="hidden md:block">offers</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main
+    class="mt-12 flex flex-1 flex-grow flex-col px-5 pb-[86px] md:mt-[72px] md:px-[60px] md:pb-[78px] lg:mt-[120px] lg:flex-row lg:gap-6 lg:px-20">
+    <!-- Product Filters -->
+    <aside class="lg:border-secondary-60 h-fit flex-1 flex-grow rounded-3xl lg:border lg:px-10 lg:py-8">
+      <h2 class="text-base lg:text-xl">Filter products</h2>
+      <form action="/catalog" method="get"
+        class="mt-6 grid w-full grid-cols-1 gap-4 font-normal md:grid-cols-3 md:gap-x-14 md:gap-y-6 lg:mt-8 lg:grid-cols-1 lg:gap-0">
+        <!-- Product Category -->
+        <div class="w-full border-primary-100 text-sm lg:border-b-2 lg:pb-8 lg:text-base">
+          <div class="flex items-center justify-between rounded-xl border border-secondary-600 p-3"
+            id="product-dropdown">
+            <h3>Top Tags</h3>
+            <i class="fa fa-angle-up"></i>
+          </div>
+          <div id="product-dropdown-content" class="mt-5 flex flex-col gap-[14px] lg:gap-5">
+            {% if tags is defined%}
+            {% for tag in tags%}
+            <fieldset class="flex items-center gap-2 font-normal text-secondary-600">
+              <input type="radio" id="{{tag['tag']}}" name="product_tag" value="{{tag['tag']}}" />
+              <label for="gown">{{tag['tag']}}</label>
+              <span class="ml-auto">{{tag['count']}}</span>
+            </fieldset>
+
+            {% endfor %}
+            {% endif %}
+
+          </div>
+
+          <!-- Price Range -->
+          <div class="flex flex-col gap-4 border-primary-100 lg:border-b-2 lg:py-8">
+            <h3 class="lg:text-lg">Price</h3>
+            <div class="range">
+              <div class="range-slider">
+                <span class="range-selected"></span>
+              </div>
+              <div class="range-input">
+                <input id="minRange" type="range" class="min" min="0" max="999" value="10" step="10" />
+                <input id="maxRange" type="range" class="max" min="0" max="999" value="" step="10" />
+              </div>
+              <div class="range-price mt-4 flex gap-6">
+                <div class="flex flex-col gap-2 md:w-[48%] lg:w-[30%]">
+                  <label for="min" class="text-sm text-secondary-600">From</label>
+                  <div class="relative w-full">
+                    <span
+                      class="text:sm absolute left-[14px] top-1/2 -translate-y-1/2 transform md:text-base lg:text-lg"></span>
+                    <input id="minInput" type="text" name="min" value="1"
+                      class="text:sm w-full rounded-xl border border-secondary-600 py-2 pl-[calc(14px_+_1ch)] pr-[14px] md:text-base lg:text-lg" />
+                  </div>
+                </div>
+                <div class="flex flex-col gap-2 md:w-[48%] lg:w-[30%]">
+                  <label for="max" class="text-sm text-secondary-600">To</label>
+                  <div class="relative w-full">
+                    <span
+                      class="text:sm absolute left-[14px] top-1/2 -translate-y-1/2 transform md:text-base lg:text-lg"></span>
+                    <input id="maxInput" type="text" inputmode="numeric" name="max" value="999"
+                      class="text:sm w-full rounded-xl border border-secondary-600 py-2 pl-[calc(14px_+_1ch)] pr-[14px] md:text-base lg:text-lg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button style="padding: 6px; width: 100%; margin-top: 5px;"
+            class="mt-4 rounded-lg border border-primary-600 py-3 text-base font-medium bg-primary-600 text-white hover:bg-primary-600 hover:text-white md:mt-0 lg:text-xl">
+            Search
+          </button>
+      </form>
+
+
+
+
+      <div id="removeArgsButton" style="padding: 6px; width: 100%; margin-top: 5px; text-align: center;"
+        class="mt-4 rounded-lg border border-primary-600 py-3 text-base font-medium text-primary-600 md:mt-0 lg:text-xl">
+        Clear filter
+      </div>
+    </aside>
+
+    <!-- Products Grid -->
+    <section
+      class="mt-14 grid h-fit w-full grid-cols-2 gap-x-4 gap-y-4 md:mt-[88px] md:grid-cols-3 md:gap-y-8 lg:mt-0 lg:w-[72%] lg:gap-y-11">
+
+      <!-- For messages end of line -->
+
+      {% if searched_products != None and searched_products != [] %}
+      {% set shuffled_products = searched_products | shuffle %}
+      {% for product in shuffled_products %}
+      <div class="h-fit rounded-b-md shadow-md md:rounded-b-lg">
+        {% if product['salesOffer'] %}
+        <div style="background-color: green; 
+                          font-size: 11px; 
+                          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+                          color: white;
+                          width: fit-content;
+                          padding: 5px;
+                          position:absolute;
+                          float: right !important;
+                          border-top-left-radius: 0.5rem ;
+                        ">
+          save {{ product['salesOffer'] }}%-off
+        </div>
+        {%endif %}
+
+        <a href="/product_detail/{{product['_id']}}" aria-label="view a products details" target="_blank"> <img
+            loading="lazy" src="{{product['images'][0]}}" alt="{{product['title']}}"
+            class="max-h-40 w-full rounded-t-md md:max-h-48 md:rounded-t-lg lg:max-h-[324px]"
+            style="height: 296.5px !important;" /></a>
+        <div class="rounded-b-md bg-white px-2 py-[10px] md:px-[10px] lg:p-4">
+          <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <span class="ml-1 text-[8px] text-secondary-500 md:text-[10px] lg:text-base"
+              style="font-size: 10px; color: rgb(19 127 160) ; margin-left: 0px !important;">+{{product['variants'] |
+              count}} variants/colors</span>
+            {% if product['featured'] and product['featured'] =='on' %}
+            <div
+              style="font-size: 11px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(106, 104, 104); width: fit-content;">
+              sponsored
+            </div>
+            {%endif%}
+
+          </div>
+
+          <h4 class="text-xs md:text-sm lg:text-xl">{{product["title"] | upper | truncate(20, True, '...')}}</h4>
+
+          <div class="mt-2 flex items-center justify-between md:mt-[10px]">
+            <div class="flex flex-col">
+              <div class="flex items-center">
+                {% if all_reviews is defined and all_reviews != [] and product['_id'] in all_reviews |
+                map(attribute='product_id') | map('string') | list %}
+                <!-- calculate the ratings -->
+                {% set ratings = all_reviews | selectattr('product_id', 'equalto', product["_id"]) |
+                map(attribute='rating') | map('int') | list %}
+                {% set total_rating = ratings | sum %}
+                {% set review_count = ratings | length %}
+                {% set average_rating = (total_rating / review_count) if review_count > 0 else 0 %}
+
+                {% for i in range(1, average_rating | round(0) | int + 1) %}
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15" height="15"
+                  style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd"
+                  viewBox="0 0 6.827 6.827">
+                  <path style="fill:#ff8f00;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923-1.343.923-.239.164.082-.278.462-1.564-1.292-.992-.23-.176.29-.008 1.63-.044.544-1.535.097-.274z" />
+                  <path style="fill:#e68100;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923V.98z" />
+                  <path style="fill:none" d="M0 0h6.827v6.827H0z" />
+                </svg>
+                {% endfor %}
+                <a class="ml-1 text-sm text-secondary-500 md:text-base" aria-label="product reviews"
+                  href="#review-section">({{review_count}})</a>
+
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15" height="15"
+                  style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd"
+                  viewBox="0 0 6.827 6.827">
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923-1.343.923-.239.164.082-.278.462-1.564-1.292-.992-.23-.176.29-.008 1.63-.044.544-1.535.097-.274z" />
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923V.98z" />
+                  <path style="fill:none" d="M0 0h6.827v6.827H0z" />
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15" height="15"
+                  style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd"
+                  viewBox="0 0 6.827 6.827">
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923-1.343.923-.239.164.082-.278.462-1.564-1.292-.992-.23-.176.29-.008 1.63-.044.544-1.535.097-.274z" />
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923V.98z" />
+                  <path style="fill:none" d="M0 0h6.827v6.827H0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15" height="15"
+                  style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd"
+                  viewBox="0 0 6.827 6.827">
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923-1.343.923-.239.164.082-.278.462-1.564-1.292-.992-.23-.176.29-.008 1.63-.044.544-1.535.097-.274z" />
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923V.98z" />
+                  <path style="fill:none" d="M0 0h6.827v6.827H0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15" height="15"
+                  style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd"
+                  viewBox="0 0 6.827 6.827">
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923-1.343.923-.239.164.082-.278.462-1.564-1.292-.992-.23-.176.29-.008 1.63-.044.544-1.535.097-.274z" />
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923V.98z" />
+                  <path style="fill:none" d="M0 0h6.827v6.827H0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15" height="15"
+                  style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd"
+                  viewBox="0 0 6.827 6.827">
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923-1.343.923-.239.164.082-.278.462-1.564-1.292-.992-.23-.176.29-.008 1.63-.044.544-1.535.097-.274z" />
+                  <path style="fill:grey;fill-rule:nonzero"
+                    d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923V.98z" />
+                  <path style="fill:none" d="M0 0h6.827v6.827H0z" />
+                </svg>
+
+
+                <a class="ml-1 text-sm text-secondary-500 md:text-base" aria-label="product reviews"
+                  href="#review-section">(0)</a>
+
+                {% endif %}
+              </div>
+              <span class="mt-1 text-xs font-semibold md:mt-2 md:text-sm lg:text-lg">
+                {% if product['salesOffer'] is defined and product['salesOffer'] | int > 0 %}
+                {% set price = product['price'] | float - (product['price'] | float * product['salesOffer'] | int / 100)
+                %}
+                € <s>{{product['price']}} </s> {{ price | round(1) }}
+                {% else %}
+                €{{product['price']}}
+                {% endif %}
+
+              </span>
+            </div>
+            <form action="/api/orders/add_to_cart" method="post">
+              <input type="hidden" name="product_id" value="{{product['_id']}}">
+              <input type="hidden" name="variant" value="{{product['variants'][0][0]}}">
+              <input type="hidden" name="qty" value="1">
+              <button class="flex size-8 items-center justify-center rounded-full bg-primary-800 md:size-9 lg:size-14">
+                <img loading="lazy" src="../../static/user/assets/icons/shopping-bag-white.svg" alt="add order to cart"
+                  class="size-4 md:size-6 lg:size-8" />
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="bg-white p-5 shadow rounded mx-auto"
+        style="display: flex; flex-direction: row; width: 200px; justify-content: stretch;">
+        <img loading="lazy"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEaUlEQVR4nO2Y729TZRTH+05Jpu9Mip1RyAbiImMyEmNioib6DyAqxJhAlm3gQFEgm4pk4mBZYGEy2dZu69piRCeExBAVo81eKFjJModTGPthf2zt2hW69W5t13Yf83RsTFjXQu8tLuk3OW9u7k0+3+c+zznPOSpVRhlldE8ywcMm2GyIomuLYGmL4NZHmNKHmWoN424OY2kJo20K8UYzPKT6v8gAq4zQYowyYZiGtuhM6EVEoDUCLeGZ0E2BNgRNQSYagzQ3BMm9b+BfwzIjHDFA2DgNScOHoDEIJwJQP8nU8Qlq9PBgWuG/gFwTXDYC9wr/+YwBPpuAY34u1EosTwu8AQpM4JYLvk6CYxIcHcde42dtOlZedvhaf8wAR8aw10ioFYEX+9QEXQrCUzMG1T4uHbWxTHYD4sCmAZ7D1+FTL5Wyp8pUss3dwFd54eAo/gMjMm6lWJ5PHzyVHjjg5oRsFTaZInVcilI9Gk4Iv98Z5pA3mgiej0eQ9npkqNix60ES8IVnXTx/zp1w5Z/9doRnzrg4OBpdDJ6PXPChk9dTNhC72yQBr2mxsdLoSLhtVhjssXcLzrioHInGhf/ACeXDNKVsIHYxSwJexIazroR7XoDPvr/utIv9zmg8ePYOcSFlA/oInngH9sUfPHMwYvUrbMGEB3ZXf5AVBsfcd8+d8ywIv28I9tgZSdlAa4RQvGxTNx6ltEeiqNtP9fVI0tmmwhFh8yU/WzolKhzRheEd8L6dYOoGwoQUTJWLwbPbJo8Bz32CZ5dVhi10s5NKO/w7VigbkOEQizbwLq7ElPUGePknL3lfDfN4mz0WT50a5qUfvRT1BGLgycDvHIS3+2lM2YDoYZOB3/NPkPzTzrnsEi+ebndS/HcwMfwAbB9gU8oG6iGrMYi0GPzWPyQe088UqNnIPemI5fn8b1zkmG6lTRHZejsbf5MWhS/tQ9rxJ1kqOSQa8HjwO3sDM3XA4OCVn70U/zVJpfvOCls+FOWtrkleOO+dqwNbugILr3w/FPehVcklMT0QDfhCB7bSFWFbt0SVdzrpA7vbOs1Gi8T2a5EF4Uv6CG29ykqVnBLTA6WyzW3wFF3jsEqJllJMD5SGf9VyYyrP2JmvUkL1EuracWxKwb95OcBqw+882X7FWXB+dI0iJsToIzY9kBu+e5K8k52sPtXDuu+dFHb4HAVmX44iJqrGeaTaR4dc8JssN0K5BssM/HfDbOgYi8V6s+/XbJ1NGRN18ICYHnwyipQCfKiol0Nrv+xatab9yqBY+Vn4QrNvQKO3u5ZrbU61blCZ7SQkpgeiARc9bLLwokiV9NE0P1Xmm51PFHaMDf4HXmcjFkqbuGkkS/Sw5UM07hviomhG3rMTetdGSNwqywa5uKOfhpIBXotXYQvMvpz1Zt8v2XrHLfh0mpBDmgZ7rlpnddxhIGMizdJk/sQS+BNqnfWqailIs5AJrXVarbWWqpaKNPNNLDX420z0Ptps2zb3MKOMMlLN17/5kBsrP3kn/AAAAABJRU5ErkJggg=="
+          alt="nothing-found" width="30px">
+        <span class="text-danger" style="color: rgb(0, 180, 216); font-size: 20px;">Nothing found!</span>
+        <!-- <button class="btn btn-danger" onclick="window.history.back()">Go Back</button> -->
+      </div>
+      {% endif %}
+
+
+
+
+    </section>
+  </main>
+
+  <!-- button  section -->
+  <div class="w-full  mx-auto"
+    style="display: flex; flex-direction: row; justify-content: center; gap: 10px; margin: 20px 0;">
+    {% if searched_products != None and searched_products != [] %}
+    <!-- set default values and also for getting url args -->
+    {% set page_num = request.args.get('page_num', 1) | int %}
+    {% set product_name = request.args.get('product_name', "") %}
+    {% set product_tag = request.args.get('product_tag', "") %}
+    {% set min_price = request.args.get('min', 1) %}
+    {% set max_price = request.args.get('max', 99999999) %}
+
+    {% if page_num >= 1 %}
+    <button class="flex-rows gap-3 text-white py-3 px-4 text-xs rounded font-semibold bg-primary-600"
+      style="border-radius: 4px; padding: 10px 20px;" onclick="updatePageNumber({{ page_num - 1 }});">Previous</button>
+    {% endif %}
+
+
+    {% if page_num == 1 %}
+    <a aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num}} </a>
+{% elif page_num > 1 and page_num <= 5 %}
+    {% for num in range(1, page_num + 1) %}
+      {% if num == page_num %}
+      <a aria-label="pagination" id="pgN" style="border-radius: 4px; padding: 5px 15px;"
+      class="bg-white-600 text-primary-600 border">
+      {{num}}
+    </a>
+      {% else %}
+      <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{num}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{num}} </a>
+      {% endif %}
+    {% endfor %}
+{% elif page_num >  5 %}
+<a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{page_num - 2}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num - 2}} </a>
+<a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{page_num - 1}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num - 1}} </a>
+<a aria-label="pagination" id="pgN" style="border-radius: 4px; padding: 5px 15px;"
+class="bg-white-600 text-primary-600 border">
+{{page_num}}
+</a>
+    <a aria-label="pagination">...</a>
+    <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{searched_pages}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{searched_pages}} </a>
+{% endif %}
+
+
+
+
+   
+
+
+    {% if page_num != searched_pages + 1 %}
+    <button onclick="updatePageNumber_nextButton()"
+      class="flex-rows gap-3 text-white py-3 px-4 text-xs rounded font-semibold bg-primary-600"
+      style="border-radius: 4px; padding: 10px 20px;">Next</button>
+    {% endif %}
+
+    {% endif %}
+
+  </div>
+
+  {% include 'user/footer.html' %}
+  <script src="../../static/user/index.js"></script>
+  <script>
+    // Add an event listener to the button
+    const argsbtn = document.getElementById("removeArgsButton")
+    argsbtn.addEventListener("click", removeArgsFromBrowserUrl);
+
+    // Function to remove query arguments from the browser URL
+    function removeArgsFromBrowserUrl() {
+      const currentUrl = window.location.href;
+      const baseUrl = currentUrl.split('?')[0]; // Get the URL without query parameters
+
+      // Update the browser's URL without reloading the page
+      history.replaceState(null, '', baseUrl);
+      location.reload();
+    }
+
+
+
+
+
+    // product-dropdown
+    document
+      .getElementById("product-dropdown")
+      .addEventListener("click", function () {
+        const dropdownContent = document.getElementById(
+          "product-dropdown-content",
+        );
+        dropdownContent.classList.toggle("hidden");
+        document
+          .querySelector("#product-dropdown i")
+          .classList.toggle("fa-angle-down");
+        document
+          .querySelector("#product-dropdown i")
+          .classList.toggle("fa-angle-up");
+      });
+
+    // // size-dropdown
+    // document
+    //   .getElementById("size-dropdown")
+    //   .addEventListener("click", function () {
+    //     const dropdownContent = document.getElementById("size-dropdown-content");
+    //     dropdownContent.classList.toggle("hidden");
+    //     document
+    //       .querySelector("#size-dropdown i")
+    //       .classList.toggle("fa-angle-down");
+    //     document
+    //       .querySelector("#size-dropdown i")
+    //       .classList.toggle("fa-angle-up");
+    //   });
+
+    let rangeMin = 100;
+    const range = document.querySelector(".range-selected");
+    const rangeInput = document.querySelectorAll(".range-input input");
+    const rangePrice = document.querySelectorAll(".range-price input");
+
+    rangeInput.forEach((input) => {
+      input.addEventListener("input", (e) => {
+        let minRange = parseInt(rangeInput[0].value);
+        let maxRange = parseInt(rangeInput[1].value);
+        if (maxRange - minRange < rangeMin) {
+          if (e.target.className === "min") {
+            rangeInput[0].value = maxRange - rangeMin;
+          } else {
+            rangeInput[1].value = minRange + rangeMin;
+          }
+        } else {
+          rangePrice[0].value = minRange;
+          rangePrice[1].value = maxRange;
+          range.style.left = (minRange / rangeInput[0].max) * 100 + "%";
+          range.style.right = 100 - (maxRange / rangeInput[1].max) * 100 + "%";
+        }
+      });
+    });
+
+    rangePrice.forEach((input) => {
+      input.addEventListener("input", (e) => {
+        let minPrice = rangePrice[0].value;
+        let maxPrice = rangePrice[1].value;
+        if (maxPrice - minPrice >= rangeMin && maxPrice <= rangeInput[1].max) {
+          if (e.target.className === "min") {
+            rangeInput[0].value = minPrice;
+            range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+          } else {
+            rangeInput[1].value = maxPrice;
+            range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

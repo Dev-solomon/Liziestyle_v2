@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="it">
+  {% include 'user/head.html' %}
+
+<body>
+  <header>
+    {% include 'user/header.html' %}
+
+    
+  </header>
+  <main class="mt-6 flex size-full md:mt-14 lg:mt-0">
+    <!-- Side Menu -->
+   {% include 'user/dashboard_sidebar.html' %}
+    <section
+      class="flex h-full w-full flex-col overflow-y-auto px-5 md:px-[60px] lg:flex-grow lg:pl-5 lg:pr-10 lg:pt-6">
+       <!-- For messages  -->
+       {% if message %}
+       <div class="message ">{{message}}</div>
+       {% endif %}
+       {% if messageError %}
+       <div class="messageError">{{messageError}}</div>
+       {% endif %}
+
+      <div class="md:block hidden">
+        <div id="dashboard_content" class="bg-deepest rounded-xl pt-20 lg:py-2 grid lg:grid-cols-2 gap-6">
+          <div id="content"
+            class="col-8">
+            <h1 class="text-2xl font-medium" style="color: black">Are you still looking for the best <span class="text-main font-semibold" style="color: rgb(0, 139, 174);">
+              Ecommece store?
+              </span></h1>
+            <p class="text-sm text-gray-600 leading-7" style="margin-bottom: 20px;">Liziestyle has the best and widest range of products; from fashion
+              wear to shoes, beauty care and even for our children. you can find everything you want on our platform. We
+              offer the best prices and deliver to your home. What are you waiting for? Start shopping now!</p><a
+              class="bg-main flex-colo hover:scale-105 transitions hover:bg-subMain lg:py-3 py-4 font-semibold w-44 rounded-md text-xs lg:text-sm text-white"
+              href="/catalog"  aria-label="link to products catalog" target="_blank" style="background-color:rgb(0, 139, 174); padding: 15px; margin-top: 10px;">EXPLORE NOW</a>
+          </div>
+          <div class="flex-colo col-2" style="width: 250px;"><img loading="lazy" src="https://res.cloudinary.com/dns8ckviy/image/upload/v1734809682/promo_vehjqf.png" alt="promo" class="w-full sm:h-72 object-contain"></div>
+        </div>
+      </div>
+
+      <style>
+        #dashboard_content{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          background-color: rgb(205, 240, 249);
+          padding: 20px;
+          margin-bottom: 10px;
+        }
+        #content{
+          width: 400px;
+          padding: 20px;
+          font-size: small;
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+      </style>
+
+
+
+      <h2 class="text-lg md:text-xl lg:text-2xl">Dashboard</h2>
+      <div class="mt-4 md:mt-7 lg:mt-6 lg:bg-primary lg:p-6 lg:pb-20">
+        {% if orders is defined and orders != [] %}
+        {% set total_orders = orders | length %}
+        {% set total_completed_orders = orders | selectattr('payments.status', 'equalto', 'completed') |
+        selectattr('payments.status', 'lower') | list | length %}
+        {% set total_pending_orders = orders | selectattr('payments.status', 'equalto', 'pending') |
+        selectattr('payments.status', 'lower') | list | length %}
+        {% set total_cancelled_orders = 0 %}
+        {% for order in orders %}
+        {% if order.payments.status | lower not in ['completed', 'pending'] %}
+        {% set total_cancelled_orders = total_cancelled_orders + 1 %}
+        {% endif %}
+        {% endfor %}
+
+        <div class="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#F7900933] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Pending Orders
+            </h4>
+            <span class="text-xl md:text-3xl">{{ total_pending_orders }}</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/hour-glass.svg" alt="pending_orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:size-[104px] lg:bottom-2 lg:right-2 lg:size-24" />
+          </div>
+
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#03985533] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Complete Orders
+            </h4>
+            <span class="text-xl md:text-3xl">{{ total_completed_orders }}</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/completed.svg" alt="completed orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:bottom-2 md:right-2 md:size-[104px] lg:size-24" />
+          </div>
+
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#D92D2033] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Cancelled Orders
+            </h4>
+            <span class="text-xl md:text-3xl">{{ total_cancelled_orders }}</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/failed.svg" alt="failed orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:bottom-2 md:right-2 md:size-[104px] lg:size-24" />
+          </div>
+
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#0E6B8733] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Total Orders
+            </h4>
+            <span class="text-xl md:text-3xl">{{ total_orders }}</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/shopping-bag.svg" alt="total orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:bottom-2 md:right-2 md:size-[104px] lg:size-24" />
+          </div>
+        </div>
+        {% else %}
+        <div class="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#F7900933] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Pending Orders
+            </h4>
+            <span class="text-xl md:text-3xl">0</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/hour-glass.svg" alt="number of pending orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:size-[104px] lg:bottom-2 lg:right-2 lg:size-24" />
+          </div>
+
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#03985533] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Complete Orders
+            </h4>
+            <span class="text-xl md:text-3xl">0</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/completed.svg" alt="number of complete orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:bottom-2 md:right-2 md:size-[104px] lg:size-24" />
+          </div>
+
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#D92D2033] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Cancelled Orders
+            </h4>
+            <span class="text-xl md:text-3xl">0</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/failed.svg" alt="number of failed orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:bottom-2 md:right-2 md:size-[104px] lg:size-24" />
+          </div>
+
+          <div
+            class="relative flex h-[94px] flex-col rounded-md bg-[#0E6B8733] p-3 text-[#1E1E1E] md:h-[174px] md:p-7 lg:h-40 lg:p-6">
+            <h4 class="text-xs font-normal md:text-lg lg:text-base">
+              Total Orders
+            </h4>
+            <span class="text-xl md:text-3xl">0</span>
+            <img loading="lazy" src="../../static/user/assets/illustrations/shopping-bag.svg" alt="number of total orders"
+              class="absolute bottom-[5px] right-[5px] size-14 md:bottom-2 md:right-2 md:size-[104px] lg:size-24" />
+          </div>
+        </div>
+        {% endif %}
+        <div class="flex flex-col gap-4">
+          <div
+            class="relative mt-8 w-full overflow-auto rounded-lg border border-[#EAECF0] bg-white md:mt-14 lg:mt-[52px]">
+            <table class="w-full text-sm  table-bordered table table-hover">
+              {% if orders is defined and orders != [] %}
+              <thead>
+                <tr>
+                  <th class="h-12 px-4 text-left align-middle font-normal" style="text-align: center;"></th>
+                  <th
+                    class="h-12 min-w-[150px] px-4 text-left align-middle font-normal md:min-w-[100px] lg:min-w-[200px]">
+                    Transaction ID
+                  </th>
+                  <th class="h-12 px-4 text-left align-middle font-normal">
+                    Status
+                  </th>
+                  <th class="h-12 min-w-[120px] px-4 text-left align-middle font-normal md:min-w-0">
+                    Total amount
+                  </th>
+                  <th class="h-12 min-w-[120px] px-4 text-left align-middle font-normal md:min-w-0">
+                    Date
+                  </th>
+                  <th class="h-12 min-w-[120px] px-4 text-left align-middle font-normal md:min-w-0">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+
+              <!-- Table Body -->
+
+
+              <tbody class="font-normal text-secondary-800"></tbody>
+              {% for order in orders%}
+
+              <tr class="cursor-pointer border-t border-[#EAECF0] transition-colors hover:bg-[#F2F4F7]">
+                <td style="text-align: center;">{{ loop.index }}</td>
+                <td class="p-4 align-middle">{{ order._id }}</td>
+                <td class="p-4 align-middle text-xs font-light">
+                  {% if order.payments.status | lower == 'pending' %}
+                  <span class="rounded-2xl bg-[#FFFAEB] px-2 py-[2px] text-[#B54708]">pending</span>
+                  {% elif order.payments.status | lower == 'completed' %}
+                  <span class="rounded-2xl bg-[#ECFDF3] px-2 py-[2px] text-[#027A48]">Complete</span>
+                  {%else%}
+                  <span class="rounded-2xl bg-[#FEF3F2] px-2 py-[2px] text-[#B42318]">Failed</span>
+                  {% endif %}
+                </td>
+                <td class="p-4 align-middle">€{{ order.total_price }}</td>
+                <td class="p-4 align-middle">{{ order.payments.payment_date.strftime('%Y-%m-%d') if order.payments.payment_date else 'Not available' }}
+                  </td>
+                <td class="p-4 align-middle">
+                  {% if order.payments.status | lower == 'pending' %}
+                  <a href="/checkout?order_id={{order['_id']}}" aria-label="pay for an order" class="text-[#B54708]">pay</a>
+                  <a href="/api/orders/{{order['_id']}}" aria-label="delete an order" style="margin: 2px; color: rgb(255, 0, 0);"> | <i class="fa fa-trash" aria-hidden="true"></i></a>
+                  {% elif order.payments.status | lower == 'completed' %}
+                  <a href="/checkout?order_id={{order['_id']}}" aria-label="view an order" style="text-decoration: none; color: rgb(2 122 72 );">
+                    view
+                    <i class="fa fa-eye" style="margin-left: 6px;" aria-hidden="true"></i>
+                  </a>
+                  
+                  {%else%}
+                  <a href="/"  aria-label="try again to pay order"  style="color: #027A48;">retry</a>
+                  {% endif %}
+                </td>
+              </tr>
+              {%endfor%}
+              </tbody>
+              {% else %}
+              <p class="text-center p-2 text-warning">NO RECENT ORDERS PLACED</p>
+              {% endif %}
+
+
+            </table>
+          </div>
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-light text-secondary-800">showing 1 - 20 of 50</span>
+              <span>
+                <i class="fas fa-chevron-left size-5 text-[#D0D5DD]"></i>
+                <i class="fas fa-chevron-right size-5 text-[#101828]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+     
+    </section>
+  </main>
+
+  
+  <script src="../../static/user/index.js"></script>
+</body>
+
+</html>

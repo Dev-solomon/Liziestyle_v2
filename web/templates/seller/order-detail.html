@@ -1,0 +1,1306 @@
+{% include 'seller/head.html' %}
+
+<!--begin::Body-->
+
+<body id="tc_body" class="header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed">
+       <!-- Paste this code after body tag -->
+   <div class="se-pre-con">
+	<div class="pre-loader">
+	  <img loading="lazy" class="img-fluid" src="../../static/seller/images/lizie.gif" alt="loading">
+	</div>
+  </div>
+	<!--begin::Header Mobile-->
+	<div id="tc_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+		<!--begin::Logo-->
+		<a href="/api/sellers/" class="brand-logo">
+
+			<span class="brand-text"><img loading="lazy" style="height: 25px;" alt="Logo" src="../../static/seller/images/misc/logo.png" /></span>
+
+		</a>
+		<!--end::Logo-->
+		<!--begin::Toolbar-->
+		<div class="d-flex align-items-center">
+
+			 <div class="posicon">
+				<a href="pos.html" class="btn btn-primary d-flex align-items-center justify-content-center white me-2">POS</a>
+			</div>
+			<button class="btn p-0" id="tc_aside_mobile_toggle">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-justify-right" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+				</svg>
+			</button>
+
+			<button class="btn p-0 ms-2" id="tc_header_mobile_topbar_toggle">
+				<span class="svg-icon svg-icon-xl">
+
+					<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd"
+							d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+					</svg>
+
+				</span>
+			</button>
+
+		</div>
+		<!--end::Toolbar-->
+	</div>
+	<!--end::Header Mobile-->
+	<!--begin::Main-->
+	<div class="d-flex flex-column flex-root">
+		<!--begin::Page-->
+		<div class="d-flex flex-row flex-column-fluid page">
+			<!--begin::Aside-->
+		<div>
+			<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="tc_aside">
+				<!--begin::Brand-->
+				<div class="brand flex-column-auto" id="tc_brand">
+					<!--begin::Logo-->
+
+					<a href="/api/sellers/" class="brand-logo">
+						<img loading="lazy" class="brand-image" style="height: 25px;" alt="Logo" src="../../static/seller/images/misc/k.png" />
+						<span class="brand-text"><img loading="lazy" style="height: 25px;" alt="Logo"
+								src="../../static/seller/images/misc/logo.png" /></span>
+
+					</a>
+					<!--end::Logo-->
+
+
+				</div>
+				<!--end::Brand-->
+				<!--begin::Aside Menu-->
+				<div class="aside-menu-wrapper flex-column-fluid overflow-auto h-100" id="tc_aside_menu_wrapper">
+				{% include 'seller/sidebar.html' %}
+				</div>
+				<!--end::Aside Menu-->
+			</div>
+		</div>
+			<div class="aside-overlay"></div>
+			<!--end::Aside-->
+			<!--begin::Wrapper-->
+			<div class="d-flex flex-column flex-row-fluid wrapper" id="tc_wrapper">
+			 {% include 'seller/header.html' %}
+				<!--begin::Content-->
+				<div class="content d-flex flex-column flex-column-fluid" id="tc_content">
+					<!--begin::Subheader-->
+					<div class="subheader py-2 py-lg-6 subheader-solid">
+						<div class="container-fluid">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb bg-white mb-0 px-0 py-2">
+									<li class="breadcrumb-item " aria-current="page">Dashboard</li>
+									<li class="breadcrumb-item " aria-current="page">Orders</li>
+									<li class="breadcrumb-item active" aria-current="page">Order Detail</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+					<!--end::Subheader-->
+					<!--begin::Entry-->
+					<div class="d-flex flex-column-fluid">
+						<!--begin::Container-->
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 px-4" >
+									<div class="row">
+										<div class="col-lg-12 col-xl-12 px-4">
+											<div class="card card-custom gutter-b bg-transparent shadow-none border-0" >
+												<div class="card-header align-items-center   border-bottom-dark px-0">
+													<div class="card-title mb-0">
+														<h3 class="card-label mb-0 font-weight-bold text-body">Order Detail</h3>
+													</div>
+												    <div class="icons d-flex">
+												
+														<a href="order-detail.html#" onclick="printDiv()" class="ms-2">
+															<span class="icon h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+																<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-printer-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z"/>
+																	<path fill-rule="evenodd" d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+																	<path fill-rule="evenodd" d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+																  </svg>
+															</span>
+														
+														</a>
+														<a href="order-detail.html#" class="ms-2" >
+															<span class="icon  h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+																<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-file-earmark-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 2l.5-2.5 3 3L10 5a1 1 0 0 1-1-1zM4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
+																  </svg>
+															</span>
+														
+														</a>
+														<a href="order-detail.html#" class="ms-2" >
+															<span class="icon  h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+																<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+																  </svg>
+															</span>
+														
+														</a>
+													</div>
+												</div>
+												<div class="card-body pb-0 pt-4">
+													<div class="d-flex justify-content-center">
+														<ul class="nav nav-pills mb-0" id="pills-tab" role="tablist">
+															<li class="nav-item">
+															  <a class="nav-link active" id="detail-tab" data-bs-toggle="pill" href="order-detail.html#detail" role="tab" aria-controls="detail" aria-selected="true">
+																<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+																	<path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+																	<path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+																  </svg>  
+																Detail</a>
+															</li>
+															<li class="nav-item">
+																<a class="nav-link" id="history-tab" data-bs-toggle="pill" href="order-detail.html#history" role="tab" aria-controls="history" aria-selected="false">
+																  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+																	  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+																	  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																	</svg>
+																	History
+																</a>
+															  </li>
+															  <li class="nav-item">
+																<a class="nav-link" id="message-tab" data-bs-toggle="pill" href="order-detail.html#message" role="tab" aria-controls="message" aria-selected="false">
+																  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-notes" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+																	  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+																	  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																	</svg>
+																	Message
+																</a>
+															  </li>
+														  </ul>
+													
+													</div>
+												
+												</div>
+											</div>
+										</div>
+									</div>
+									{% if order_details is  defined and customer is defined %}
+									<div class="row">
+										<div class="col-lg-12 col-xl-12 px-4 mx-auto">
+											<div class="tab-content" id="pills-tabContent">
+												<div class="tab-pane fade show active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+													<div class="card card-custom gutter-b bg-white border-0" >
+														<div class="card-header border-bottom align-items-center">
+															
+															<div class="col-xl-2 col-12">
+																<div class="card-title mb-2">
+																	<h3 class="card-label mb-0 font-weight-bold text-body">Customer
+																	</h3>
+																</div>
+															</div>
+															<div class="col-xl-8 col-12">
+																<div class="user-info mb-2"> 
+																	<ul class="m-0 p-0 list-style-none d-flex justify-content-center">
+																		<li class="d-flex me-3 align-items-center">
+																			<span class="text-body icon">
+																				<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																					<path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+																				  </svg>
+																			</span>
+																			<h5 class="font-size-h4 font-size-bold text-body mb-0 ps-2 pe-2">
+																				Name: <span class="text-dark font-size-base">{{ customer.fullName | upper }}</span> 
+																			</h5>
+																		</li>
+																		<!-- <li class="d-flex me-3 align-items-center" >
+																			<span class="text-body icon">
+																				<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-phone" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																					<path fill-rule="evenodd" d="M11 1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+																					<path fill-rule="evenodd" d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+																				  </svg>
+																			</span>
+																			<h5 class="font-size-h4 font-size-bold text-body mb-0 ps-2 pe-2">
+																				Phone: <span class="text-dark font-size-base">0123456789</span> 
+																			</h5>
+																		</li> -->
+																		<li class="d-flex align-items-center">
+																			<span class="text-body icon">
+																				<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																					<path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+																				  </svg>
+																			</span>
+																			<h5 class="font-size-h4 font-size-bold text-body mb-0 ps-2 pe-2">
+																				Email: <span class="text-dark font-size-base">{{ customer.email | upper }}</span> 
+																			</h5>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+															<div id="third" class="col-xl-2 col-12">
+																<div class=" text-black-50 text-end"> 
+																	<h5 class="font-size-h5 mb-0">
+																		Placed On: <span class="text-success">{{ order_details.payments.payment_date.strftime('%Y-%m-%d') }}</span>
+																	</h5>
+																</div>
+															</div>
+														
+														</div>
+													
+													
+														<div class="card-body pt-0 mx-4">
+														
+													        <div class="row  gutter-pb gutter-pt border-bottom  order-payment justify-content-center">
+																<div class="col-12 col-lg-6 col-xl-4 payment-detail">
+																	<h4 class="card-label mb-2 font-weight-bold font-size-h4 text-body">
+																		Payment Method
+																	</h4>
+																	<input type="text" class="form-control w-250px" id="disabledInput1" placeholder="{{ order_details.payments.method | upper }}" disabled="">
+																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		Order ID: <span class="text-dark font-size-base">{{ order_details._id }}</span>
+																	</h5>
+																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		Amount: <span class="text-dark font-size-base">€ {{ order_details.total_price }} </span>
+																	</h5>
+																</div>
+																<div class="col-12 col-lg-6 col-xl-4 payment-detail">
+																	<h4 class="card-label mb-2 font-weight-bold font-size-h4 text-body">
+																		Shipping Method
+																	</h4>
+																	<input type="text" class="form-control w-250px" id="disabledInput" placeholder="{{ order_details.shipping_address.shippingMethod | upper }}" disabled="">
+																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		Tracking Number: <span class="text-dark font-size-base">#12345</span>
+																	</h5>
+																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		Expected Delivery Date: <span class="text-dark font-size-base">12.10.2020</span>
+																	</h5>
+																</div>
+															</div>
+															<div class="row gutter-pb gutter-pt justify-content-center border-bottom">
+																<div class="col-12 col-lg-6 col-xl-6  payment-detail">
+																	<h4 class="card-label mb-2 font-weight-bold font-size-h4 text-body">
+																		Item Images
+																	</h4>
+																	<style>
+																		.image-grid {
+																			display: grid;
+																			/* grid-template-columns: repeat(4, 1fr); 4 columns */
+																			gap: 0; /* Space between items */
+																			padding: 0px;
+																		}
+																		.image-item img {
+																			margin-top: 4.5px;
+																			width: 80px; /* Make images responsive */
+																			height: auto; /* Maintain aspect ratio */
+																			border-radius: 5px; /* Optional: rounded corners */
+																			border: 1px solid #ccc;
+																		}
+																	</style>
+																	<div class="image-grid">
+																		<div class="image-item">
+																			{% for order in order_details.order_items %}
+																				{% for image in order.images %}
+																				<img loading="lazy" src="{{ image }}" alt="item-img">
+																				{% endfor %}
+																			{% endfor %}
+																		</div>
+																		</div>
+																</div>
+																<div class="col-12 col-lg-4 col-xl-4  payment-detail">
+																	<h4 class="card-label mb-2 font-weight-bold font-size-h4 text-body">
+																		Shipping Address
+																	</h4>
+																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		First Name: <span class="text-dark font-size-base">{{ order_details.shipping_address.fullName }}</span>
+																	</h5>
+																	{% set address_parts = order_details.shipping_address.address.split(', ') %}
+																	{% set line1 = address_parts[0] %}
+																	{% set line2 = address_parts[1] if address_parts | length > 1 else None %}
+																	{% set postal_code = address_parts[2].split(': ')[1] %}
+																	{% set state = address_parts[3].split(': ')[1] %}
+
+																	{% set city_country = "Philadelphia, US".split(', ') %}
+																	{% set city = city_country[0] %}
+																	{% set country = city_country[1] %}
+
+																	
+																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																	   Address: <span class="text-dark font-size-base">
+																		{{ line1 }}, {{ line2 }}
+																	   			</span>
+																	</h5>
+																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		City: <span class="text-dark font-size-base">{{ city }}</span>
+																	 </h5>
+																	 <h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		State: <span class="text-dark font-size-base">{{ state }}</span>
+																	 </h5>
+																	 <h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		Country: <span class="text-dark font-size-base">{{ country }}</span>
+																	 </h5>
+																	 <h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
+																		Zip Code: <span class="text-dark font-size-base">{{ postal_code }}</span>
+																	 </h5>
+		
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-12 gutter-pt table-padding"  id="printableTable">
+																	<table class="table table-striped text-body">
+																		<thead>
+																		  <tr class="row"> 
+																			<th class="border-0 col-lg-6 col-4 header-heading" scope="col">Product</th>
+																			<th class="border-0 col-lg-2 col-2 header-heading" scope="col">Price</th>
+																			<th class="border-0 col-lg-2 col-3 text-center header-heading" scope="col">Quantity</th>
+																			<th class="border-0 col-lg-2 col-3 text-right header-heading" scope="col">Total</th>
+																		  </tr>
+																		</thead>
+																		<tbody>
+																		  <tr class="row">
+																			{% set total_price = 0 %}  {# Initialize total price #}
+																			{% for order in order_details.order_items %}
+																				<td class="col-lg-6 col-4">{{order.name}}</td>
+																				<td class="col-lg-2 col-2">{{order.price}}</td>
+																				<td class="col-lg-2 col-3 text-center">{{order.qty}}</td>
+																				<td class="col-lg-2 col-3 text-end">{{ order.price * order.qty }}</td>
+																				
+																			{% endfor %}
+
+
+																			
+																			
+																			
+																		  </tr>
+																		</tbody>
+																	  </table>
+																	  <div class="row justify-content-end">
+																		  <div class="col-12 col-md-3">
+																			<div>
+																				<table class="table right-table">
+							 
+																					<tbody>
+																					  <tr class="d-flex align-items-center justify-content-between">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																								SUBTOTAL
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€{{ order_details.sub_total_price }}</td>
+																						
+																					  </tr>
+																					  <tr class="d-flex align-items-center justify-content-between">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																								TAX
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€{{ order_details.tax_price }}</td>
+																						
+																					  </tr>
+																					  <tr class="d-flex align-items-center justify-content-between">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																							SHIPPING PRICE
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">{{ order_details.total_price - order_details.sub_total_price }}</td>
+																						
+																					  </tr>
+																					  <tr class="d-flex align-items-center justify-content-between item-price">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																								TOTAL
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-dark font-size-base">€{{ order_details.total_price }}</td>
+																						
+																					  </tr>
+																				
+																					</tbody>
+																				  </table>
+																			  </div>
+																		  </div>
+																	  </div>
+																	 
+																</div>
+															</div>
+														</div>
+													</div>
+												
+												</div>
+												<div class="tab-pane fade " id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
+													<div class="card card-custom gutter-b bg-white border-0" >
+														<div class="card-header d-flex align-items-start justify-content-between  border-0 pb-5">
+															<div class="card-title mb-0 d-flex inovice-main">
+															    <div class="bg-primary pb-3 h-150px  w-150px d-flex flex-column justify-content-end align-items-center">
+																	<h3 class="font-size-h3 text-white">Invoice</h3>
+																	<h4 class="font-size-h4 text-white">#123456789</h4>
+																</div>
+																<div class="card-user-detail padding-top ps-3 w-250px">
+																	<h5 class="font-size-h5 font-size-bold text-body">Kundol</h5>
+																	<h5 class="font-size-h5 text-dark">St.40,Boston,MA,USA,02020</h5>
+																	<h5 class="font-size-h5 text-dark">+0123456789</h5>
+																	<h5 class="font-size-h5 text-dark">abc@mail.com</h5>
+																	<h5 class="font-size-h5 text-dark">www.site.com</h5>
+																</div>
+															</div>
+														
+															<div class="padding-top"> 
+																<h5 class="font-size-h5 text-black-50">
+																	Placed On <span>12.07.2020 10:00pm</span>
+																</h5>
+																<a href="/api/sellers/">
+																	<img loading="lazy" src="../../static/seller/images/misc/logo.png" alt="logo">
+																</a>
+															</div>
+														
+														</div>
+														<div class="card-body">
+															<div class="row">
+																<div class="col-12 table-padding">
+																	<table class="table table-striped text-body">
+																		<thead>
+																		  <tr class="row"> 
+																			<th class="border-0 col-lg-6 col-4 header-heading" scope="col">Product</th>
+																			<th class="border-0 col-lg-2 col-2 header-heading" scope="col">Price</th>
+																			<th class="border-0 col-lg-2 col-3 text-center header-heading" scope="col">Quantity</th>
+																			<th class="border-0 col-lg-2 col-3 text-right header-heading" scope="col">Total</th>
+																		  </tr>
+																		</thead>
+																		<tbody>
+																		  <tr class="row">
+																			
+																			<td class="col-lg-6 col-4">Mackbook Pro 15"</td>
+																			<td class="col-lg-2 col-2">€2500</td>
+																			<td class="col-lg-2 col-3 text-center">100</td>
+																			<td class="col-lg-2 col-3 text-end">€25000</td>
+																			
+																		  </tr>
+																		  <tr class="row">
+																			<td class="col-lg-6 col-4">Mackbook Pro 15"</td>
+																			<td class="col-lg-2 col-2">€2500</td>
+																			<td class="col-lg-2 col-3 text-center">100</td>
+																			<td class="col-lg-2 col-3 text-end">€25000</td>
+																		
+																		  </tr>
+																		  <tr class="row">
+																			<td class="col-lg-6 col-4">Mackbook Pro 15"</td>
+																			<td class="col-lg-2 col-2">€2500</td>
+																			<td class="col-lg-2 col-3 text-center">100</td>
+																			<td class="col-lg-2 col-3 text-end">€25000</td>
+																			
+																		  </tr>
+																		</tbody>
+																	  </table>
+																	  <div class="row justify-content-end">
+																		  <div class="col-12 col-md-3">
+																			<div>
+																				<table class="table right-table">
+							 
+																					<tbody>
+																					  <tr class="d-flex align-items-center justify-content-between">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																								SUBTOTAL
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€75000</td>
+																						
+																					  </tr>
+																					  <tr class="d-flex align-items-center justify-content-between">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																							
+																								TAX(20%)
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€90000</td>
+																						
+																					  </tr>
+																					  <tr class="d-flex align-items-center justify-content-between">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																						
+																							DISCOUNT
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">10%</td>
+																						
+																					  </tr>
+																					  <tr class="d-flex align-items-center justify-content-between item-price">
+																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
+																								TOTAL
+																						</th>
+																						<td class="border-0 justify-content-end d-flex text-dark font-size-base">€81000</td>
+																						
+																					  </tr>
+																				
+																					</tbody>
+																				  </table>
+																			  </div>
+																		  </div>
+																	  </div>
+																	 
+																</div>
+															</div>
+														</div>
+													</div>
+												
+												</div>
+												<div class="tab-pane fade status-tab-style" id="status" role="tabpanel" aria-labelledby="status-tab">
+													<div class="card card-custom gutter-b bg-white border-0" >
+														<div class="card-body">
+															<div class="row gutter-b">
+																<div class="col-12 table-padding">
+																	<table class="table table-striped text-body">
+																		<thead>
+																		  <tr class="row"> 
+																			<th class="text-center border-0 col-6" scope="col">DATE ADDED</th>
+																			<th class="text-center border-0 col-6" scope="col">STATUS</th>
+																			
+																		
+																		  </tr>
+																		</thead>
+																		<tbody>
+																		  <tr class="row">
+																			<td class="text-center col-6">12.09.2020 10:00pm</td>
+																			<td class="text-center col-6">Pending</td>
+																		  </tr>
+																		  <tr class="row">
+																			<td class="text-center col-6">12.09.2020 10:00pm</td>
+																			<td class="text-center col-6">Pending</td>
+																		  </tr>
+																		</tbody>
+																	  </table>
+																</div>
+															</div>
+															<div class="row ">
+																<div class="col-12 px-4">
+																	<div class="form-group row align-items-center justify-content-center">
+																	
+																		<div class="col-xl-6 col-lg-8 col-12 status-detail">
+																			<label class="col-form-label me-3">Order Status</label>
+																			<fieldset class="form-group">
+																				<select class="single-select w-100 ">
+																					<option value="1">Pending</option>
+																					<option value="2">Completed</option>
+																					<option value="3">Rejected</option>
+																					
+																				  </select>
+																			</fieldset>
+																		</div>
+																	</div>
+																	<div class="row align-items-center justify-content-center mb-4">
+																		<div class="col-xl-3 col-lg-4 col-12 status-detail align-items-center justify-content-between">
+																			<label class="col-form-label me-3">Notify Customer:</label>
+																			<div class="custom-control switch custom-switch custom-control-inline me-0">
+																				<input type="checkbox" class="custom-control-input" checked="" id="customSwitch1">
+																				<label class="custom-control-label position-static" for="customSwitch1">
+																				</label>
+																			  </div>
+																		
+																		</div>
+																	
+																		<div class="col-xl-3 col-lg-4 status-detail align-items-center justify-content-between">
+																			<label class="col-form-label me-3">Append Comments:</label>
+																			<div class="custom-control switch custom-switch custom-control-inline me-0">
+																				<input type="checkbox" class="custom-control-input" id="customSwitch2">
+																				<label class="custom-control-label me-1 position-static" for="customSwitch2">
+																				</label>
+																			  </div>
+																		
+																		</div>
+																	
+
+																	</div>
+																	<div class="form-group row align-items-center justify-content-center">
+																	
+																		<div class="col-xl-6 col-lg-8 col-12">
+																			<fieldset class="form-label-group">
+																				<textarea class="form-control" id="label-textarea" rows="3" placeholder="Label in Textarea"></textarea>
+																			
+																			</fieldset>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+											
+												</div>
+												<div class="tab-pane fade " id="history" role="tabpanel" aria-labelledby="history-tab">
+													<div class="row">
+														<div class="col-lg-12 col-12">
+															<div class="card card-custom gutter-b bg-white border-0">
+														
+																<div class="card-body">
+																	<div class="row justify-content-center">
+																		<div class="col-12 col-lg-8">
+																			<div class="history-detail">
+																				<div class="timeline timeline-6 mt-3">
+																				<div class="timeline-item align-items-start ms-5 badge-date">
+																				<div class="timeline-badge">
+																					<i class="fa fa-genderless text-warning icon-xl"></i>
+																				</div>
+																				<div class="timeline-label font-weight-bold text-black-50 text-left ps-3">12 september 2020</div>
+																				</div>
+																				<div class="timeline-item flex-column align-items-start pl-1">
+																					<div class="w-100  font-weight-mormal timeline-content text-muted ">
+																						<table class="table table-borderless history-table bg-light">
+																						
+																							<tbody>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">08:00am</span>
+																								</td>
+																								<td class="content">The Order Was validated</td>
+																								</tr>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">09:00am</span>
+																								</td>
+																								<td class="content">Product <strong>Macbook pro 15"</strong> added to cart</td>
+																								</tr>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">08:00am</span>
+																								</td>
+																								<td class="content">The Order Was Placed</td>
+																								</tr>
+																							</tbody>
+																							</table>
+																					</div>
+																				</div>
+																				<div class="timeline-item align-items-start ms-5 badge-date">
+																					<div class="timeline-badge">
+																						<i class="fa fa-genderless text-success icon-xl"></i>
+																					</div>
+																					<div class="timeline-label font-weight-bold text-black-50 text-left ps-3">12 september 2020</div>
+																				</div>
+																				<div class="timeline-item flex-column align-items-start pl-1">
+																					<div class="w-100  font-weight-mormal timeline-content text-muted ">
+																						<table class="table table-borderless history-table bg-light">
+																						
+																							<tbody>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">08:00am</span>
+																								</td>
+																								<td class="content">The Order Was validated</td>
+																								</tr>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">09:00am</span>
+																								</td>
+																								<td class="content">Product <strong>Macbook pro 15"</strong> added to cart</td>
+																								</tr>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">08:00am</span>
+																								</td>
+																								<td class="content">The Order Was Placed</td>
+																								</tr>
+																							</tbody>
+																							</table>
+																					</div>
+																				</div>
+																				<div class="timeline-item align-items-start ms-5 badge-date">
+																					<div class="timeline-badge">
+																						<i class="fa fa-genderless text-danger icon-xl"></i>
+																					</div>
+																					<div class="timeline-label font-weight-bold text-black-50 text-left ps-3">12 september 2020</div>
+																				</div>
+																				<div class="timeline-item flex-column align-items-start pl-1">
+																					<div class="w-100  font-weight-mormal timeline-content text-muted ">
+																						<table class="table table-borderless history-table bg-light">
+																						
+																							<tbody>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">08:00am</span>
+																								</td>
+																								<td class="content">The Order Was validated</td>
+																								</tr>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">09:00am</span>
+																								</td>
+																								<td class="content">Product <strong>Macbook pro 15"</strong> added to cart</td>
+																								</tr>
+																								<tr>
+																								<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																									<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																									</svg>
+																									<span class="ms-2">08:00am</span>
+																								</td>
+																								<td class="content">The Order Was Placed</td>
+																								</tr>
+																							</tbody>
+																							</table>
+																					</div>
+																				</div>
+																				<div class="timeline-item align-items-start ms-5 badge-date">
+																					<div class="timeline-badge">
+																						<i class="fa fa-genderless text-primary icon-xl"></i>
+																					</div>
+																					<div class="timeline-label font-weight-bold text-black-50 text-left ps-3">12 september 2020</div>
+																					</div>
+																					<div class="timeline-item flex-column align-items-start pl-1">
+																						<div class="w-100  font-weight-mormal timeline-content text-muted ">
+																							<table class="table table-borderless history-table bg-light">
+																							
+																								<tbody>
+																									<tr>
+																									<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																										<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																										<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																										</svg>
+																										<span class="ms-2">08:00am</span>
+																									</td>
+																									<td class="content">The Order Was validated</td>
+																									</tr>
+																									<tr>
+																									<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																										<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																										<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																										</svg>
+																										<span class="ms-2">09:00am</span>
+																									</td>
+																									<td class="content">Product <strong>Macbook pro 15"</strong> added to cart</td>
+																									</tr>
+																									<tr>
+																									<td class="border-right action"> <svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																										<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+																										<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+																										</svg>
+																										<span class="ms-2">08:00am</span>
+																									</td>
+																									<td class="content">The Order Was Placed</td>
+																									</tr>
+																								</tbody>
+																								</table>
+																						</div>
+																					</div>
+							
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																
+																
+																</div>
+															</div>
+														</div>
+													</div>
+				
+												</div>
+												<div class="tab-pane fade " id="notes" role="tabpanel" aria-labelledby="notes-tab">
+									
+													<div class="card card-custom gutter-b bg-white border-0" >
+												
+														<div class="card-body">
+															<div id="draggable-cards" class="gutter-t">
+																<div class="row" id="card-drag-area">
+																	<div class="col-lg-6 col-xl-4">
+																		<div id="01" class="card card-custom gutter-b bg-white border-0 pincard">
+																			<div class="card-header align-items-center border-0">
+																				<div class="card-title mb-0">
+																					<h5 class="font-size-h5 text-black-50">
+																						11.Sep.2020
+																					</h5>
+																				</div>
+																				
+																				<div class="pin-click" id="pin1"> 
+																					
+																					<i class="fas fa-eye-slash pin-fixnot dis-block"></i>
+																					<i class="fas fa-eye pin dis-none" ></i>
+																				</div>
+																			
+																			</div>
+																			 <div class="card-body" >
+																				<div class="card-title mb-0">
+																					<h3 class="font-size-h3 text-body">
+																					  The Title Of a Note
+																					</h3>
+																				</div>	
+																				<div class="card-detail text-dark">
+																					<p>
+																						Lorem ipsum dolor sit amet, 
+																						consectetur adipiscing elit. Proin
+																						 suscipit et elit faucibus accumsan. 
+																						 Vestibulum ante ipsum primis in faucibus orci luctus 
+																						 et ultrices posuere cubilia curae;
+																						  Aenean vitae mi at neque pellentesque
+																						convallis. Vivamus rhoncus vestibulum rhoncus.
+																						Praesent quam risus, commodo ut volutpat eget, pretium ac
+																						 lacus. Proin sed tortor et est accumsan egestas. Duis erat purus, 
+																						 tincidunt non feugiat vitae, laoreet ut nulla. 
+																						Vivamus at ex at nulla convallis posuere. Etiam nisi velit, efficitur eu risus a, suscipit finibus justo.
+																					</p>
+																					<p>
+																						Lorem ipsum dolor sit amet, 
+																						consectetur adipiscing elit. Proin
+																						 suscipit et elit faucibus accumsan. 
+																						 Vestibulum ante ipsum primis in faucibus orci luctus 
+																						 et ultrices posuere cubilia curae;
+																						  Aenean vitae mi at neque pellentesque
+																						convallis. Vivamus rhoncus vestibulum rhoncus.
+																						Praesent quam risus, commodo ut volutpat eget, pretium ac
+																						 lacus. Proin sed tortor et est accumsan egestas. Duis erat purus, 
+																						 tincidunt non feugiat vitae, laoreet ut nulla. 
+																						Vivamus at ex at nulla convallis posuere. Etiam nisi velit, efficitur eu risus a, suscipit finibus justo.
+																					</p>
+																				</div>
+																			 </div>
+																		</div>
+																	</div>
+																	<div class="col-lg-6 col-xl-4">
+																		<div id="02" class="card card-custom gutter-b bg-white border-0 pincard">
+																			<div class="card-header align-items-center border-0">
+																				<div class="card-title mb-0">
+																					<h5 class="font-size-h5 text-black-50">
+																						12.Sep.2020
+																					</h5>
+																				</div>
+																				
+																				<div class="pin-click" id="pin2"> 
+																					<i class="fas fa-eye-slash pin-fixnot dis-block"></i>
+																					<i class="fas fa-eye pin dis-none" ></i>
+																				</div>
+																			
+																			</div>
+																			 <div class="card-body" >
+																				<div class="card-title mb-0">
+																					<h3 class="font-size-h3 text-body">
+																					  The Title Of a Note 
+																					 
+																					</h3>
+																				</div>	
+																				<div class="card-detail text-dark">
+																					<p>
+																						Lorem ipsum dolor sit amet, 
+																						consectetur adipiscing elit. Proin
+																						 suscipit et elit faucibus accumsan. 
+																						 Vestibulum ante ipsum primis in faucibus orci luctus 
+																						 et ultrices posuere cubilia curae;
+																						  Aenean vitae mi at neque pellentesque
+																						convallis. Vivamus rhoncus vestibulum rhoncus.
+																						Praesent quam risus, commodo ut volutpat eget, pretium ac
+																						 lacus. Proin sed tortor et est accumsan egestas. Duis erat purus, 
+																						 tincidunt non feugiat vitae, laoreet ut nulla. 
+																						Vivamus at ex at nulla convallis posuere. Etiam nisi velit, efficitur eu risus a, suscipit finibus justo.
+																					</p>
+																				</div>
+																			 </div>
+																		</div>
+																	</div>
+																	<div class="col-lg-6 col-xl-4">
+																		<div class=" border-dashed addnote pincard d-flex justify-content-center align-items-center">
+																			<div class="card-toolbar ">
+																				<div class="btn btn-icon btn-secondary  btn-plus h-100px w-100px " 
+																				id="kt_notes_panel_toggle" data-bs-toggle="tooltip" title="" data-bs-placement="right"
+																			data-original-title="Check out more demos">
+																					<span class="svg-icon svg-icon-xl svg-icon-primary white ">
+											
+																						<svg width="" height="" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																							<path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+																						  </svg>
+																						
+																					</span>
+																					<h5 class="mt-3 text-dark font-size-h5 ">Add Notes</h5>
+																				</div>
+																			</div>
+																
+																		</div>
+																	</div>
+																
+																</div>
+															</div>
+														</div>
+													</div>		
+												
+												
+												</div>
+												<!-- Message center -->
+												<div class="tab-pane fade " id="message" role="tabpanel" aria-labelledby="message-tab">
+													<div class="row">
+														<div class="col-12 px-4">
+															<div  class="card card-custom gutter-b bg-white border-0 message-content p-5">
+																<div class="row justify-content-center">
+																
+																	<div class="col-12 col-md-8">
+																		<div class="d-flex align-items-center border-0 p-3 rounded mb-5" >
+																			<div class="media">
+																				<img loading="lazy" src="../../static/seller/images/profiles/profile1.png" alt="profile" class="rounded-circle">
+																				<div class="media-body ms-3">
+																				<div class="d-flex justify-content-between mb-1">
+																					<h3 class="font-size-h3 text-dark info-tag">John Doe </h3>
+																				
+																				</div>
+																				<div class="badge badge-primary font-size-h5 rounded">
+																					Customer
+																				</div>
+																				
+																				</div>
+																			</div>
+																			<div class="text-input position-relative disabled">
+																				<div class="date-text">
+																					<h5 class="font-size-h5 text-black-50 text-end">
+																						30 min ago
+																					</h5>
+																				</div>
+																				<fieldset class="form-label-group">
+																					<textarea class="form-control fixed-size " id="horizontalTextarea1" rows="6" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar tempus orci id iaculis." disabled></textarea>
+																				
+																				</fieldset>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="row justify-content-center">
+																	<div class="col-12 col-md-8">
+																		<div class="d-flex align-items-center border-0 p-3 rounded mb-5" >
+																			<div class="media">
+																				<img loading="lazy" src="../../static/seller/images/profiles/profile1.png" alt="profile" class="rounded-circle">
+																				<div class="media-body ms-3">
+																				<div class="d-flex justify-content-between mb-1">
+																					<h3 class="font-size-h3 text-dark info-tag">John Doe </h3>
+																				
+																				</div>
+																				<div class="badge badge-primary font-size-h5 rounded">
+																					Customer
+																				</div>
+																				
+																				</div>
+																			</div>
+																			<div class="text-input position-relative disabled">
+																				<div class="date-text">
+																					<h5 class="font-size-h5 text-black-50 text-end">
+																						30 min ago
+																					</h5>
+																				</div>
+																				<fieldset class="form-label-group">
+																					<textarea class="form-control fixed-size " id="horizontalTextarea12" rows="6" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar tempus orci id iaculis." disabled></textarea>
+																				
+																				</fieldset>
+																			</div>
+																		</div>
+																	
+																	
+																	</div>
+																</div>
+																<div class="line-bar mb-5 ">
+																	<h5 class="text-withLine text-dark mb-0">New Message</h5>
+																</div>
+																<div class="row justify-content-center">
+																	<div class="col-12 col-md-8">
+																		<div class="d-flex align-items-center border-0 p-3 rounded mb-5" >
+																			<div class="media">
+																				<img loading="lazy" src="../../static/seller/images/profiles/profile1.png" alt="profile" class="rounded-circle">
+																				<div class="media-body ms-3">
+																				<div class="d-flex justify-content-between mb-1">
+																					<h3 class="font-size-h3 text-dark info-tag">John Doe </h3>
+																				
+																				</div>
+																				<div class="badge badge-primary font-size-h5 rounded">
+																					Manger
+																				</div>
+																				
+																				</div>
+																			</div>
+																			<div class="text-input position-relative disabled ">
+																				<div class="date-text">
+																					<h5 class="font-size-h5 text-black-50 text-end">
+																					Just Now
+																					</h5>
+																				</div>
+																				<fieldset class="form-label-group">
+																					<textarea class="form-control fixed-size " id="horizontalTextarea" rows="6" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar tempus orci id iaculis." disabled></textarea>
+																				
+																				</fieldset>
+																			</div>
+																		</div>
+																	
+																	
+																	</div>
+																</div>
+																<div class="row justify-content-center">	
+																	<div class="col-12 col-md-8">
+																		<div class="card-header align-items-end border-0   rounded position-relative" >
+
+																			<fieldset class="form-label-group w-100 ">
+																				<textarea id="txtarea"  class="bg-light autoexpand-textarea form-control"  placeholder=' Enter Text..'></textarea>
+						
+																			</fieldset>
+																			<div class="addclip-input pe-3 pb-2">
+																				
+																				<span>
+																					<label> 
+																						<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-paperclip" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																							<path fill-rule="evenodd" d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+																						</svg>
+																						<input type="file" size="60" >
+
+																						</label> 
+																				
+																				</span>
+																				<span  class="ps-2">
+																					<a href="order-detail.html#">
+																						<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-emoji-smile" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																							<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+																							<path fill-rule="evenodd" d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683z"/>
+																							<path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+																						</svg>
+																					</a>
+																				</span>
+																				<span class="ps-4">
+																					<a href="order-detail.html#">
+																						<i class="fas fa-paper-plane font-size-h4"></i>
+																					</a>
+																				</span>
+																			</div>
+																		</div>
+																	
+																	
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>			
+												</div>
+												<!-- end of message center -->
+											</div>
+										</div>
+									</div>	
+									{% endif %}		
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			
+				
+				<div class="footer bg-white py-4 d-flex flex-lg-column" id="tc_footer">
+					
+					<div
+						class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+						
+						<div class="text-dark order-2 order-md-1">
+							<span class="text-muted font-weight-bold me-2">2020©</span>
+							<a href="order-detail.html#" target="_blank" class="text-dark-75 text-hover-primary">Themescoder</a>
+						</div>
+
+						<div class="nav nav-dark">
+							<a href="order-detail.html#" target="_blank" class="nav-link pl-0 pr-5">About</a>
+							<a href="order-detail.html#c" target="_blank" class="nav-link pl-0 pr-5">Team</a>
+							<a href="order-detail.html#" target="_blank" class="nav-link pl-0 pr-0">Contact</a>
+						</div>
+
+					</div>
+
+				</div>
+				<!--end::Footer-->
+			</div>
+			<!--end::Wrapper-->
+		</div>
+		<!--end::Page-->
+	</div>
+	<!--end::Main-->
+
+
+
+	<ul class="sticky-toolbar nav flex-column bg-primary">
+
+		<li class="nav-item" id="kt_demo_panel_toggle" data-bs-toggle="tooltip" title="" data-bs-placement="right"
+			data-original-title="Check out more demos">
+			<a class="btn btn-sm btn-icon text-white" href="order-detail.html#">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-gear fa-spin" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+					<path fill-rule="evenodd"
+						d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+				</svg>
+			</a>
+		</li>
+	</ul>
+
+
+
+
+	<div id="kt_color_panel" class="offcanvas offcanvas-right kt-color-panel p-5">
+		<div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+			<h4 class="font-size-h4 font-weight-bold m-0">Theme Config
+			</h4>
+			<a href="order-detail.html#" class="btn btn-sm btn-icon btn-light btn-hover-primary" id="kt_color_panel_close">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+				</svg>
+			</a>
+		</div>
+		<hr>
+		<div class="offcanvas-content">
+			<!-- Theme options starts -->
+			<div id="customizer-theme-layout" class="customizer-theme-layout">
+
+				<h5 class="mt-1">Theme Layout</h5>
+				<div class="theme-layout">
+					<div class="d-flex justify-content-start">
+						<div class="my-3">
+							<div class="btn-group btn-group-toggle">
+								<label class="btn btn-primary p-2 active">
+									<input type="radio" name="layoutOptions" value="false" id="radio-light" checked="">
+									Light
+								</label>
+								<label class="btn btn-primary p-2">
+									<input type="radio" name="layoutOptions" value="false" id="radio-dark"> Dark
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<hr>
+				<h5 class="mt-1">RTL Layout</h5>
+				<div class="rtl-layout">
+					<div class="d-flex justify-content-start">
+						<div class="my-3 btn-rtl">
+							<div class="toggle">
+								<span class="circle"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+
+			<!-- Theme options starts -->
+			<div id="customizer-theme-colors" class="customizer-theme-colors">
+				<h5>Theme Colors</h5>
+				<ul class="list-inline unstyled-list d-flex">
+					<li class="color-box me-2">
+						<div id="color-theme-default" class="d-flex rounded w-20px h-20px" style="background-color: #ae69f5d9;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-blue" class="d-flex rounded w-20px h-20px" style="background-color: blue;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-red" class="d-flex rounded w-20px h-20px" style="background-color: red;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-green" class="d-flex rounded w-20px h-20px" style="background-color: green;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-yellow" class="d-flex rounded w-20px h-20px" style="background-color: #ffc107;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-navy-blue" class="d-flex rounded w-20px h-20px" style="background-color: #000080;">
+						</div>
+					</li>
+
+				</ul>
+				<hr>
+			</div>
+
+
+		</div>
+	</div>	
+
+
+	<div id="kt_notes_panel" class="offcanvas offcanvas-right kt-color-panel p-5">
+		<div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+			<h4 class="font-size-h4 font-weight-bold m-0">Add Note
+			</h4>
+			<a href="order-detail.html#" class="btn btn-sm btn-icon btn-light btn-hover-primary" id="kt_notes_panel_close">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+				</svg>
+			</a>
+		</div>
+		<form id="myform">
+			<div class="form-group">
+			  <label class="text-dark" for="exampleInputText1">Title of a Note</label>
+			  <input type="text" name="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp">
+			  <small id="textHelp" class="form-text text-muted">please enter your notes title</small>
+			</div>
+			<div class="form-group">
+			  <label class="text-dark" >Note</label>
+			  <textarea class="form-control" id="label-textarea2" rows="6" placeholder="Write A Text"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Add Note</button>
+		  </form>
+	</div>	
+	<iframe name="print_frame" width="0" height="0"  src="about:blank"></iframe>
+
+
+	<script src="../../static/seller/js/plugin.bundle.min.js"></script>
+	<script src="../../static/seller/js/bootstrap.bundle.min.js"></script>
+	<script src="../../static/seller/api/jqueryvalidate/jquery.validate.min.js"></script>
+	<script src="../../static/seller/api/apexcharts/apexcharts.js"></script>
+	<script src="../../static/seller/api/apexcharts/scriptcharts.js"></script> 
+	<script src="../../static/seller/api/pace/pace.js"></script>
+	<script src="../../static/seller/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../../static/seller/api/quill/quill.min.js"></script>
+	<script src="../../static/seller/api/datatable/jquery.dataTables.min.js"></script>
+	
+	<!-- <script src="./../../static/seller/js/dragula.min.js"></script>
+	<script src="./../../static/seller/js/drag-drop.min.js"></script> -->
+	<script src="../../static/seller/api/select2/select2.min.js"></script>
+	<script src="../../static/seller/api/multiple-select/multiple-select.min.js"></script>
+	
+	<script src="../../static/seller/js/script.bundle.js"></script>
+	<script>
+		var options = {
+	  debug: 'info',
+	  modules: {
+		toolbar: '#toolbar'
+	  },
+	  placeholder: 'Compose an epic...',
+	  readOnly: true,
+	  theme: 'snow'
+	};
+	var editor = new Quill('#editor', options);
+	
+	
+	jQuery(document).ready( function () {
+		jQuery('#myTable').DataTable();
+	} );
+	jQuery(function() {
+			jQuery('.single-select').multipleSelect({
+		  filter: true,
+		  filterAcceptOnEnter: true
+		})
+	  })
+	
+	  function expandTextarea(id) {
+		document.getElementById(id).addEventListener('keyup', function() {
+			this.style.overflow = 'hidden';
+			this.style.height = 0;
+			this.style.height = this.scrollHeight + 'px';
+		}, false);
+	}
+	
+	expandTextarea('txtarea');  
+	</script>
+	
+</body>
+<!--end::Body-->
+
+
+</html>

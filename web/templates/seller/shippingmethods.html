@@ -1,0 +1,725 @@
+{% include 'seller/head.html' %}
+
+<!--begin::Body-->
+
+<body id="tc_body" class="header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed">
+   <!-- Paste this code after body tag -->
+   <div class="se-pre-con">
+	<div class="pre-loader">
+	  <img loading="lazy" class="img-fluid" src="../../static/seller/images/lizie.gif" alt="loading">
+	</div>
+  </div>
+	<!--begin::Header Mobile-->
+	<div id="tc_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+		<!--begin::Logo-->
+		<a href="/api/sellers/" class="brand-logo">
+
+			<span class="brand-text"><img loading="lazy" style="height: 25px;" alt="Logo" src="../../static/seller/images/misc/logo.png" /></span>
+
+		</a>
+		<!--end::Logo-->
+		<!--begin::Toolbar-->
+		<div class="d-flex align-items-center">
+
+			 <div class="posicon">
+				<a href="pos.html" class="btn btn-primary d-flex align-items-center justify-content-center white me-2">POS</a>
+			</div>
+			<button class="btn p-0" id="tc_aside_mobile_toggle">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-justify-right" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+				</svg>
+			</button>
+
+			<button class="btn p-0 ms-2" id="tc_header_mobile_topbar_toggle">
+				<span class="svg-icon svg-icon-xl">
+
+					<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd"
+							d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+					</svg>
+
+				</span>
+			</button>
+
+		</div>
+		<!--end::Toolbar-->
+	</div>
+	<!--end::Header Mobile-->
+	<!--begin::Main-->
+	<div class="d-flex flex-column flex-root">
+		<!--begin::Page-->
+		<div class="d-flex flex-row flex-column-fluid page">
+			<div>
+				<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="tc_aside">
+					<!--begin::Brand-->
+					<div class="brand flex-column-auto" id="tc_brand">
+						<!--begin::Logo-->
+	
+						<a href="/api/sellers/" class="brand-logo">
+							<img loading="lazy" class="brand-image" style="height: 25px;" alt="Logo" src="../../static/seller/images/misc/k.png" />
+							<span class="brand-text"><img loading="lazy" style="height: 25px;" alt="Logo"
+									src="../../static/seller/images/misc/logo.png" /></span>
+	
+						</a>
+						<!--end::Logo-->
+	
+	
+					</div>
+					<!--end::Brand-->
+					<!--begin::Aside Menu-->
+					<div class="aside-menu-wrapper flex-column-fluid overflow-auto h-100" id="tc_aside_menu_wrapper">
+					 {% include 'seller/sidebar.html' %}
+					</div>
+					<!--end::Aside Menu-->
+				</div>
+			</div>
+			<!--begin::Aside-->
+		
+			<div class="aside-overlay"></div>
+			<!--end::Aside-->
+			<!--begin::Wrapper-->
+			<div class="d-flex flex-column flex-row-fluid wrapper" id="tc_wrapper">
+			 {% include 'seller/header.html' %} 
+				<!--begin::Content-->
+				<div class="content d-flex flex-column flex-column-fluid" id="tc_content">
+					<!--begin::Subheader-->
+					<div class="subheader py-2 py-lg-6 subheader-solid">
+						<div class="container-fluid">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb bg-white mb-0 px-0 py-2">
+									<li class="breadcrumb-item " aria-current="page">Shipping Methods</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+					<!--end::Subheader-->
+					<!--begin::Entry-->
+					<div class="d-flex flex-column-fluid">
+						<!--begin::Container-->
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 px-4">
+									<div class="row">
+										<div class="col-lg-12 col-xl-12 px-4">
+											<div class="card card-custom gutter-b bg-transparent shadow-none border-0" >
+												<div class="card-header align-items-center  border-bottom-dark px-0">
+													<div class="card-title mb-0">
+														<h3 class="card-label mb-0 font-weight-bold text-body">Shipping Methods
+														</h3>
+													</div>
+												    <div class="icons d-flex">
+														<a href="shippingmethods.html#" onclick="printDiv()" class="ms-2">
+															<span class="icon h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+																<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-printer-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z"/>
+																	<path fill-rule="evenodd" d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+																	<path fill-rule="evenodd" d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+																  </svg>
+															</span>
+														
+														</a>
+														<a href="shippingmethods.html#" class="ms-2" >
+															<span class="icon h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+																<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-file-earmark-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 2l.5-2.5 3 3L10 5a1 1 0 0 1-1-1zM4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
+																  </svg>
+															</span>
+														
+														</a>
+													
+													</div>
+												</div>
+											
+											</div>
+
+
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12 px-4">
+											<div class="card card-custom gutter-b bg-white border-0" >
+											
+												<div class="card-body">
+													<form>
+														<div class="form-group row justify-content-center mb-0">
+															
+															<div class="col-md-12">
+																<label class="text-dark" >Free Shipping On Min Order Price</label>
+																<fieldset class="form-group mb-3 d-flex">
+																	<input type="text" name="text" class="form-control bg-white"  placeholder="Enter ">
+																	<a href="javascript:void(0)" class="btn-secondary btn ms-2 white pt-1 pb-1 d-flex align-items-center justify-content-center">Submit</a>
+																</fieldset>
+															
+															</div>
+														
+														</div>
+													</form>
+
+												</div>
+											
+											</div>
+										</div>
+										<div class="col-12  px-4">
+											<div class="card card-custom gutter-b bg-white border-0" >
+												<div class="card-body" >
+													<div >
+														<div class=" table-responsive" id="printableTable">
+															<table id="productUnitTable" class="display ">
+																
+																<thead class="text-body">
+																	<tr>
+																		
+																		<th>Default</th>
+																		<th>
+																			Shipping Title
+																		 </th>
+																		 <th class="">Price</th>
+																		 <th class="">Status</th>
+																		 <th class="no-sort text-end">Action</th>
+																	
+																	</tr>
+																</thead>
+																<tbody class="kt-table-tbody text-dark">
+																
+																	<tr class="kt-table-row kt-table-row-level-0">
+																        <td>
+																			<div class="form-check form-check-inline">
+																				<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios713" value="option1" checked="">
+																				<label class="form-check-label" for="exampleRadios713">
+																				
+																				</label>
+																			</div>
+																		</td>
+																		<td  >UPS Shipping</td>
+																		<td class=""></td>
+																		<td class="">
+																		
+																			<div class=""><span class="mr-0 text-secondary">In Active</span>
+																			</div>
+																		</td>
+																		<td class="">
+																			<div class="card-toolbar text-end">
+																				<button class="btn p-0 shadow-none" type="button" id="dropdowneditButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																					<span class="svg-icon">
+																						<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-three-dots text-body" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																							<path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path>
+																						</svg>
+																					</span>
+																				</button>
+																				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdowneditButton1"  style="position: absolute; transform: translate3d(1001px, 111px, 0px); top: 0px; left: 0px; will-change: transform;">
+																					<a class="dropdown-item kt_notes_panel_toggle" href="javascript:void(0);"
+																					 data-bs-toggle="tooltip" title="" data-bs-placement="right"
+																					data-original-title="Check out more demos">Edit</a>
+																					<a class="dropdown-item confirm-delete" title="Delete" href="shippingmethods.html#">Delete</a>
+																				</div>
+																				</div>
+																		</td>
+																	</tr>
+																	
+																	<tr class="kt-table-row kt-table-row-level-0">
+																        <td>
+																			<div class="form-check form-check-inline">
+																				<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios21" value="option1" >
+																				<label class="form-check-label" for="exampleRadios21">
+																				
+																				</label>
+																			</div>
+																		</td>
+																		<td  >Free Shipping</td>
+																		<td class=""></td>
+																		<td class="">
+																			<div class=""><span class="mr-0 text-success">Active</span>
+																			</div>
+																		</td>
+																		<td class="">
+																			<div class="card-toolbar text-end">
+																				<button class="btn p-0 shadow-none" type="button" id="dropdowneditButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																					<span class="svg-icon">
+																						<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-three-dots text-body" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																							<path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path>
+																						</svg>
+																					</span>
+																				</button>
+																				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdowneditButton2"  style="position: absolute; transform: translate3d(1001px, 111px, 0px); top: 0px; left: 0px; will-change: transform;">
+																					<a class="dropdown-item kt_notes_panel_toggle" href="javascript:void(0);"
+																					 data-bs-toggle="tooltip" title="" data-bs-placement="right"
+																					data-original-title="Check out more demos">Edit</a>
+																					<a class="dropdown-item confirm-delete" title="Delete" href="shippingmethods.html#">Delete</a>
+																				</div>
+																				</div>
+																		</td>
+																	</tr>
+																	<tr class="kt-table-row kt-table-row-level-0">
+																        <td>
+																			<div class="form-check form-check-inline">
+																				<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios71" value="option1" >
+																				<label class="form-check-label" for="exampleRadios71">
+																				
+																				</label>
+																			</div>
+																		</td>
+																		<td  >Flat Rate</td>
+																		<td class="">USD11</td>
+																		<td class="">
+																			<div class=""><span class="mr-0 text-success">Active</span>
+																			</div>
+																		
+																		</td>
+																		<td class="">
+																			<div class="card-toolbar text-end">
+																				<button class="btn p-0 shadow-none" type="button" id="dropdowneditButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																					<span class="svg-icon">
+																						<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-three-dots text-body" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																							<path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path>
+																						</svg>
+																					</span>
+																				</button>
+																				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdowneditButton3"  style="position: absolute; transform: translate3d(1001px, 111px, 0px); top: 0px; left: 0px; will-change: transform;">
+																					<a class="dropdown-item kt_notes_panel_toggle" href="javascript:void(0);"
+																					 data-bs-toggle="tooltip" title="" data-bs-placement="right"
+																					data-original-title="Check out more demos">Edit</a>
+																					<a class="dropdown-item confirm-delete" title="Delete" href="shippingmethods.html#">Delete</a>
+																				</div>
+																				</div>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+													
+													
+												</div>
+											</div>
+
+										</div>
+									
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+
+				
+				<div class="footer bg-white py-4 d-flex flex-lg-column" id="tc_footer">
+					
+					<div
+						class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+						
+						<div class="text-dark order-2 order-md-1">
+							<span class="text-muted font-weight-bold me-2">2020©</span>
+							<a href="shippingmethods.html#" target="_blank" class="text-dark-75 text-hover-primary">Themescoder</a>
+						</div>
+
+						<div class="nav nav-dark">
+							<a href="shippingmethods.html#" target="_blank" class="nav-link pl-0 pr-5">About</a>
+							<a href="shippingmethods.html#c" target="_blank" class="nav-link pl-0 pr-5">Team</a>
+							<a href="shippingmethods.html#" target="_blank" class="nav-link pl-0 pr-0">Contact</a>
+						</div>
+
+					</div>
+
+				</div>
+				<!--end::Footer-->
+			</div>
+			<!--end::Wrapper-->
+		</div>
+		<!--end::Page-->
+	</div>
+	<!--end::Main-->
+
+
+
+	<ul class="sticky-toolbar nav flex-column bg-primary">
+
+		<li class="nav-item" id="kt_demo_panel_toggle" data-bs-toggle="tooltip" title="" data-bs-placement="right"
+			data-original-title="Check out more demos">
+			<a class="btn btn-sm btn-icon text-white" href="shippingmethods.html#">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-gear fa-spin" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+					<path fill-rule="evenodd"
+						d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+				</svg>
+			</a>
+		</li>
+	</ul>
+
+
+
+
+	<div id="kt_color_panel" class="offcanvas offcanvas-right kt-color-panel p-5">
+		<div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+			<h4 class="font-size-h4 font-weight-bold m-0">Theme Config
+			</h4>
+			<a href="shippingmethods.html#" class="btn btn-sm btn-icon btn-light btn-hover-primary" id="kt_color_panel_close">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+				</svg>
+			</a>
+		</div>
+		<hr>
+		<div class="offcanvas-content">
+			<!-- Theme options starts -->
+			<div id="customizer-theme-layout" class="customizer-theme-layout">
+
+				<h5 class="mt-1">Theme Layout</h5>
+				<div class="theme-layout">
+					<div class="d-flex justify-content-start">
+						<div class="my-3">
+							<div class="btn-group btn-group-toggle">
+								<label class="btn btn-primary p-2 active">
+									<input type="radio" name="layoutOptions" value="false" id="radio-light" checked="">
+									Light
+								</label>
+								<label class="btn btn-primary p-2">
+									<input type="radio" name="layoutOptions" value="false" id="radio-dark"> Dark
+								</label>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<hr>
+				<h5 class="mt-1">RTL Layout</h5>
+				<div class="rtl-layout">
+					<div class="d-flex justify-content-start">
+						<div class="my-3 btn-rtl">
+							<div class="toggle">
+								<span class="circle"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+
+			<!-- Theme options starts -->
+			<div id="customizer-theme-colors" class="customizer-theme-colors">
+				<h5>Theme Colors</h5>
+				<ul class="list-inline unstyled-list d-flex">
+					<li class="color-box me-2">
+						<div id="color-theme-default" class="d-flex rounded w-20px h-20px" style="background-color: #09d4fcd9;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-blue" class="d-flex rounded w-20px h-20px" style="background-color: blue;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-red" class="d-flex rounded w-20px h-20px" style="background-color: red;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-green" class="d-flex rounded w-20px h-20px" style="background-color: green;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-yellow" class="d-flex rounded w-20px h-20px" style="background-color: #ffc107;">
+						</div>
+					</li>
+					<li class="color-box me-2">
+						<div id="color-theme-navy-blue" class="d-flex rounded w-20px h-20px" style="background-color: #000080;">
+						</div>
+					</li>
+
+				</ul>
+				<hr>
+			</div>
+
+
+		</div>
+	</div>	
+	<div  class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel">
+		<div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+			<h4 class="font-size-h4 font-weight-bold m-0">Edit Payment
+			</h4>
+			<a href="shippingmethods.html#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" >
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+				</svg>
+			</a>
+		</div>
+		<form id="myform">
+		
+			<div class="form-group">
+				<label class="text-dark" >Test or Production Mode</label>
+				<ul class="list-unstyled mb-0">
+					<li class="d-inline-block ms-2 mb-1">
+					  <fieldset>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios61" value="option1" checked="">
+							<label class="form-check-label" for="exampleRadios61">
+								Test
+							</label>
+						</div>
+					  </fieldset>
+					</li>
+					<li class="d-inline-block ms-2 mb-1">
+					  <fieldset>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="inlineRadio2" value="option2">
+							<label class="form-check-label" for="inlineRadio2">Production</label>
+						</div>
+					  </fieldset>
+					</li>
+				  </ul>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >Shipping Service Type</label>
+			    <select multiple="multiple" class="multiple-select w-100">
+					<option value="1">Next Day Air </option>
+					<option value="2">2nd Day Air </option>
+					<option value="3">Ground</option>
+					<option value="4">3 Day Select </option>
+			    </select>	
+			</div>
+			<div class="row">
+
+				<div class="col-12 px-4">
+					<label class="text-dark" >Translation</label>
+					  <div class="border-dark p-3 mb-3">
+						<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+							<li class="nav-item me-3">
+								<a class="nav-link btn-light bg-border active shadow-none" id="home-tab-border" data-bs-toggle="pill" href="shippingmethods.html#home-border" role="tab" aria-controls="home-border" aria-selected="true">
+								English
+							</a>
+							</li>
+							<li class="nav-item me-3">
+								<a class="nav-link btn-light bg-border  shadow-none" id="service-tab-border" data-bs-toggle="pill" href="shippingmethods.html#service-border" role="tab" aria-controls="service-border" aria-selected="false">
+									Arabic
+							</a>
+							</li>
+						
+						</ul>
+						<div class="tab-content" id="v-pills-tabContent">
+							<div class="tab-pane fade show active" id="home-border" role="tabpanel" aria-labelledby="home-tab-border">
+								<div class="form-group">
+									<label class="text-dark" >Payment Method Name </label>
+									<input type="text" name="text" class="form-control" >
+									<small  class="form-text text-muted">Payment Method Name(English)</small>
+								</div>
+							
+							
+							</div>
+							<div class="tab-pane fade " id="service-border" role="tabpanel" aria-labelledby="service-tab-border">
+								<div class="form-group">
+									<label class="text-dark" >Payment Method Name</label>
+									<input type="text" name="text" class="form-control" >
+									<small  class="form-text text-muted">Payment Method Name(Arabic)</small>
+								</div>
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+		
+			<div class="form-group">
+				<label class="text-dark" >AccessKey</label>
+				<input type="text" name="text" class="form-control"  value="FCD7C8F94CB5EF46">
+				<small>You can get this shipping access key from UPS site after creating account.</small>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >Username</label>
+				<input type="text" name="text" class="form-control" >
+				<small>ShippingUserNameText</small>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >Password</label>
+				<input type="text" name="text" class="form-control" >
+				<small>UPS Sshipping Password.</small>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >Pickup Method </label>
+				<ul class="list-unstyled mb-0">
+					<li class="d-inline-block ms-2 mb-1">
+					  <fieldset>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="exampleRadios61" id="exampleRadios00" value="option1" checked="">
+							<label class="form-check-label" for="exampleRadios00">
+								Daily Pickup 
+							</label>
+						</div>
+					  </fieldset>
+					</li>
+					<li class="d-inline-block ms-2 mb-1">
+					  <fieldset>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="exampleRadios15" id="inlineRadio02" value="option2">
+							<label class="form-check-label" for="inlineRadio02">Customer Counter</label>
+						</div>
+					  </fieldset>
+					</li>
+					<li class="d-inline-block ms-2 mb-1">
+						<fieldset>
+						  <div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="exampleRadios441" id="inlineRadio002" value="option3">
+							  <label class="form-check-label" for="inlineRadio002">One Time Pickup</label>
+						  </div>
+						</fieldset>
+					  </li>
+					  <li class="d-inline-block ms-2 mb-1">
+						<fieldset>
+						  <div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="exampleRadios1" id="inlineRadio0002" value="option4">
+							  <label class="form-check-label" for="inlineRadio0002">  On Call Air Pickup </label>
+						  </div>
+						</fieldset>
+					  </li>
+					  <li class="d-inline-block ms-2 mb-1">
+						<fieldset>
+						  <div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="exampleRadios41" id="inlineRadio12" value="option5">
+							  <label class="form-check-label" for="inlineRadio12">Air Service Center</label>
+						  </div>
+						</fieldset>
+					  </li>
+					  <li class="d-inline-block ms-2 mb-1">
+						<fieldset>
+						  <div class="form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="exampleRadios31" id="inlineRadio112" value="option6">
+							  <label class="form-check-label" for="inlineRadio112">Letter Center</label>
+						  </div>
+						</fieldset>
+					  </li>
+				  </ul>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >Address</label>
+				<input type="text" name="text" class="form-control"  value="f-ground">
+				<small>Select allwoed address. Otherwise shipping will be generate error.</small>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >State</label>
+				<input type="text" name="text" class="form-control"  value="NY">
+				<small> <strong>NOTE:</strong> Select allwoed state. Otherwise shipping will be generate error.</small>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >Postcode</label>
+				<input type="text" name="text" class="form-control"  value="10312">
+				<small><strong>NOTE:</strong> Select allwoed city. Otherwise shipping will be generate error.</small>
+			</div>
+			<div class="form-group">
+				<label class="text-dark" >City</label>
+				<input type="text" name="text" class="form-control"  value="New York City">
+				<small><strong>NOTE:</strong> Select allwoed city. Otherwise shipping will be generate error.</small>
+			</div>
+
+			<div class="form-group">
+				<label class="text-dark" >Country</label>
+				<select class="js-example-basic-single js-states form-control bg-transparent" name="state">
+					<option value="AL">United State</option>
+					  
+					<option value="WY">UK</option>
+				  </select>
+				<small><strong>NOTE:</strong> Select allwoed city. Otherwise shipping will be generate error.</small>
+			</div>
+			
+			<div class="form-group">
+				<label class="text-dark" >Status</label>
+				<select class="js-example-basic-single js-states form-control bg-transparent" name="state">
+					<option value="AL">Active</option>
+					  
+					<option value="WY">InActive</option>
+				  </select>
+				<small>Select Active status to display this UPS shipping method.</small>
+			</div>
+		
+			<button type="submit" class="btn btn-primary">submit</button>
+		  </form>
+	
+	</div>	
+	<iframe name="print_frame" width="0" height="0"  src="about:blank"></iframe>
+
+	
+
+<script src="../../static/seller/js/plugin.bundle.min.js"></script>
+<script src="../../static/seller/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/seller/api/jqueryvalidate/jquery.validate.min.js"></script>
+<script src="../../static/seller/api/apexcharts/apexcharts.js"></script>
+<script src="../../static/seller/api/apexcharts/scriptcharts.js"></script> 
+<script src="../../static/seller/api/pace/pace.js"></script>
+<script src="../../static/seller/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/seller/api/quill/quill.min.js"></script>
+<script src="../../static/seller/api/datatable/jquery.dataTables.min.js"></script>
+<script src="../../static/seller/api/select2/select2.min.js"></script>
+<script src="../../static/seller/api/multiple-select/multiple-select.min.js"></script>
+<script src="../../static/seller/api/daterange-picker/moment.min.js"></script>
+<script src="../../static/seller/api/daterange-picker/daterangepicker.min.js"></script>
+<script src="../../static/seller/js/sweetalert.js"></script>
+<script src="../../static/seller/js/sweetalert1.js"></script>
+<script src="../../static/seller/js/script.bundle.js"></script>
+<script>
+	    jQuery(document).ready(function() {
+        jQuery('.js-example-basic-single').select2();
+    });
+	jQuery(function() {
+        jQuery('.english-select').multipleSelect({
+      filter: true,
+      filterAcceptOnEnter: true
+    })
+  });
+  jQuery(function() {
+        jQuery('.arabic-select').multipleSelect({
+      filter: true,
+      filterAcceptOnEnter: true
+    })
+  });
+jQuery(document).ready( function () {
+	jQuery('#productUnitTable').dataTable( {
+    "pagingType": "simple_numbers",
+  
+    "columnDefs": [ {
+      "targets"  : 'no-sort',
+      "orderable": false,
+    }]
+});
+});
+
+jQuery(function() {
+
+var start = moment().subtract(29, 'days');
+var end = moment();
+
+function cb(start, end) {
+    jQuery('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+}
+
+jQuery('#reportrange').daterangepicker({
+    startDate: start,
+    endDate: end,
+    ranges: {
+       'Today': [moment(), moment()],
+       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+       'This Month': [moment().startOf('month'), moment().endOf('month')],
+       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    }
+}, cb);
+
+cb(start, end);
+
+});
+jQuery(function() {
+        jQuery('.multiple-select').multipleSelect()
+    });
+</script>
+
+</body>
+<!--end::Body-->
+
+
+</html>

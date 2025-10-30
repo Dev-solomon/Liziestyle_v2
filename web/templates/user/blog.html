@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="it">
+
+{% include 'user/head.html' %}
+<body>
+    <header>
+        {% include 'user/header.html' %}
+    
+        <!-- search -->
+        <div class="mx-5 mt-4 md:mx-[60px] md:mt-[52px] lg:hidden">
+            <form action="/catalog" method="get" class="relative w-full">
+            <div
+                class="absolute left-[14px] top-1/2 flex -translate-y-1/2 transform items-center justify-center rounded-full bg-primary-100 p-[3px]"
+            >
+                <img loading="lazy"  src="../../static/user/assets/icons/search.svg" alt="search orders" />
+            </div>
+            <input
+                type="text"
+                name="product_name"
+                class="form-input w-full pl-[50px] pr-[14px] text-base shadow-sm"
+                placeholder="Search dress, skirt, top, necklace..."
+            />
+            </form>
+        </div>
+        </header>
+
+
+        <div class="blog_div_header">
+            <h2 id="blog_header">
+                Blog
+                <br/>
+                <span>Insights, trends and stories straight from the world of fashion.</span>
+            </h2>
+        </div>
+        
+
+        <main class="container blog_main">
+            <!-- for the categories of the news -->
+            <div class="blog_tags">
+                <span class="active"><a href="/blogs?cat=all" aria-label="for all blogs">All</a></span>
+                {% if tags is defined %}
+                {% for tag in tags %}
+                <span><a href="/blogs?cat={{tag['category']}}" aria-label="for blogs on {{tag['category']}}" >{{ tag['category'] }}</a></span>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+          {% include 'user/blog_grid.html' %}
+
+            <div class="blog_pagination">
+                {% set page_num = request.args.get('page_num', 1) | int %}
+                {% set category = request.args.get('cat', "all") %}
+
+                {% if page_num >= 1 %}
+                <button class="px-auto" onclick="updatePageNumber({{ page_num - 1 }})">
+                 <i class="fa fa-arrow-left" aria-hidden="true"></i>   Previous
+                </button>
+                {% endif %}
+
+               <div class="blog_page_number">
+                {% if page_num == 1 %}
+                    <span class="active">{{page_num}}</span>
+                {% elif page_num > 1 and page_num <= 5 %}
+                    {% for num in range(1, page_num + 1) %}
+                        <span {% if num == page_num %}class="active"{% endif %} >
+                            <a href="/blogs?cat={{category}}&page_num={{ num }}" aria-label="pagination">{{ num }}</a>
+                         </span>
+                    {% endfor %}
+                {% elif page_num >  5 %}
+                    <span><a href="/blogs?cat={{category}}&page_num={{page_num - 2 }}" aria-label="pagination">{{page_num - 2 }}</a></span>
+                    <span><a href="/blogs?cat={{category}}&page_num={{page_num - 1 }}" aria-label="pagination">{{page_num - 1 }}</a></span>
+                    <span class="active">{{page_num}}</span>
+                    <a aria-label="pagination">...</a>
+                    <span><a href="/blogs?cat={{category}}&page_num={{ total_pages }}" aria-label="pagination">{{ total_pages }}</a></span>
+                {% endif %}
+               </div>
+
+
+               {% if page_num != total_pages + 1 %}
+                <button class="px-auto" onclick="updatePageNumber_nextButton()">
+                    Next<i class="fa fa-arrow-right" aria-hidden="true"></i>  
+                </button>
+                {% endif %}
+
+            </div>
+        
+        </main>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- footer here -->
+        {% include 'user/footer.html' %}
+<script src="../../static/user/index.js"></script>
+</body>
+</html>

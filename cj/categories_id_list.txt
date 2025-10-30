@@ -1,0 +1,9 @@
+These are the list of category Ids to import for products;
+
+2FE8A083-5E7B-4179-896D-561EA116F730 - women clothing
+52FC6CA5-669B-4D0B-B1AC-415675931399 - home, garden and furnitures 
+2C7D4A0B-1AB2-41EC-8F9E-13DC31B1C902 - health, beauty and hair 
+2837816E-2FEA-4455-845C-6F40C6D70D1E - jewelry and watches 
+B8302697-CF47-4211-9BD0-DFE8995AEB30 - men's clothing
+2415A90C-5D7B-4CC7-BA8C-C0949F9FF5D8 - bags and shoes 
+4B397425-26C1-4D0E-B6D2-96B0B03689DB - sports and outdoors

@@ -1,0 +1,418 @@
+{% include 'seller/head.html' %}
+
+<!--begin::Body-->
+
+<body id="tc_body" class="header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed">
+   <!-- Paste this code after body tag -->
+   <div class="se-pre-con">
+	<div class="pre-loader">
+	  <img loading="lazy" class="img-fluid " src="../../static/seller/images/lizie.gif" alt="loading">
+	</div>
+  </div>
+	<!--begin::Header Mobile-->
+	<div id="tc_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+		<!--begin::Logo-->
+		<a href="/api/sellers/" class="brand-logo">
+
+			<span class="brand-text"><img loading="lazy"  style="height: 25px;" alt="Logo" src="../../static/seller/images/misc/logo.png" /></span>
+
+		</a>
+		<!--end::Logo-->
+		<!--begin::Toolbar-->
+		<div class="d-flex align-items-center">
+
+			 <div class="posicon">
+				<a href="pos.html" class="btn btn-primary d-flex align-items-center justify-content-center white me-2">POS</a>
+			</div>
+			<button class="btn p-0" id="tc_aside_mobile_toggle">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-justify-right" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+				</svg>
+			</button>
+
+			<button class="btn p-0 ms-2" id="tc_header_mobile_topbar_toggle">
+				<span class="svg-icon svg-icon-xl">
+
+					<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd"
+							d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+					</svg>
+
+				</span>
+			</button>
+
+		</div>
+		<!--end::Toolbar-->
+	</div>
+	<!--end::Header Mobile-->
+	<!--begin::Main-->
+	<div class="d-flex flex-column flex-root">
+		<!--begin::Page-->
+		<div class="d-flex flex-row flex-column-fluid page">
+			<div>
+				<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="tc_aside">
+					<!--begin::Brand-->
+					<div class="brand flex-column-auto" id="tc_brand">
+						<!--begin::Logo-->
+	
+						<a href="/api/sellers/" class="brand-logo">
+							<img loading="lazy" class="brand-image " style="height: 25px;" alt="Logo" src="../../static/seller/images/misc/k.png" />
+							<span class="brand-text"><img loading="lazy"  style="height: 25px;" alt="Logo"
+									src="../../static/seller/images/misc/logo.png" /></span>
+	
+						</a>
+						<!--end::Logo-->
+	
+	
+					</div>
+					<!--end::Brand-->
+					<!--begin::Aside Menu-->
+					<div class="aside-menu-wrapper flex-column-fluid overflow-auto h-100" id="tc_aside_menu_wrapper">
+					 {% include 'seller/sidebar.html' %}
+					</div>
+					<!--end::Aside Menu-->
+				</div>
+			</div>
+			<!--begin::Aside-->
+		
+			<div class="aside-overlay"></div>
+			<!--end::Aside-->
+			<!--begin::Wrapper-->
+			<div class="d-flex flex-column flex-row-fluid wrapper" id="tc_wrapper">
+				 {% include 'seller/header.html' %}
+				<!--begin::Content-->
+				<div class="content d-flex flex-column flex-column-fluid" id="tc_content">
+					<!--begin::Subheader-->
+					<div class="subheader py-2 py-lg-6 subheader-solid">
+						<div class="container-fluid">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb bg-white mb-0 px-0 py-2">
+									<li class="breadcrumb-item active" aria-current="page">stock</li>
+									<li class="breadcrumb-item active" aria-current="page">stock Update</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+					<!--end::Subheader-->
+					<!--begin::Entry-->
+					<div class="d-flex flex-column-fluid">
+						<!--begin::Container-->
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 px-4">
+									<div class="row">
+										<div class="col-lg-12 col-xl-12 px-4">
+											<div class="card card-custom gutter-b bg-transparent shadow-none border-0" >
+												<div class="card-header align-items-center  border-bottom-dark px-0">
+													<div class="card-title mb-0">
+														<h3 class="card-label mb-0 font-weight-bold text-body">Stock
+														</h3>
+													</div>
+												    <div class="icons d-flex">
+														<a href="stock-add.html#" onclick="printDiv()" class="ms-2">
+															<span class="icon h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+																<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-printer-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z"/>
+																	<path fill-rule="evenodd" d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+																	<path fill-rule="evenodd" d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+																  </svg>
+															</span>
+														
+														</a>
+														<a href="stock-add.html#" class="ms-2" >
+															<span class="icon h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+																<svg width="15px" height="15px" viewBox="0 0 16 16" class="bi bi-file-earmark-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+																	<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 2l.5-2.5 3 3L10 5a1 1 0 0 1-1-1zM4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
+																  </svg>
+															</span>
+														
+														</a>
+													
+													</div>
+												</div>
+											
+											</div>
+
+
+										</div>
+									</div>
+									<div class="row">
+										
+										<div class="col-12  px-4">
+											<div class="card card-custom gutter-b bg-white border-0" >
+												<div class="card-body" >
+													<div >
+														<div class=" table-responsive" id="printableTable">
+															<table id="productUnitTable" class="display ">
+																{% if products is defined and products != [] %}
+																<thead class="text-body">
+																	<tr>
+																		<th>ID</th>
+																		<th class="">Title</th>
+																		<th class="">Image</th>
+																	
+																		<th class="">Stock Count</th>
+																		<th class="">Units</th>
+																		<th class="">Variants</th>
+																		<th class="no-sort text-end">Action</th>
+																	</tr>
+																</thead>
+																<tbody class="kt-table-tbody text-dark">
+																	{% for product in products %}
+																	<tr class="kt-table-row kt-table-row-level-0">
+																		<td  >{{ loop.index }}</td>
+																		<td class="">
+																			{{ product.title }}
+																		</td>
+																		<td class="">
+																			{{ product.images[0] | lower }}
+																		</td>
+																		<td class="">
+																			{{ product.stock }}
+																		</td>
+																		<td class="">
+																			{{ product.units }}
+																		</td>
+																		<td class="">
+																		
+																			<span class="mr-0 text-primary">
+																				{% for variant in product.variants %}
+																				<i>{{ variant }}</i>,
+																				{% endfor %}
+																			</span>
+																		</td>
+																		 
+																			<!-- Add stock button and hidden input -->
+																			<td>
+																				<div class="card-toolbar text-end">
+																					<button class="form__btn btn p-0 shadow-none" type="button" data-bs-toggle="modal" data-bs-target="#addStockModal">
+																						Update stock
+																						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+																							<path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+																						</svg>
+																					</button>
+																				</div>
+																			</td>
+
+																	
+																	
+																	</tr>
+				<!-- Bootstrap Modal -->
+				<div class="modal fade" id="addStockModal" tabindex="-1" aria-labelledby="addStockModalLabel" aria-hidden="true">
+					<form action="/api/sellers/stock" method="POST" id="stockForm">
+					<div class="modal-dialog" >
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="addStockModalLabel">Add Stock for Product</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								
+								<input type="text" class="form-control" name="stock_id" value="{{product._id}}" style="display: none;">
+
+									<div class="mb-3">
+										<label for="stockVariants" class="form-label">List variants still in stock (separated by commas)</label>
+										<input type="text" class="form-control" name="stock_variants" id="stockVariants">
+										
+									</div>
+									
+
+									<!-- Input for stock quantity -->
+									<div class="mb-3">
+										<label for="stockQuantity" class="form-label">Stock Quantity</label>
+										<input type="number" class="form-control" id="stockQuantity" name="stockQuantity" placeholder="Enter stock quantity" required>
+									</div>
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<button type="submit" class="form_btn btn btn-primary" form="stockForm">Save changes</button>
+							</div>
+						</div>
+					</form>
+					</div>
+				</div>
+															
+																{% endfor %}
+																</tbody>
+																{% endif %}
+															</table>
+														</div>
+													</div>
+													
+													
+												</div>
+											</div>
+
+										</div>
+									
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+
+				
+				<div class="footer bg-white py-4 d-flex flex-lg-column" id="tc_footer">
+					
+					<div
+						class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+						
+						<div class="text-dark order-2 order-md-1">
+							<span class="text-muted font-weight-bold me-2">2020©</span>
+							<a href="stock-add.html#" target="_blank" class="text-dark-75 text-hover-primary">Themescoder</a>
+						</div>
+
+						<div class="nav nav-dark">
+							<a href="stock-add.html#" target="_blank" class="nav-link pl-0 pr-5">About</a>
+							<a href="stock-add.html#c" target="_blank" class="nav-link pl-0 pr-5">Team</a>
+							<a href="stock-add.html#" target="_blank" class="nav-link pl-0 pr-0">Contact</a>
+						</div>
+
+					</div>
+
+				</div>
+				<!--end::Footer-->
+			</div>
+			<!--end::Wrapper-->
+		</div>
+		<!--end::Page-->
+	</div>
+	<!--end::Main-->
+
+
+
+	<ul class="sticky-toolbar nav flex-column bg-primary">
+
+		<li class="nav-item" id="kt_demo_panel_toggle" data-bs-toggle="tooltip" title="" data-bs-placement="right"
+			data-original-title="Check out more demos">
+			<a class="btn btn-sm btn-icon text-white" href="stock-add.html#">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-gear fa-spin" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+					<path fill-rule="evenodd"
+						d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+				</svg>
+			</a>
+		</li>
+	</ul>
+
+
+
+ 
+
+
+	<script src="../../static/seller/js/plugin.bundle.min.js"></script>
+	<script src="../../static/seller/js/bootstrap.bundle.min.js"></script>
+	<script src="../../static/seller/api/jqueryvalidate/jquery.validate.min.js"></script>
+	<script src="../../static/seller/api/apexcharts/apexcharts.js"></script>
+	<script src="../../static/seller/api/apexcharts/scriptcharts.js"></script> 
+	<script src="../../static/seller/api/pace/pace.js"></script>
+	<script src="../../static/seller/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../../static/seller/api/quill/quill.min.js"></script>
+	<script src="../../static/seller/api/datatable/jquery.dataTables.min.js"></script>
+	<script src="../../static/seller/api/multiple-select/multiple-select.min.js"></script>
+	<script src="../../static/seller/js/sweetalert.js"></script>
+	<script src="../../static/seller/js/sweetalert1.js"></script>
+	<script src="../../static/seller/js/script.bundle.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			const form = document.getElementById("stockForm"); // Assuming your form ID is 'stockForm'
+	
+			form.addEventListener("submit", function(event) {
+				// Prevent the default form submission
+				event.preventDefault();
+	
+				// Get the input value
+				const variantsInput = document.getElementById("stockVariants").value;
+	
+				// Split the input value into an array based on commas and trim whitespace
+				const variantsArray = variantsInput.split(",").map(variant => variant.trim()).filter(variant => variant);
+	
+				// Create a new FormData object
+				const formData = new FormData(form);
+	
+				// Append the variants array to the FormData
+				formData.set("stock_variants", JSON.stringify(variantsArray)); // Send as a JSON string
+	
+				// You can also log the array to see the result
+				console.log("Variants Array:", variantsArray);
+	
+				// Submit the form data using fetch or XMLHttpRequest
+				fetch(form.action, {
+					method: form.method,
+					body: formData
+				})
+				.then(response => response.json())
+				.then(data => {
+					// Handle the response from the server
+					console.log("Response:", data);
+					// Optionally, you could close the modal here or reset the form
+					// $('#addStockModal').modal('hide'); // If using jQuery
+					// form.reset(); // Reset form fields
+				})
+				.catch(error => {
+					console.error("Error:", error);
+				});
+			});
+		});
+	</script>
+
+
+
+	<script>
+		jQuery(function() {
+			jQuery('.english-select').multipleSelect({
+		  filter: true,
+		  filterAcceptOnEnter: true
+		})
+	  });
+	  jQuery(function() {
+			jQuery('.arabic-select').multipleSelect({
+		  filter: true,
+		  filterAcceptOnEnter: true
+		})
+	  });
+	jQuery(document).ready( function () {
+		jQuery('#productUnitTable').dataTable( {
+		"pagingType": "simple_numbers",
+	  
+		"columnDefs": [ {
+		  "targets"  : 'no-sort',
+		  "orderable": false,
+		}]
+	});
+	});
+	
+	
+	</script>
+
+
+<script>
+    document.getElementById('stockForm').addEventListener('submit', function(event) {
+        // Your form submission logic here (e.g., AJAX call)
+        
+        // Close the modal after the form is submitted
+        var modal = bootstrap.Modal.getInstance(document.getElementById('yourModalId')); // Replace 'yourModalId' with the actual ID of your modal
+        modal.hide();
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        document.getElementById('stockForm').submit(); // Trigger form submission
+    });
+</script>
+	
+</body>
+<!--end::Body-->
+
+
+</html>

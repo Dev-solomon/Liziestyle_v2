@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="it">
+
+{% include 'user/head.html' %}
+
+<body>
+    <header>
+        {% include 'user/header.html' %}
+
+        <!-- search -->
+        <div class="mx-5 mt-4 md:mx-[60px] md:mt-[52px] lg:hidden">
+            <form action="/catalog" method="get" class="relative w-full">
+                <div
+                    class="absolute left-[14px] top-1/2 flex -translate-y-1/2 transform items-center justify-center rounded-full bg-primary-100 p-[3px]">
+                    <img loading="lazy" src="../../static/user/assets/icons/search.svg" alt="search orders" />
+                </div>
+                <input type="text" name="product_name" class="form-input w-full pl-[50px] pr-[14px] text-base shadow-sm"
+                    placeholder="Search dress, skirt, top, necklace..." />
+            </form>
+        </div>
+    </header>
+
+    <div id="blogdiv" class="message"> </div>
+    
+
+    <div class="blog_contents">
+        <div class="blog_titles">
+            <label for="title"> BLOG-TITLE:</label>
+            <input type="text" id="blog_title" placeholder="I'll put the title here ...">
+        </div>
+
+        <div class="blog_category">
+            <label for="category"> BLOG-CATEGORY:</label>
+            <input type="text" id="blog_category" placeholder="Blog category">
+        </div>
+
+        <div class="blog_image">
+            <label for="image"> IMAGE-LINK:</label>
+            <input type="text" id="blog_image_link" placeholder="Blog Image Link">
+        </div>
+
+
+        <div class="blog_keywords">
+            <label for="keywords"> BLOG-KEYWORDS:</label>
+            <input type="text" id="blog_keywords" placeholder="Enter Keywords for search here">
+        </div>
+
+        <div id="editor" height="200px">    
+        </div>
+
+    </div>
+    
+       
+            
+
+
+
+
+        <button id="save-quill">Submit Blog</button>
+
+
+
+    
+
+
+
+
+       <!-- footer here -->
+       {% include 'user/footer.html' %}
+       <!-- Include the Quill library -->
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+        <!-- Initialize Quill editor -->
+        <script>
+            const options = {
+                debug: 'info',
+                modules: {
+                    syntax: true,
+                    toolbar: [
+                        [{ font: [] }, { size: [] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ color: [] }, { background: [] }],
+                        [{ script: 'super' }, { script: 'sub' }],
+                        [{ header: 1 }, { header: 2 }, 'blockquote', 'code-block'],
+                        [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+                        ['direction', { align: [] }],
+                        ['link', 'image', 'video', 'formula'],
+                        ['clean']
+                    ]
+                },
+                placeholder: 'Type Your Contents Here ...',
+                theme: 'snow'
+            };
+        
+            var quill = new Quill('#editor', options);
+        
+            // Function to get Quill content dynamically
+            document.getElementById('save-quill').addEventListener('click', function() {
+                const htmlContent = quill.root.innerHTML;
+                const blog_title = document.getElementById("blog_title").value;
+                const blog_category= document.getElementById("blog_category").value;
+                const blog_image = document.getElementById("blog_image_link").value;
+                const blog_keywords = document.getElementById("blog_keywords").value;
+                // console.log(htmlContent);  // This will print the editor's content
+
+                // You can send htmlContent to your backend using fetch or AJAX here
+                fetch('/api/blogs/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json',
+                    },
+                    body: JSON.stringify({
+                        title: blog_title,
+                        category: blog_category,
+                        image_link: blog_image,
+                        keywords: blog_keywords,
+                        content: htmlContent
+                        })
+                })  
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data)
+                    document.getElementById('blogdiv').innerHTML = data;
+                    // console.log('Success:', "Content Sent to Backend")
+                })
+                .catch((error) => {
+                    console.error('Error:', error)
+                });
+            });
+        
+        </script>
+        
+       <script src="../../static/user/index.js"></script>
+   </body>
+   
+   </html>

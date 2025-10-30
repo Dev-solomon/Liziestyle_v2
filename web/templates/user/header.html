@@ -1,0 +1,326 @@
+<nav
+  class="relative flex items-center border-b border-secondary-200 px-5 py-[10px] text-xl capitalize md:px-[60px] md:py-7 lg:px-[4.6%] lg:py-[30px]">
+  <a href="/" aria-label="go to homepage"><img loading="lazy" src="../../static/user/assets/lizie%201.svg" alt="liziestyle logo"
+      class="size-[40px] md:size-[52px]" /></a>
+
+
+
+  <div id="overlay" class="overlay"></div>
+
+
+
+
+  <ul class="flex items-center justify-end lg:hidden" style="width: 100%; position: relative;">
+    <li class="ml-auto p-3 cursor-pointer lg:hidden" style="list-style-type: none; float: right; margin-right: 0;">
+      <button id="open_mobile_cart" class="flex gap-[10px]">
+        <i class="fa fa-shopping-cart"></i>
+      </button>
+    </li>
+  </ul>
+
+
+  <button class="ml-auto lg:hidden" aria-label="Open menu" onclick="toggleSidebar()">
+    <img loading="lazy" src="../../static/user/assets/icons/menu.svg" alt="Menu icon" class="size-6 md:size-8" />
+  </button>
+
+
+
+
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar_menu">
+    {% if user is defined %}
+    <form action="/api/user/logout" method="post" class="form" enctype="multipart/form-data">
+      <button id="mymenu" class="text-primary-600 bg-white px-[38px] py-3 capitalize lg:block">
+        <i class="fa fa-sign-out-alt" style="margin-right: 5px;"></i>{{user['fullName']}}
+      </button>
+    </form>
+    {% else %}
+    <a href="/login" aria-label="login to your account">
+      <button id="mymenu" class="text-primary-600 bg-white px-[38px] py-3 capitalize lg:block">
+        <i class="fa fa-arrow-right" style="margin-right: 5px;"></i> LOGIN HERE
+      </button>
+    </a>
+    {% endif %}
+
+
+    <a href="/" aria-label="go to homepage of website" class="active" id="menu_a">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="/catalog" aria-label="go to the products catalog page" id="menu_a">
+      <i class="fas fa-cart-plus"></i>
+      <span>Shop</span>
+    </a>
+    <a href="/blogs" aria-label="go to the products catalog page" id="menu_a">
+      <i class="fas fa-newspaper"></i>
+      <span>Blog</span>
+    </a>
+    {% if user is defined and user['isAdmin'] == True %}
+      <a href="/add_post" aria-label="go to the products catalog page" id="menu_a">
+        <i class="fas fa-newspaper"></i>
+        <span>Post-Blog</span>
+      </a>
+    {% endif %}
+    <a href="/about-us" aria-label="know more about liziestyle" id="menu_a">
+      <i class="fas fa-question-circle"></i>
+      <span>About Us</span>
+    </a>
+    <a href="/contact-us" aria-label="contact liziestyle for more information" id="menu_a">
+      <i class="fas fa-envelope"></i>
+      <span>Contact Us</span>
+    </a>
+
+    <a href="/faqs" aria-label="ask your questions and find them here" id="menu_a">
+      <i class="fas fa-comment"></i>
+      <span>FAQs</span>
+    </a>
+
+
+    {% if user is defined %}
+    <a href="/dashboard" aria-label="this is the users dashboard" id="menu_a">
+      <i class="fas fa-dashboard"></i>
+      <span>Dashboard</span>
+    </a>
+    <a href="/orders" aria-label="go to my orders i made" id="menu_a">
+      <i class="fas fa-shopping-bag"></i>
+      <span>Orders</span>
+    </a>
+    <a href="/update-profile" aria-label="update my profile" id="menu_a">
+      <i class="fas fa-sliders-h"></i>
+      <span>Profile</span>
+    </a>
+    <a href="/update-password" aria-label="update my passwords to account" id="menu_a">
+      <i class="fas fa-lock"></i>
+      <span>Password</span>
+    </a>
+    {% endif %}
+
+
+
+    {% if user is defined and user['isAdmin'] == True %}
+    <a href="/api/sellers/" aria-label="login to sellers dashboard" id="menu_a">
+      <i class="fas fa-bullhorn"></i>
+      <span>Seller Account</span>
+    </a>
+    {% endif %}
+
+
+  </div>
+
+
+
+
+
+
+  <ul class="ml-[8%] hidden flex-grow items-center lg:flex">
+    <li class="ml-auto">
+      <ul class="ml-auto flex items-center gap-4">
+        {% if user is not defined %}
+        <a href="/login" aria-label="login to my account">
+          <button
+            class="hidden rounded-lg border border-primary-600 px-[38px] py-3 capitalize text-primary-600 hover:bg-primary-600 hover:text-white lg:block">
+            login
+          </button>
+          {% endif %}
+          <li class="p-3"><a href="/catalog" aria-label="products catalogs page">shop</a></li>
+          <li class="p-3"><a href="/blogs" aria-label="blog  page">blog</a></li>
+          <li class="p-3"><a href="/about-us" aria-label="know more about us">about us</a></li>
+      </ul>
+    </li>
+    <li class="ml-16 w-[32%]">
+      <form action="/catalog" method="get" class="relative w-full">
+        <div
+          class="absolute left-[14px] top-1/2 flex -translate-y-1/2 transform items-center justify-center rounded-full bg-primary-100 p-[3px]">
+          <img loading="lazy"  src="../../static/user/assets/icons/search.svg" alt="search product" />
+        </div>
+        <input type="text" name="product_name"
+          class="w-full rounded-lg border border-[#D0D5DD] py-3 pl-[50px] pr-[14px] text-base shadow-sm placeholder:font-extralight placeholder:text-[#667085]"
+          placeholder="Search for anything here..." />
+      </form>
+    </li>
+
+
+    {% if show_cart is defined and show_cart == "no" %}
+    <li class="ml-auto p-3 cursor-pointer">
+      <a href="/dashboard" aria-label="users dashboard" target="_blank" class="flex gap-[10px] ">
+        <img loading="lazy" src="../../static/user/assets/icons/store.svg" alt="user dashboard" class="size-7" />
+      </a>
+    </li>
+    {% else %}
+    <div id="google_translate_element"></div>
+
+    <li class="ml-auto p-3 cursor-pointer">
+      <button id="open_cart" class="flex gap-[5px] ">
+        <i class="fa fa-shopping-cart"></i>
+      </button>
+    </li>
+    <li class="ml-auto p-3 cursor-pointer">
+      <a href="/dashboard" aria-label="users dashboard" target="_blank" class="flex gap-[10px] ">
+        <img loading="lazy" src="../../static/user/assets/icons/store.svg" alt="user dashboard" class="size-7" />
+      </a>
+    </li>
+    {% endif %}
+
+    <li class="ml-4">
+
+      {% if user is defined %}
+      <form action="/api/user/logout" method="post" class="form" enctype="multipart/form-data">
+
+        <button
+          class="hidden rounded-lg border border-primary-600 px-[38px] py-3 capitalize text-primary-600 hover:bg-primary-600 hover:text-white lg:block">
+          <i class="fa fa-sign-out-alt"></i>
+          <i class="fs-6 p-2">{{user['fullName']}}</i>
+        </button>
+      </form>
+      {% endif %}
+
+
+    </li>
+  </ul>
+
+
+
+  <!-- Cart popup -->
+  <div id="cart_box"
+    class="absolute right-0 top-[100%] z-[80] h-fit w-full border border-[#F2F4F7] bg-white pb-28 md:max-w-[640px]"
+    style="z-index: 500; display: none;">
+
+    {% if cart is defined and cart == [] %}
+    <div class="flex items-center gap-4 border-b border-primary-100 px-5 pb-7 pt-10">
+      <img loading="lazy" src="../../static/user/assets/icons/shopping-bag-black.svg" alt="shopping cart" class="size-7" />
+      <span class="text-xl">Cart</span>
+      <button id="close_cart" class="ml-auto">
+        <i class="fa-solid fa-x size-3"></i>
+
+      </button>
+    </div>
+
+    <div class="mt-[60px] flex flex-col gap-10 px-[60px]">
+      <div class="flex flex-col" style="text-align: center; color: rgb(39 166 205);">
+        <i class="fa fa-shopping-basket"></i>
+        THE CART IS EMPTY
+      </div>
+
+
+      {% else %}
+      <div class="flex items-center gap-4 border-b border-primary-100 px-5 pb-7 pt-10">
+        <img loading="lazy" src="../../static/user/assets/icons/shopping-bag-black.svg" alt="shopping cart" class="size-7" />
+        <span class="text-xl">Cart</span>
+        <button id="close_cart" class="ml-auto">
+          <i class="fa-solid fa-x size-3"></i>
+
+        </button>
+      </div>
+      <div class="mt-[60px] flex flex-col gap-10 px-[60px]">
+        <div class="flex flex-col">
+          {% for item in cart %}
+          {% if '-' in item['variant'] %}
+          {% set color, size = item['variant'].split('-') %}
+          {% else %}
+          {% set color = item['variant'] %}
+          {% set size = item['variant'] %}
+          {% endif %}
+
+
+
+
+
+          <div class="flex flex-col gap-5 py-8">
+            <div class="flex gap-7">
+              <img loading="lazy" src="{{item['images'][0]}}" alt="{{item['title']}}" class="size-14 rounded-lg"
+                style="width: inherit;" />
+              <div class="flex w-full flex-col">
+                <h3 class="text-lg" style="color: rgb(94, 93, 93);">{{item['title'] | truncate(20, True, '...')}}</h3>
+                <p class="text-sm" style="color: rgb(94, 93, 93);">Color:{{color | lower}}, Size: {{size | lower}}</p>
+
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-[14px] md:gap-5">
+                <span class="mt-4 text-lg" style="color: rgb(94, 93, 93);">€{{item['price'] | float * item['qty'] |
+                  float}}</span>
+              </div>
+              <form action="/api/orders/delete_from_cart" method="post">
+                <input type="hidden" name="variant" value="{{item['variant']}}" />
+                <input type="hidden" name="product_id" value="{{item['product_id']}}" />
+                <button
+                  class="flex size-10 items-center justify-center rounded-full p-2 shadow-[0px_2px_16px_0px_#54545424]">
+                  <img loading="lazy"  src="../../static/user/assets/icons/trash.svg" alt="delete order" />
+                </button>
+              </form>
+
+            </div>
+          </div>
+
+          <hr style="height: 0; margin-top: 10px;
+    margin-bottom: 10px;" />
+          {% endfor %}
+        </div>
+
+
+
+
+
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-between text-lg">
+            <span>Total products</span>
+            {{cart | count}}
+          </div>
+          <div class="flex justify-between text-lg">
+            <span>Total</span>
+            {% set my_array = [] %} {# Create an empty list #}
+
+            {% for item in cart %}
+            {% set my_array = my_array.append(item.qty * item.price) %} {# Add the total price of each item to the array
+            #}
+            {% endfor %}
+
+            {% set sub_total_price = my_array | sum %} {# Sum all the values in the array #}
+            {% set tax_price = 3.5 %}
+            {% set shipping_cost = 5 %}
+            {% set total_price = sub_total_price + tax_price + shipping_cost %}
+            {{ sub_total_price|round(1)  }} {# Display the sum of all values in the array #}
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+
+
+
+
+        <form action="/api/orders/create" method="post">
+
+          {% if user is defined %}
+          <input type="hidden" name="user" value="{{user['_id']}}" />
+          {% endif %}
+          <input type="hidden" name="orderItems" value="{{ cart }}" />
+          <input type="hidden" name="payments" value="{&quot;status&quot;: &quot;pending&quot;}" />
+          <input type="hidden" name="sub_total_price" value="{{sub_total_price}}" />
+          <input type="hidden" name="total_price" value="{{total_price}}" />
+          <input type="hidden" name="tax_price" value="{{tax_price}}" />
+          <input type="hidden" name="shipping_address" value="{&quot;shipping_cost&quot;: {{shipping_cost}} }" />
+
+
+
+
+          <button style="padding-right: 20px;padding-left: 20px;"
+            class="flex justify-center rounded-lg bg-primary-600 py-4 text-lg text-white hover:bg-primary-500">
+            Place your order
+          </button>
+        </form>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+</nav>

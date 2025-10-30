@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it">
+
+{% include 'user/head.html' %}
+
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: inherit;">
+        <div style="text-align: center; max-width: 600px; padding: 20px;"><img loading="lazy" 
+                src="../../static/user/assets/icons/failed_card.png" alt="failed Icon"
+                style="width: 100px; height: auto; margin: auto;">
+            <h2 style="font-size: 2.5rem; color: red; margin-bottom: 1rem;">Order failed!</h2>
+            <p style="font-size: 1.5rem; color: rgb(51, 51, 51); margin-bottom: 1.5rem;">
+                Unfortunately we were unable to process your order - please try again! 
+            </p>
+            <span> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <a href="/" aria-label="return to home" style="text-decoration: underline; color: cornflowerblue;">Return Home</a></span>
+        </div>
+    </div>
+</body>
+
+</html>

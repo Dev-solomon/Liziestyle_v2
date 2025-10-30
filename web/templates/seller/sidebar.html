@@ -1,0 +1,276 @@
+<!--begin::Menu Container-->
+<div id="tc_aside_menu" class="aside-menu  mb-5" data-menu-vertical="1" data-menu-scroll="1"
+data-menu-dropdown-timeout="500">
+<!--begin::Menu Nav-->
+<div id="accordion">
+<ul class="nav flex-column">
+    <li class="nav-item active">
+        <a href="/api/sellers/" class="nav-link">
+            <span class="svg-icon nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </span>
+            <span class="nav-text">
+                Dashboard
+            </span>
+        </a>
+
+
+    </li>
+    
+    <li class="nav-item">
+        <a  class="nav-link" data-bs-toggle="collapse"  href="javascript:void(0)" data-bs-target="#catalog" role="button"
+        aria-expanded="false" aria-controls="catalog">
+            <span class="svg-icon nav-icon">
+                <i class="fas fa-boxes font-size-h4"></i>
+            </span>
+            <span class="nav-text">Catalog</span>
+            <i class="fas fa-chevron-right fa-rotate-90"></i>
+        </a>
+        <div class="collapse nav-collapse" id="catalog" data-bs-parent="#accordion">
+            <div id="accordion1">
+                <ul class="nav flex-column"> 
+                    <li class="nav-item">
+                        <a href="product-review" class="nav-link sub-nav-link">
+                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Product Review</span>
+                        </a>
+                    </li>   
+                    <li class="nav-item">
+                        <a  class="nav-link sub-nav-link" data-bs-toggle="collapse" href="/api/sellers/#catalogProduct" role="button"
+                        aria-expanded="false" aria-controls="catalogProduct">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                            <span class="nav-text">Products</span>
+                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                        </a>
+                        <div class="collapse nav-collapse" id="catalogProduct" data-bs-parent="#accordion1">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="products" class="nav-link mini-sub-nav-link">
+                                    
+                                        <span class="nav-text">List</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="add-product" class="nav-link mini-sub-nav-link" >
+                                    
+                                        <span class="nav-text">Add Product</span>
+                                    </a>
+                                </li>
+
+                            
+                            </ul>
+                        </div>	
+                    </li>
+                
+                    <li class="nav-item">
+                        <a  class="nav-link sub-nav-link" data-bs-toggle="collapse" href="/api/sellers/#catalogStock" role="button"
+                        aria-expanded="false" aria-controls="catalogStock">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                            <span class="nav-text">Product Stock</span>
+                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                        </a>
+                        <div class="collapse nav-collapse" id="catalogStock" data-bs-parent="#accordion1">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="stock" class="nav-link mini-sub-nav-link">
+                                        <span class="nav-text">Stock View</span>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </div>	
+                    </li>
+                
+                </ul>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a  class="nav-link" data-bs-toggle="collapse" href="/api/sellers/#order" role="button"
+        aria-expanded="false" aria-controls="order">
+            <span class="svg-icon nav-icon">
+                <i class="fas fa-clipboard-check font-size-h4" ></i>
+            </span>
+            <span class="nav-text">Sell / Orders</span>
+            <i class="fas fa-chevron-right fa-rotate-90"></i>
+        </a>
+        <div class="collapse nav-collapse" id="order"  data-bs-parent="#accordion">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="order-list" class="nav-link sub-nav-link">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">List</span>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="order-detail" class="nav-link sub-nav-link">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Order Detail</span>
+                    </a>
+                </li> -->
+            
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a  class="nav-link" data-bs-toggle="collapse" href="/api/sellers/#Returns" role="button"
+        aria-expanded="false" aria-controls="Returns">
+            <span class="svg-icon nav-icon">
+                <i class="fas fa-undo-alt font-size-h4"></i>
+            </span>
+            <span class="nav-text">Refunds</span>
+            <i class="fas fa-chevron-right fa-rotate-90"></i>
+        </a>
+        <div class="collapse nav-collapse" id="Returns" data-bs-parent="#accordion">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="refunds" class="nav-link sub-nav-link">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Sale Refunds</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="add-refund" class="nav-link sub-nav-link">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Add Refund</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li> 
+    <li class="nav-item">
+        <a  class="nav-link" data-bs-toggle="collapse" href="/api/sellers/#reports" role="button"
+        aria-expanded="false" aria-controls="reports">
+            <span class="svg-icon nav-icon">
+                <i class="fas fa-chart-line font-size-h4"></i>
+            </span>
+            <span class="nav-text">Reports</span>
+            <i class="fas fa-chevron-right fa-rotate-90"></i>
+        </a>
+        <div class="collapse nav-collapse" id="reports" data-bs-parent="#accordion">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="reports" class="nav-link sub-nav-link">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Profit / Loss</span>
+                    </a>
+                </li>   
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a  class="nav-link" data-bs-toggle="collapse" href="/api/sellers/#setting" role="button"
+        aria-expanded="false" aria-controls="setting">
+            <span class="svg-icon nav-icon">
+                <i class="fas fa-cogs font-size-h4"></i>
+            </span>
+            <span class="nav-text">Settings</span>
+            <i class="fas fa-chevron-right fa-rotate-90"></i>
+        </a>
+        <div class="collapse nav-collapse" id="setting" data-bs-parent="#accordion">
+            <div id="accordion3">
+                <ul class="nav flex-column">
+                   
+                    <li class="nav-item">
+                        <a  class="nav-link sub-nav-link" data-bs-toggle="collapse" href="/api/sellers/#settingW" role="button"
+                        aria-expanded="false" aria-controls="settingW">
+                        <span class="svg-icon nav-icon d-flex justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </span>
+                            <span class="nav-text">Website Settings</span>
+                            <i class="fas fa-chevron-right fa-rotate-90"></i>
+                        </a>
+                        <div class="collapse nav-collapse" id="settingW" data-bs-parent="#accordion3">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="settings" class="nav-link mini-sub-nav-link">
+                                    
+                                        <span class="nav-text">General</span>
+                                    </a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a href="website-setting.html#log-sign" class="nav-link mini-sub-nav-link">
+                                    
+                                        <span class="nav-text">Login / SignUp</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>	
+                    </li> 
+
+                    <li class="nav-item">
+                        <a href="shipping" class="nav-link sub-nav-link">
+                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Shipping Methods</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a href="tax" class="nav-link sub-nav-link">
+                            <span class="svg-icon nav-icon d-flex justify-content-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Tax Settings</span>
+                        </a>
+                    </li> -->
+                     
+                </ul>
+            </div>
+        </div>
+    </li>
+
+    
+ 
+    
+
+</ul>
+</div>
+
+<!--end::Menu Nav-->
+</div>
+<!--end::Menu Container-->

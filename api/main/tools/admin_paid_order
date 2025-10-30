@@ -1,0 +1,37 @@
+from pymongo import MongoClient, errors
+from pymongo.collection import Collection
+from datetime import datetime
+from termcolor import colored
+from bson import ObjectId
+
+# Assuming you have a MongoDB connection URI
+client = MongoClient("mongodb+srv://SolomonNtia:%40Jedidiah7@cluster0.6ocpeqp.mongodb.net/")
+db = client["liziestyle"]
+
+# Prompt for the ORDER ID
+get_order_id = input("INSERT ORDER ID: ")
+
+try:
+    # Access the paid_orders collection
+    paid_orders: Collection = db["paid_orders"]
+
+    # Update the document with the matching ORDER ID
+    result = paid_orders.update_one(
+        {"order_id": ObjectId(get_order_id)},  # Filter: match by order_id
+        {"$set": {"status": True}}   # Update: set status to True
+    )
+
+    # Check if the update was successful
+    if result.matched_count > 0:
+        print(colored(f"Order ID:'{get_order_id}' STATUS UPDATED - ORDER FULLY PAID", "green"))
+    else:
+        print(colored(f"No order found with ID '{get_order_id}'.", "yellow"))
+
+except errors.PyMongoError as e:
+    print(colored(f"An error occurred: {str(e)}", "red"))
+finally:
+    # Close the MongoDB connection
+    client.close()
+
+
+

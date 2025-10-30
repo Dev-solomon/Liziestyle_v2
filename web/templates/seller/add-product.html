@@ -1,0 +1,834 @@
+{% include 'seller/head.html' %}
+
+<!--begin::Body-->
+
+<body id="tc_body" class="header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed">
+	<!-- Paste this code after body tag -->
+
+	<!--begin::Header Mobile-->
+	<div id="tc_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+		<!--begin::Logo-->
+		<a href="/api/sellers/" class="brand-logo">
+
+			<span class="brand-text"><img loading="lazy"  style="height: 25px;" alt="Logo"
+					src="../../static/seller/images/misc/logo.png" /></span>
+
+		</a>
+		<!--end::Logo-->
+		<!--begin::Toolbar-->
+		<div class="d-flex align-items-center">
+
+			<div class="posicon">
+				<a href="pos.html"
+					class="btn btn-primary d-flex align-items-center justify-content-center white me-2">POS</a>
+			</div>
+			<button class="btn p-0" id="tc_aside_mobile_toggle">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-justify-right" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+				</svg>
+			</button>
+
+			<button class="btn p-0 ms-2" id="tc_header_mobile_topbar_toggle">
+				<span class="svg-icon svg-icon-xl">
+
+					<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd"
+							d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+					</svg>
+
+				</span>
+			</button>
+
+		</div>
+		<!--end::Toolbar-->
+	</div>
+	<!--end::Header Mobile-->
+	<!--begin::Main-->
+	<div class="d-flex flex-column flex-root">
+		<!--begin::Page-->
+		<div class="d-flex flex-row flex-column-fluid page">
+			<!--begin::Aside-->
+			<div>
+				<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="tc_aside">
+					<!--begin::Brand-->
+					<div class="brand flex-column-auto" id="tc_brand">
+						<!--begin::Logo-->
+
+						<a href="/api/sellers/" class="brand-logo">
+							<img loading="lazy" class="brand-image " style="height: 25px;" alt="Logo"
+								src="../../static/seller/images/misc/k.png" />
+							<span class="brand-text"><img loading="lazy"  style="height: 25px;"
+									alt="Logo" src="../../static/seller/images/misc/logo.png" /></span>
+
+						</a>
+						<!--end::Logo-->
+
+
+					</div>
+					<!--end::Brand-->
+					<!--begin::Aside Menu-->
+					<div class="aside-menu-wrapper flex-column-fluid overflow-auto h-100" id="tc_aside_menu_wrapper">
+						{% include 'seller/sidebar.html' %}
+						<!--end::Menu Container-->
+					</div>
+					<!--end::Aside Menu-->
+				</div>
+			</div>
+			<div class="aside-overlay"></div>
+			<!--end::Aside-->
+			<!--begin::Wrapper-->
+			<div class="d-flex flex-column flex-row-fluid wrapper" id="tc_wrapper">
+				{% include 'seller/header.html' %}
+				<!--begin::Content-->
+				<div class="content d-flex flex-column flex-column-fluid" id="tc_content">
+					<!--begin::Subheader-->
+					<div class="subheader py-2 py-lg-6 subheader-solid">
+						<div class="container-fluid">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb bg-white mb-0 px-0 py-2">
+									<li class="breadcrumb-item active" aria-current="page">Add Product</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+					<!--end::Subheader-->
+					<!--begin::Entry-->
+					<form action="/api/sellers/add-product" method="post" class="form" enctype="multipart/form-data">
+						<div class="d-flex flex-column-fluid">
+
+							<!--begin::Container-->
+							<div class="container-fluid addproduct-main">
+
+								<div class="row">
+									<div class="col-lg-12 col-xl-12 px-4">
+										<div class="card card-custom gutter-b bg-transparent shadow-none border-0">
+											<div class="card-header align-items-center   border-bottom-dark px-0">
+												<div class="card-title mb-0">
+													<h3 class="card-label mb-0 font-weight-bold text-body">Add Product
+													</h3>
+												</div>
+												<div class="icons d-flex">
+
+													<a href="add-product.html#" onclick="printDiv()" class="ms-2">
+														<span
+															class="icon h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+															<svg width="15px" height="15px" viewBox="0 0 16 16"
+																class="bi bi-printer-fill" fill="currentColor"
+																xmlns="http://www.w3.org/2000/svg">
+																<path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z" />
+																<path fill-rule="evenodd"
+																	d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
+																<path fill-rule="evenodd"
+																	d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+															</svg>
+														</span>
+
+													</a>
+													<a href="add-product.html#" class="ms-2">
+														<span
+															class="icon  h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center rounded-circle ">
+															<svg width="15px" height="15px" viewBox="0 0 16 16"
+																class="bi bi-file-earmark-text-fill" fill="currentColor"
+																xmlns="http://www.w3.org/2000/svg">
+																<path fill-rule="evenodd"
+																	d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 2l.5-2.5 3 3L10 5a1 1 0 0 1-1-1zM4.5 8a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+															</svg>
+														</span>
+
+													</a>
+
+												</div>
+											</div>
+											<div class="card-body pb-0 pt-4 ">
+												{% if message is defined %}
+												<div style="background-color: green; color: white; padding: 10px; text-align: center; font-size: 15px;"
+													class="m-auto mt-4 mb-3">
+													{{message}}
+												</div>
+												{% endif %}
+
+												{% if messageError is defined %}
+												<div style="background-color: red; color: white; padding: 10px; text-align: center; font-size: 15px;"
+													class="m-auto mt-4 mb-3">
+													{{messageError}}
+												</div>
+												{% endif %}
+												<div class="d-flex justify-content-center">
+
+													<ul class="nav nav-pills mb-0" id="pills-tabmain" role="tablist">
+														<li class="nav-item">
+															<a class="nav-link active" id="info-tab"
+																data-bs-toggle="pill" href="#info" role="tab"
+																aria-controls="info" aria-selected="true">
+																<svg width="20px" height="20px" viewBox="0 0 16 16"
+																	class="bi bi-file-earmark-text" fill="currentColor"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<path
+																		d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
+																	<path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
+																	<path fill-rule="evenodd"
+																		d="M5 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+																</svg>
+																Basic Info</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" id="ad-info-tab" data-bs-toggle="pill"
+																href="#ad-info" role="tab" aria-controls="ad-info"
+																aria-selected="false">
+																<svg width="20px" height="20px" viewBox="0 0 16 16"
+																	class="bi bi-receipt" fill="currentColor"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<path fill-rule="evenodd"
+																		d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+																	<path fill-rule="evenodd"
+																		d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+																</svg>
+																Advance Info
+															</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" id="pricing-tab" data-bs-toggle="pill"
+																href="#pricing" role="tab" aria-controls="pricing"
+																aria-selected="false">
+																<svg width="20px" height="20px" viewBox="0 0 16 16"
+																	class="bi bi-check2-square" fill="currentColor"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<path fill-rule="evenodd"
+																		d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+																	<path fill-rule="evenodd"
+																		d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
+																</svg>
+																Pricing
+															</a>
+														</li>
+
+													</ul>
+												</div>
+
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12 col-xl-12 px-4">
+										<div class="tab-content" id="pills-tabContent">
+											<div class="tab-pane fade show active" id="info" role="tabpanel"
+												aria-labelledby="info-tab">
+												<div class="card card-custom gutter-b bg-white border-0">
+													<div class="card-header border-0 align-items-center">
+														<h3 class="card-label mb-0 font-weight-bold text-body">General
+															Information
+														</h3>
+													</div>
+
+
+													<div class="card-body" id="printableTable">
+														<div class="row">
+															<div class="col-md-6 col-12">
+																<div
+																	class="bg-light h-300px mb-3 d-flex justify-content-center align-items-center">
+																	<label for="files"
+																		class="d-flex flex-column align-items-center">
+																		<i class="fas fa-plus fa-3x mb-2"></i>
+																		<input type="file" multiple="multiple"
+																			id="files" name="images" min="4" required>
+																		<span>Upload Files</span>
+																		<span style="color: #0d6efd;">[More or Equal to
+																			4]</span>
+																	</label>
+																</div>
+
+																<div class="row ">
+
+																	<div class="col-12 px-4">
+																		<div id="file-list" class="mt-3 text-center">
+																		</div>
+																	</div>
+																</div>
+																<div class="row mt-5">
+																	<div class="col-12 px-4">
+																		<label>Video Embeded Code</label>
+																		<fieldset class="form-label-group mb-3">
+																			<textarea
+																				class="border-dark w-100 fixed-size"
+																				id="horizontalTextarea" name="video"
+																				rows="4" placeholder="Textarea"
+																				style="outline: none;"></textarea>
+
+																		</fieldset>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-6 col-12">
+																<label>Categories</label>
+																<select
+																	class="single-select w-100 mb-3 categories-select"
+																	name="category">
+																	<option value="" selected disabled>Select a Category
+																	</option>
+																	{% for category in categories %}
+																	<option value="{{ category.name }}">{{ category.name
+																		}}</option>
+																	{% endfor %}
+																</select>
+																<ul class="nav nav-pills lang-tab" id="pills-tab1"
+																	role="tablist">
+																	<li class="nav-item ">
+																		<a class="nav-link btn-light active shadow-none rounded-0"
+																			id="home-tab-basic" data-bs-toggle="pill"
+																			href="add-product.html#home-basic"
+																			role="tab" aria-controls="home-basic"
+																			aria-selected="true">
+																			Home
+																		</a>
+																	</li>
+
+
+																</ul>
+																<div class="row">
+
+																	<div class="col-12 px-4">
+																		<div class="tab-content lang-content"
+																			id="v-pills-tabContent">
+																			<div class="tab-pane fade show active"
+																				id="home-basic" role="tabpanel"
+																				aria-labelledby="home-tab-basic">
+																				<h6 class="text-body">
+																					Product Name
+																				</h6>
+																				{% if user is defined %}
+																				<input type="hidden" name="user"
+																					value="{{user['_id']}}" />
+																				{% endif %}
+																				<fieldset class="form-group mb-3">
+																					<input type="text"
+																						class="form-control bg-transparent text-dark"
+																						name="name" id="basicInput"
+																						placeholder="Product Name">
+																				</fieldset>
+																				<h6 class="text-body">
+																					Description
+																				</h6>
+																				<div class="row mb-3">
+																					<div class="col-12 overflow-hidden">
+																						<textarea
+																							class="border-dark w-100 fixed-size"
+																							id="horizontalTextarea"
+																							name="description" rows="4"
+																							placeholder="Enter product's description"
+																							style="outline: none;"></textarea>
+																					</div>
+
+																				</div>
+																				<h6 class="text-body">
+																					Tags
+																				</h6>
+																				<div class="row ">
+																					<div class="col-12  px-4"
+																						data-select2-id="173">
+																						<fieldset
+																							class="form-group mb-3">
+																							<input type="text"
+																								class="form-control bg-transparent text-dark"
+																								id="tags-input"
+																								multiple="multiple"
+																								placeholder="Add tags"
+																								autocomplete="off">
+																						</fieldset>
+
+																						<!-- Placeholder to display tags horizontally -->
+																						<div id="tags-list"
+																							class="d-flex flex-wrap">
+																						</div>
+
+																						<!-- Hidden input to store tags for form submission -->
+																						<input type="hidden"
+																							name="tagsArray"
+																							id="tagsArray">
+
+
+																					</div>
+																				</div>
+
+
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+											</div>
+											<div class="tab-pane fade " id="ad-info" role="tabpanel"
+												aria-labelledby="ad-info-tab">
+												<div class="card card-custom gutter-b bg-white border-0">
+													<div class="card-header border-0 align-items-center">
+														<h3 class="card-label mb-0 font-weight-bold text-body">Advance
+															Information
+														</h3>
+													</div>
+													<div class="card-body">
+														<div class="form-group row">
+															<div class="col-md-6">
+																<label>Stock available</label>
+																<fieldset class="form-group mb-3">
+																	<input type="text" id="weight" name="stock"
+																		class="form-control round bg-transparent text-dark"
+																		placeholder="Enter stock">
+																</fieldset>
+															</div>
+															<div class="col-md-6">
+																<div
+																	class="switch-h d-flex justify-content-between align-items-center border p-2 mb-3">
+																	<h4 class="font-size-h4 text-dark mb-0">Is Featured
+																	</h4>
+																	<div
+																		class="custom-control switch custom-switch-info custom-switch form-check form-switch custom-control-inline me-0">
+																		<input type="checkbox"
+																			class="custom-control-input form-check-input"
+																			checked="" name="featured" id="features">
+																		<label
+																			class="custom-control-label form-check-label me-1"
+																			for="features">
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<label>Units per sale</label>
+																<fieldset class="form-group mb-3">
+																	<input type="text" id="weight"
+																		class="form-control round bg-transparent text-dark"
+																		name="units" placeholder="Enter units">
+																</fieldset>
+															</div>
+
+															<div class="col-md-6">
+																<label>Product Weight</label>
+																<fieldset class="form-group mb-3">
+																	<input type="text" id="weight"
+																		class="form-control round bg-transparent text-dark"
+																		name="weight" placeholder="Enter Weight">
+																</fieldset>
+															</div>
+															<!-- <div class="col-md-6">
+																<label >Maximum Order</label>
+																<fieldset class="form-group mb-3">
+																	<input type="text" id="type-max" class="form-control round bg-transparent text-dark" placeholder="Type Here">
+																</fieldset>
+															</div> -->
+
+														</div>
+
+													</div>
+
+												</div>
+											</div>
+											<div class="tab-pane fade status-tab-style" id="pricing" role="tabpanel"
+												aria-labelledby="pricing-tab">
+												<div class="card card-custom gutter-b bg-white border-0">
+													<div class="card-header border-0 align-items-center">
+														<h3 class="card-label mb-0 font-weight-bold text-body">Pricing
+														</h3>
+													</div>
+													<div class="card-body">
+														<div class="form-group row">
+															<div class="col-md-6">
+																<label>Price</label>
+																<fieldset class="form-group mb-3">
+																	<input type="text" id="weight1"
+																		class="form-control round bg-transparent text-dark"
+																		name="price" placeholder="Enter Price">
+																</fieldset>
+															</div>
+															<div class="col-md-6">
+																<label>Discount</label>
+																<fieldset class="form-group mb-3">
+																	<input type="text" id="type2"
+																		class="form-control round bg-transparent text-dark"
+																		name="discount" placeholder="Enter Discount">
+																</fieldset>
+															</div>
+															<div class="container my-4" style="margin-bottom: 5px;">
+																<div class="row">
+																	<div class="col-md-6">
+																		<div class="form-group">
+																			<label for="colorInput">Color</label>
+																			<input type="text" class="form-control"
+																				id="colorInput"
+																				placeholder="Enter color">
+																		</div>
+																		<div id="Size" class="form-group mb-3"
+																			style="margin-bottom: 2px;">
+																			<label for="sizeSelect">Size</label>
+																			<select
+																				class="js-size-multiple js-states form-control"
+																				id="sizeSelect">
+																				<option value="" selected disabled>
+																					Select Size</option>
+																				<option value="XXl">XXl</option>
+																				<option value="Xl">Xl</option>
+																				<option value="Lg">Lg</option>
+																				<option value="Md">Md</option>
+																				<option value="Sm">Sm</option>
+																			</select>
+																		</div>
+																		<span onclick="addItem()"
+																			style="background-color: #09d4fc; padding: 15px; border-radius: 5px; margin-top: 5px;">
+																			Add Item
+																		</span>
+																		<!-- Hidden input to store the items array -->
+																		<input type="hidden" id="itemsInput"
+																			name="items" value="">
+																	</div>
+																</div>
+
+																<table id="itemTable" class="table mt-5">
+																	<thead>
+																		<tr>
+																			<th>Color</th>
+																			<th>Size</th>
+																			<th>Action</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<!-- Item rows will be added here -->
+																	</tbody>
+																</table>
+
+															</div>
+
+
+														</div>
+
+
+
+
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-12 d-flex justify-content-end">
+														<button id="uploadForm" class="form__btn btn"
+															style="background-color: green; color: white;">
+															Save
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</form>
+
+				</div>
+
+
+
+				<!--end::Footer-->
+			</div>
+			<!--end::Wrapper-->
+		</div>
+		<!--end::Page-->
+	</div>
+	<!--end::Main-->
+
+
+
+	<ul class="sticky-toolbar nav flex-column bg-primary">
+
+		<li class="nav-item" id="kt_demo_panel_toggle" data-bs-toggle="tooltip" title="" data-bs-placement="right"
+			data-original-title="Check out more demos">
+			<a class="btn btn-sm btn-icon text-white" href="add-product.html#">
+				<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-gear fa-spin" fill="currentColor"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+					<path fill-rule="evenodd"
+						d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+				</svg>
+			</a>
+		</li>
+	</ul>
+
+
+
+
+
+
+
+	<iframe name="print_frame" width="0" height="0" src="about:blank"></iframe>
+
+
+	<script src="../../static/seller/js/plugin.bundle.min.js"></script>
+	<script src="../../static/seller/js/bootstrap.bundle.min.js"></script>
+	<script src="../../static/seller/js/slick.min.js"></script>
+	<script src="../../static/seller/api/jqueryvalidate/jquery.validate.min.js"></script>
+	<script src="../../static/seller/api/apexcharts/apexcharts.js"></script>
+	<script src="../../static/seller/api/apexcharts/scriptcharts.js"></script>
+	<script src="../../static/seller/api/pace/pace.js"></script>
+	<script src="../../static/seller/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../../static/seller/api/quill/quill.min.js"></script>
+	<script src="../../static/seller/api/editor/classic.ckeditor.js"></script>
+	<script src="../../static/seller/api/editor/inline.ckeditor.js"></script>
+	<script src="../../static/seller/api/datatable/jquery.dataTables.min.js"></script>
+	<script src="../../static/seller/api/select2/select2.min.js"></script>
+	<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+
+	<script src="../../static/seller/js/script.bundle.js"></script>
+	<script src="../../static/seller/js/script-slick.js"></script>
+
+	<!-- SCRIPT FOR THE IMAGES SELECT AND DISPLAY -->
+	<script>
+		const fileInput = document.getElementById('files');
+		const fileList = document.getElementById('file-list');
+		const uploadForm = document.getElementById('uploadForm');
+		let selectedFiles = []; // Array to store selected files
+
+		// Function to update the image preview and file list
+		function updateFileList() {
+			fileList.innerHTML = ''; // Clear the current preview
+
+			if (selectedFiles.length > 3) {
+				selectedFiles.forEach((file, index) => {
+					// Create image element for the preview
+					const img = document.createElement('img');
+					img.classList.add('img-thumbnail', 'm-2');
+					img.style.width = '100px';
+					img.style.height = '100px';
+					img.style.objectFit = 'cover';
+
+					const reader = new FileReader();
+					reader.onload = function (e) {
+						img.src = e.target.result;
+					};
+					reader.readAsDataURL(file);
+
+					// Create cancel button for each image
+					const cancelBtn = document.createElement('button');
+					cancelBtn.id = 'cancelBtn';
+					cancelBtn.textContent = 'x';
+					cancelBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'position-absolute', 'cancelBtn');
+					cancelBtn.style.top = '-2px';
+					cancelBtn.style.right = '-2px';
+					cancelBtn.style.padding = '3px 10px';
+
+					// Handle image removal
+					cancelBtn.addEventListener('click', function () {
+						selectedFiles.splice(index, 1); // Remove the file from the selected files array
+						updateFileList(); // Update the preview
+						// Create a new DataTransfer object
+
+						files = fileInput.files
+						const dataTransfer = new DataTransfer();
+
+						// Add all files except the one at the specified index
+						for (let i = 0; i < files.length; i++) {
+							if (i !== index) {
+								dataTransfer.items.add(files[i]);
+							}
+						}
+						// Update the file input with the new FileList
+						files = dataTransfer.files;
+						fileInput.files = files;
+
+
+						// console.info(selectedFiles)
+						// console.info(fileInput.files)
+					});
+
+					// Create a wrapper div with relative positioning
+					const wrapper = document.createElement('div');
+					wrapper.classList.add('position-relative', 'm-2');
+					wrapper.style.display = 'inline-block';
+					wrapper.appendChild(img);
+					wrapper.appendChild(cancelBtn);
+
+
+
+					fileList.appendChild(wrapper);
+				});
+			} else {
+				fileList.textContent = 'Images Less than 4';
+			}
+		}
+
+		//
+		cancelb = document.getElementById('')
+
+		// Listen for file selection
+		fileInput.addEventListener('change', function () {
+			selectedFiles = Array.from(fileInput.files); // Convert FileList to array
+			updateFileList(); // Update the preview
+		});
+
+		// Submit form and attach files via FormData
+		uploadForm.addEventListener('submit', function (event) {
+			event.preventDefault(); // Prevent the default form submission
+
+			const formData = new FormData();
+
+			// Append all selected files to the form data
+			selectedFiles.forEach(file => {
+				formData.append('images[]', file); // Append each file with the name 'images[]'
+			});
+
+			// Send the form data to the server using fetch or another method
+			fetch('/your-backend-endpoint', {
+				method: 'POST',
+				body: formData,
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log('Success:', data);
+					alert('Files successfully uploaded!');
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		});
+	</script>
+
+	<!-- SCRIPT FOR THE TAGS SHOW  -->
+
+	<script>
+		const tagInput = document.getElementById('tags-input');
+		const tagsList = document.getElementById('tags-list');
+		const tagsArrayInput = document.getElementById('tagsArray');
+		let tags = []; // Array to hold the entered tags
+
+		// Function to update the displayed tags
+		function updateTags() {
+			// Clear existing tags
+			tagsList.innerHTML = '';
+
+			// Display all tags
+			tags.forEach((tag, index) => {
+				// Create a div to hold each tag
+				const tagDiv = document.createElement('div');
+				tagDiv.classList.add('badge', 'badge-primary', 'm-1', 'position-relative', 'p-2');
+				tagDiv.textContent = tag;
+				tagDiv.style.fontSize = "15px";
+				tagDiv.style.padding = "15px";
+				tagDiv.style.borderRadius = "4px";
+
+				// Add a remove button (X) on each tag
+				const removeBtn = document.createElement('span');
+				removeBtn.textContent = '🗑';
+				removeBtn.classList.add('position-absolute');
+				removeBtn.style.right = '0px';
+				removeBtn.style.top = '-8px';
+				removeBtn.style.color = "red";
+				removeBtn.style.cursor = 'pointer';
+
+				// Remove tag when clicked
+				removeBtn.addEventListener('click', function () {
+					tags.splice(index, 1); // Remove the tag from the array
+					updateTags(); // Update the tag list
+					updateTagsArray(); // Update hidden input value
+				});
+
+				tagDiv.appendChild(removeBtn);
+				tagsList.appendChild(tagDiv); // Add tag div to the list
+			});
+
+			// Update the hidden input with the current tags
+			updateTagsArray();
+		}
+
+		// Function to update the hidden input field with tags
+		function updateTagsArray() {
+			tagsArrayInput.value = tags.join(','); // Join tags into a string
+		}
+
+		// Add tag when Enter is pressed
+		tagInput.addEventListener('keypress', function (event) {
+			if (event.key === 'Enter') {
+				event.preventDefault(); // Prevent form submission
+				const tag = tagInput.value.trim(); // Get the input value
+
+				// Add tag to the array if it's not empty and not already in the list
+				if (tag && !tags.includes(tag)) {
+					tags.push(tag);
+					updateTags(); // Update the displayed tags
+				}
+
+				tagInput.value = ''; // Clear the input field
+			}
+		});
+
+		// Handle form submission
+		document.getElementById('tagsForm').addEventListener('submit', function (event) {
+			// You can handle the form submission with fetch or AJAX if needed
+			// For demonstration, just log the tags array
+			console.log('Submitted tags:', tagsArrayInput.value);
+			alert('Tags submitted: ' + tagsArrayInput.value);
+			// Prevent default form submission for demonstration purposes
+			event.preventDefault();
+		});
+	</script>
+
+	<!-- SCRIPT FOR THE COLOR AND SIZE DISPLAY -->
+	<script>
+		let itemsArray = [];
+
+		function addItem() {
+			const color = document.getElementById('colorInput').value.trim();
+			const size = document.getElementById('sizeSelect').value;
+			if (color && size) {
+				const item = `${color}-${size}`;
+				itemsArray.push(item);
+
+				// Clear the input fields
+				document.getElementById('colorInput').value = '';
+				document.getElementById('sizeSelect').selectedIndex = 0;
+
+				updateTable();
+			} else {
+				alert("Please enter both color and size");
+			}
+		}
+
+		function updateTable() {
+			const tableBody = document.querySelector('#itemTable tbody');
+			tableBody.innerHTML = ''; // Clear the table before re-rendering
+
+			itemsArray.forEach((item, index) => {
+				const [color, size] = item.split('-');
+				const row = `
+                <tr>
+                    <td>€{color}</td>
+                    <td>€{size}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="removeItem(${index})">Delete</button>
+                    </td>
+                </tr>
+            `;
+				tableBody.innerHTML += row;
+			});
+
+			// Update hidden input field with JSON string of itemsArray
+			document.getElementById('itemsInput').value = JSON.stringify(itemsArray);
+		}
+
+		function removeItem(index) {
+			itemsArray.splice(index, 1); // Remove the selected item from the array
+			updateTable(); // Re-render the table
+		}
+	</script>
+
+</body>
+<!--end::Body-->
+
+
+</html>

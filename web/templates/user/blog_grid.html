@@ -1,0 +1,19 @@
+  <!-- the blogs' grid starts from here -->
+  <div class="blog_grid">
+    {% if blogs is defined %}
+    {% for blog in blogs %}
+        <div class="blog_post">
+            <a href="/blog_post/{{ blog['_id'] }}" aria-label="{{ blog['title'] }}"><img src="{{ blog['image'] }}" alt="blog image"></a>
+            <span>{{ blog['createdAt'].strftime('%d-%m-%Y') }} <span
+                style="color: rgb(39 166 205);">&#9679;</span> 2 mins read </span>
+            <h3>{{ blog['title'] }}</h3>
+            {{ blog['content'] | safe | truncate(250) }}...
+            <br>
+            <a href="/blog_post/{{ blog['_id'] }}" aria-label="{{ blog['title'] }}">Read Post <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a>
+        </div>  
+    {% endfor %}
+    {% endif %}
+   
+
+</div>
+ <!-- the blogs' grid ends from here --> 

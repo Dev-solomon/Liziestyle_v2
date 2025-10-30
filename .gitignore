@@ -1,0 +1,4 @@
+/.venv
+/json2excel
+.env
+pipfile.lock

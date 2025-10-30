@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="it">
+  {% include 'user/head.html' %}
+
+<body>
+    <header>
+      {% include 'user/header.html' %}
+
+        <!-- search -->
+        <div class="mx-5 mt-4 md:mx-[60px] md:mt-[52px] lg:hidden">
+            <form action="/catalog" method="get" class="relative w-full">
+                <div
+                    class="absolute left-[14px] top-1/2 flex -translate-y-1/2 transform items-center justify-center rounded-full bg-primary-100 p-[3px]">
+                    <img loading="lazy"  src="../../static/user/assets/icons/search.svg" alt="search anything" />
+                </div>
+                <input type="text" name="product_name" class="form-input w-full pl-[50px] pr-[14px] text-base shadow-sm"
+                    placeholder="Search dress, skirt, top, necklace..." />
+               
+            </form>
+        </div>
+    </header>
+    <main class="mt-6 flex size-full md:mt-14 lg:mt-0">
+        <!-- Side Menu -->
+        {% include 'user/dashboard_sidebar.html' %}
+        <section class="flex h-full w-full flex-col overflow-y-auto px-5 md:px-[60px] lg:flex-grow lg:pl-5 lg:pr-10 lg:pt-6">
+            
+            {% if message %}
+            <div class="message ">{{message}}</div>
+            {% endif %}
+            {% if messageError %}
+            <div class="messageError">{{messageError}}</div>
+            {% endif %}
+            <form action="/api/user/" method="post" class="form" enctype="multipart/form-data">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="check_email" value="{{ user['email'] }}">
+
+                <div id="profile" class="col-span-6 rounded-md bg-white p-6 aos-init aos-animate">
+                    <div class="flex flex-col gap-4">
+                        <h2 class="text-xl font-bold">Update profile</h2>
+                        <div id="upload-image" class="w-full text-center grid grid-cols-12 gap-4">
+                            <div class="w-full" style="text-align: center;"
+                                role="presentation" tabindex="0">
+                                <input type="file" name="image" required style="padding-bottom: 5px; text-align: center;">
+                                <span class="mx-auto flex justify-center"><svg stroke="currentColor"
+                                        fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-3xl text-main" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="16 16 12 12 8 16"></polyline>
+                                        <line x1="12" y1="12" x2="12" y2="21"></line>
+                                        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+                                        <polyline points="16 16 12 12 8 16"></polyline>
+                                    </svg></span><em class="text-xs text-gray-400">(Only *.jpeg and *.png images will be accepted)</em>
+                                    
+                            </div>
+                            <div class="lg:col-span-2 sm:col-span-4 col-span-12">
+                                <div id="file-list" class="mt-3 text-center"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm"><label class="font-normal text-sm">FirstName and LastName</label><input type="text"
+                                name="fullName" placeholder="Rick Muss" required
+                                class="w-full focus:border-gray-300 text-sm mt-2 p-4 border border-gray-200 rounded text-gray-500 bg-white">
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="text-sm"><label class="font-normal text-sm">E-mail</label><input type="email"
+                                    name="email" placeholder="user@gmail.com" required
+                                    class="w-full focus:border-gray-300 text-sm mt-2 p-4 border border-gray-200 rounded text-gray-500 bg-white">
+                            </div>
+                            <div class="text-sm"><label class="font-normal text-sm" required>Phone number</label><input
+                                    type="number" name="phone" placeholder="+39 06 12345678"
+                                    class="w-full focus:border-gray-300 text-sm mt-2 p-4 border border-gray-200 rounded text-gray-500 bg-white">
+                            </div>
+                        </div>
+                        <div
+                            class="flex gap-2 flex-wrap flex-col-reverse sm:flex-row justify-between items-center my-4">
+                          <button class="bg-main font-medium text-white py-3 px-6 rounded sm:w-auto w-full" style="background-color: #0fafe8; border-radius: 10px; width: max-content; padding: 10px; float: right;">
+                            Update profile
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+ 
+
+
+    
+    <script src="../../static/user/index.js"></script>
+</body>
+
+</html>

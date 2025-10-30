@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="it">
+  {% include 'user/head.html' %}
+  <body>
+    <header>
+      {% include 'user/header.html' %}
+
+      <!-- search -->
+      <div class="mx-5 mt-4 md:mx-[60px] md:mt-[52px] lg:hidden">
+        <form action="/catalog" method="get" class="relative w-full">
+          <div
+            class="absolute left-[14px] top-1/2 flex -translate-y-1/2 transform items-center justify-center rounded-full bg-primary-100 p-[3px]"
+          >
+            <img loading="lazy"  src="../../static/user/assets/icons/search.svg" alt="search orders" />
+          </div>
+          <input
+            type="text"
+            name="product_name"
+            class="form-input w-full pl-[50px] pr-[14px] text-base shadow-sm"
+            placeholder="Search dress, skirt, top, necklace..."
+          />
+        </form>
+      </div>
+    </header>
+    <main class="mt-6 flex size-full md:mt-14 lg:mt-0">
+      <!-- Side Menu -->
+      {% include 'user/dashboard_sidebar.html' %}
+      <section
+        class="flex h-full w-full flex-col overflow-y-auto px-5 md:px-[60px] lg:flex-grow lg:pl-5 lg:pr-10 lg:pt-6"
+      >
+        <h2 class="text-lg md:text-xl lg:text-2xl">Orders</h2>
+        <div class="mt-4 rounded-xl md:mt-7 lg:mt-6 lg:bg-primary lg:p-6">
+          <div class="flex flex-col gap-4">
+            <div
+              class="relative w-full overflow-auto rounded-lg border border-[#EAECF0] bg-white"
+            >
+            <table class="w-full text-sm  table-bordered table table-hover">
+              {% if orders is defined and orders != [] %}
+                <thead>
+                  <tr>
+                    <th class="h-12 px-4 text-left align-middle font-normal" style="text-align: center;">No</th>
+                    <th
+                      class="h-12 min-w-[150px] px-4 text-left align-middle font-normal md:min-w-[100px] lg:min-w-[200px]"
+                    >
+                    Transaction ID
+                    </th>
+                    <th class="h-12 px-4 text-left align-middle font-normal">
+                      Payment Method
+                    </th>
+                    <th class="h-12 px-4 text-left align-middle font-normal">
+                      Status
+                    </th>
+                    <th
+                      class="h-12 min-w-[120px] px-4 text-left align-middle font-normal md:min-w-0"
+                    >
+                    Total amount
+                    </th>
+                    <th
+                      class="h-12 min-w-[120px] px-4 text-left align-middle font-normal md:min-w-0"
+                    >
+                      Date
+                    </th>
+                  </tr>
+                </thead>
+
+                 <!-- Table Body -->
+                
+                  
+                 <tbody class="font-normal text-secondary-800"></tbody>
+                 {% for order in orders%}
+                
+                 <tr
+                 class="cursor-pointer border-t border-[#EAECF0] transition-colors hover:bg-[#F2F4F7]"
+               >
+                 <td style="text-align: center;">{{ loop.index }}</td>
+                 <td class="p-4 align-middle ">{{ order._id }}</td>
+                 {% if order.payments.method %}
+                 <td class="p-4 align-middle">{{ order.payments.method }}</td>
+                 {% else %}
+                  <td class="p-4 align-middle"><a href="/checkout?order_id={{order['_id']}}" aria-label="pay for an order" class="text-[#B54708]">Pay </a></td>
+                 {% endif %}
+                
+                 <td class="p-4 align-middle text-xs font-light">	
+                   {% if order.payments.status | lower == 'pending'   %}
+                   <span class="rounded-2xl bg-[#FFFAEB] px-2 py-[2px] text-[#B54708]">Pending</span>
+                   {% elif order.payments.status | lower == 'completed' %}
+                   <span class="rounded-2xl bg-[#ECFDF3] px-2 py-[2px] text-[#027A48]">Complete</span>
+                   {%else%}
+                   <span class="rounded-2xl bg-[#FEF3F2] px-2 py-[2px] text-[#B42318]">Failed</span>
+                   {% endif %}
+                 </td>
+                 <td class="p-4 align-middle">€{{ order.total_price }}</td>
+                 <td class="p-4 align-middle">{{ order.payments.payment_date.strftime('%Y-%m-%d') if order.payments.payment_date else 'Not Available' }}</td>
+                 
+               </tr>
+                 {%endfor%} 
+             </tbody>
+             {% else %}
+             <p class="text-center p-2 text-warning">NO RECENT ORDERS PLACED</p>
+             {% endif %}
+            
+           
+         </table>
+                
+            </div>
+            <div
+              class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"
+            >
+              <div class="flex items-center gap-1">
+                <label for="rows" class="text-sm font-light text-secondary-800"
+                  >Show records</label
+                >
+                <input
+                  type="number"
+                  name="rows"
+                  id="rows"
+                  class="w-16 rounded-lg border border-[#EAECF0] px-[10px] py-1 text-sm font-light"
+                  min="0"
+                />
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-light text-secondary-800"
+                  >showing 1 - 20 of 50</span
+                >
+                <span>
+                  <i class="fas fa-chevron-left size-5 text-[#D0D5DD]"></i>
+                  <i class="fas fa-chevron-right size-5 text-[#101828]"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+         <!-- Tracking snippet -->
+       {% include 'user/tracking.html' %}
+      </section>
+    </main>
+
+
+
+
+    
+    <script src="../../static/user/index.js"></script>
+  </body>
+</html>

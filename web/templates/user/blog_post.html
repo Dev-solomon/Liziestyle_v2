@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="it">
+
+{% include 'user/head.html' %}
+
+<body>
+    <header>
+        {% include 'user/header.html' %}
+
+        <!-- search -->
+        <div class="mx-5 mt-4 md:mx-[60px] md:mt-[52px] lg:hidden">
+            <form action="/catalog" method="get" class="relative w-full">
+                <div
+                    class="absolute left-[14px] top-1/2 flex -translate-y-1/2 transform items-center justify-center rounded-full bg-primary-100 p-[3px]">
+                    <img loading="lazy" src="../../static/user/assets/icons/search.svg" alt="search orders" />
+                </div>
+                <input type="text" name="product_name" class="form-input w-full pl-[50px] pr-[14px] text-base shadow-sm"
+                    placeholder="Search dress, skirt, top, necklace..." />
+            </form>
+        </div>
+    </header>
+
+
+
+
+
+    <main class="container blog_post_main">
+
+        <div class="single_blog_post">
+            {% if single_blog is defined %}
+            <img src="{{ single_blog['image'] }}" alt="single blog post" srcset="">
+            <h3 class="blog_post_title">
+                {{ single_blog['title'] }}
+            </h3>
+            <span>{{ single_blog['createdAt'].strftime('%d-%m-%Y') }} <span
+                    style="color: rgb(39 166 205);">&#9679;</span> 2 mins read <a href="https://www.linkedin.com/company/liziestyle/"><i class="bi bi-linkedin"
+                      aria-label="linkedin page of liziestyle"  style="color: #0072b1;"> </i></a></i>
+                <a href="https://www.facebook.com/profile.php?id=61573655604558" aria-label="facebook page of liziestyle"><i class="bi bi-facebook" style="color: #1877F2;"></i></a>
+            </span>
+            {{ single_blog['content'] | safe }}
+            {% endif %}
+
+            <hr class="post_break">
+
+        </div>
+
+        <h4 class="related_blog_topics mt-5">
+            <i class="fa fa-info-circle" aria-hidden="true" style="color: #27A6CD;"></i> Related Topics;
+        </h4>
+
+        <div class="blog_grid">
+
+            
+                {% if related_blogs is defined %}
+                    {% for blog in related_blogs %}
+                    <div class="blog_post">
+                        <a href="/blog_post/{{ blog['_id'] }}" araia-label="{{ blog['title'] }}"><img src="{{blog['image']}}" alt="blog image"></a>
+                            <span>{{ blog['createdAt'].strftime('%d-%m-%Y') }} <span
+                            style="color: rgb(39 166 205);">&#9679;</span> 2 mins read </span>
+                        <h3>{{ blog['title'] }}</h3>
+                        {{ blog['content'] | safe | truncate(250) }}...
+                        <br>
+                        <a href="/blog_post/{{ blog['_id'] }}" aria-label="{{blog['title']}}">Read Post <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a>
+                    </div>
+                        {% endfor %}
+                    
+                {% endif %}
+           
+        </div>
+
+
+        <h4 class="other_blog_topics mt-5">
+            <i class="fa fa-list-alt" aria-hidden="true" style="color: #27A6CD;"></i> Other Blog categories;
+        </h4>
+
+        <div class="blog_grid">
+        
+            {% if other_blogs is defined %}
+                    {% for blog in other_blogs %}
+                    <div class="blog_post">
+                        <a href="/blog_post/{{ blog['_id'] }}" aria-label="{{ blog['title'] }}"><img src="{{blog['image']}}" alt="blog image"></a>
+                            <span>{{ blog['createdAt'].strftime('%d-%m-%Y') }} <span
+                            style="color: rgb(39 166 205);">&#9679;</span> 2 mins read </span>
+                        <h3>{{ blog['title'] }}</h3>
+                        {{ blog['content'] | safe | truncate(250) }}...   
+                        <br>
+                        <a href="/blog_post/{{ blog['_id'] }}" araia-label="read post">Read Post <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </a>
+                    </div>
+                        {% endfor %}
+                    
+                {% endif %}
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- footer here -->
+    {% include 'user/footer.html' %}
+    <script src="../../static/user/index.js"></script>
+</body>
+
+</html>

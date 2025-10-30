@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="it">
+  {% include 'user/head.html' %}
+  <body>
+    <header>
+      {% include 'user/header.html' %}
+     
+    </header>
+
+    <main
+      class="mb-16 mt-8 flex-1 flex-grow px-5 md:mb-48 md:mt-[52px] md:px-[60px] lg:mt-16 lg:px-20"
+    >
+    <!-- For messages  -->
+    {% if message %}
+    <div class="message ">{{message}}</div>
+    {% endif %}
+    {% if messageError %}
+    <div class="messageError">{{messageError}}</div>
+    {% endif %}
+    {% if orders is defined and user is defined %}
+      <h2 class="text-xl md:text-2xl lg:text-4xl">Payment orders</h2>
+      <form action="/api/orders/{{orders['_id']}}/checkout" method="post"
+        class="mt-5 flex flex-col gap-10 md:mt-8 md:gap-[72px] lg:mt-8 lg:flex-row lg:gap-6"
+      >
+        <!-- Order Details -->
+        <div class="w-full">
+          <h6 class="text-lg md:text-xl lg:text-xl">Order Details:
+            {% if orders['payments']['status'] == "completed" %}
+            <span class="rounded-lg bg-[#ECFDF3] px-2 py-[2px] text-[#027A48] text-lg" style="border-radius: 4px;">  {{orders['payments']['status'] | upper}} </span>
+            {% else %}
+            <span class="rounded-lg bg-[#FFFAEB] px-2 py-[2px] text-[#B54708] text-lg" style="border-radius: 4px;"> 
+              {{orders['payments']['status'] | upper}} 
+            </span>
+            {% endif %}
+            </h6>
+          <div
+            class="mt-6 flex w-full flex-col gap-10 md:gap-[60px] lg:rounded-3xl lg:px-8 lg:py-10 lg:shadow-[0px_2px_16px_0px_#54545424]"
+          >
+            <!-- Personal Details  -->
+            <div>
+              <h4 class="flex items-center gap-4 md:text-lg lg:text-2xl">
+                <div
+                  class="flex size-6 items-center justify-center rounded-full bg-primary-600 text-white md:size-8 lg:size-11"
+                >
+                  1
+                </div>
+               User Information
+              </h4>
+              <fieldset
+                class="mt-5 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-2 md:gap-5 lg:mt-10 lg:px-6"
+              >
+                <div class="space-y-3">
+                  <label for="">First name</label>
+                  <input
+                    type="text"
+                    class="form-input w-full"
+                    placeholder="No name on account" disabled
+                    value="{{user['fullName'] | capitalize if user['fullName'] else ''}}"
+                  />
+                </div>
+                <div class="space-y-3">
+                  <label for="">Order ID</label>
+                  <input
+                    type="text"
+                    class="form-input w-full"
+                    placeholder="Order ID NOT found" disabled 
+                    value="{{orders['_id'] | capitalize if orders['_id'] else ''}}"
+                  />
+                </div>
+                <div class="space-y-3">
+                  <label for="">E-mail address</label>
+                  <div class="relative w-full">
+                    <i
+                      class="fa-envelope fa-regular absolute left-3 top-1/2 -translate-y-1/2 text-xl text-secondary-600"
+                    ></i>
+                    <input
+                      type="text"
+                      class="form-input w-full pl-10"
+                      placeholder="No email address" disabled
+                      value="{{user['email'] | capitalize if user['email'] else ''}}"
+                    />
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <label for="">Phone number</label>
+                  <input
+                    type="text"
+                    class="form-input w-full"
+                    placeholder="No phone line" disabled
+                    value="{{user['phone'] | capitalize if user['phone'] else ''}}"
+                  />
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Shipping Details -->
+            <div>
+              <h4 class="flex items-center gap-4 md:text-lg lg:text-2xl">
+                <div
+                  class="flex size-6 items-center justify-center rounded-full bg-primary-600 text-white md:size-8 lg:size-11"
+                >
+                  2
+                </div>
+                Payment Information
+              </h4>
+              <fieldset
+                class="mt-5 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-3 md:gap-5 lg:mt-10 lg:px-6"
+              >
+                
+                <div class="space-y-3 md:col-span-3">
+                  <label for="">Delivery address</label>
+                  <input
+                    type="text"
+                    class="form-input w-full"
+                    placeholder="Nessun luogo di consegna" disabled
+                    value="{{orders['shipping_address']['address'] | upper if orders['shipping_address']['address'] else '' }}"
+                  />
+                </div>
+                <div class="space-y-3">
+                  <label for="">Payment Status</label>
+                  <input
+                    type="text"
+                    class="form-input w-full"
+                    placeholder="No payment status" disabled
+                    value="{{orders['payments']['status'] | capitalize if orders['payments']['status'] else ''}}"
+                  />
+                </div>
+                <div class="space-y-3">
+                  <label for="">Payment date</label>
+                  <input
+                    type="text"
+                    class="form-input w-full"
+                    placeholder="No date available" disabled
+                    value="{{orders['payments']['payment_date'].strftime('%Y-%m-%d') | capitalize if orders['payments']['payment_date'] else ''}}"
+              
+                  />
+                </div>
+                <div class="space-y-3">
+                  <label for="">Payment Method</label>
+                  <input
+                    type="text"
+                    class="form-input w-full"
+                    placeholder="No method used" disabled
+                    value="{{orders['payments']['method'] | upper if orders['payments']['method'] else ''}}"
+              
+                  />
+                 
+                  <img loading="lazy"  width="50" height="50" src="https://img.icons8.com/3d-fluency/94/stripe.png"  alt="stripe" style="float: right;"/>
+                </div>
+                
+              </fieldset>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl lg:text-2xl">Order Summary</h3>
+          <div
+            class="mt-6 flex w-full flex-col gap-8 md:gap-10 lg:rounded-3xl lg:px-14 lg:py-10 lg:shadow-[0px_2px_16px_0px_#54545424]"
+          >
+            <!-- orders -->
+            <fieldset class="flex flex-col">
+              
+              {% for order in orders['order_items'] %}
+              <div
+              class="order-item flex flex-col gap-4 py-4 md:py-5 lg:flex-row lg:gap-0 lg:py-8"
+              data-order-id="1"
+            >
+              <div
+                class="flex w-full items-center gap-[10px] md:gap-6 lg:gap-7"
+              >
+                <img loading="lazy"
+                  src="{{order['images'][0]}}"
+                  alt="{{order['title']}}"
+                  class="size-[60px] rounded-lg md:size-20"
+                />
+                <div class="flex w-full gap-1 md:flex-col md:gap-4">
+                  <div>
+                    <h4 class="md:text-xl">{{order['title']}}</h4>
+                    <p class="text-sm font-normal md:text-base">
+                      {% if '-' in order['variant'] %}
+                          {% set color, size = order['variant'].split('-') %}
+                      {% else %}
+                          {% set color = order['variant'] %}
+                          {% set size = order['variant'] %}
+                      {% endif %}
+                      Color: {{color | capitalize}}, Size: {{size | upper}}
+                    </p>
+                  </div>
+                  <span class="ml-auto text-lg md:ml-0">€{{order['price']}}</span>
+                </div>
+              </div>
+              <div class="flex lg:ml-auto lg:items-end">
+                <div class="flex items-center gap-[14px] md:gap-5">
+                  <button
+                    id=""
+                    type="button"
+                    class="decrease-qty flex size-7 items-center justify-center rounded-full bg-secondary-400 text-white md:size-8 lg:size-10"
+                  >
+                    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                  </button>
+                  <span class="quantity text-lg md:text-xl">{{order['qty']}}</span>
+                  <button
+                    type="button"
+                    id=""
+                    class="increase-qty flex size-7 items-center justify-center rounded-full bg-secondary-400 text-white md:size-8 lg:size-10"
+                  >
+                  <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+              {% endfor %}
+             
+            </fieldset>
+          <!-- <hr  style="border: 0; border-top: 2px dotted #929292;"  /> -->
+          <style>
+            
+          </style>
+            <!-- total  -->
+
+            <div
+              class="flex flex-col gap-3 text-sm md:gap-4 md:text-lg lg:text-xl"
+            >
+              <div class="flex justify-between" style="font-family: Arial, Helvetica, sans-serif;">
+                <span>Sub-total:-</span>€{{orders['sub_total_price']}}
+              </div>
+              <div class="flex justify-between"  style="font-family: Arial, Helvetica, sans-serif;"><span>Tax</span>€{{orders['tax_price']}}</div>
+              <div class="flex justify-between"  style="font-family: Arial, Helvetica, sans-serif;">
+                <span>Shipping:-</span>€{{orders['shipping_address']['shipping_cost']}}
+              </div>
+              <hr/>
+              <div class="mt-3 flex justify-between md:mt-4"  style="font-family: Arial, Helvetica, sans-serif;">
+                <span>Total:-</span>€{{orders['total_price']}}
+              </div>
+            </div>
+
+            {% if orders['payments']['status'] == 'completed' %}
+            <div
+              class="flex justify-center rounded-lg py-4 text-lg text-white hover:bg-primary-500 md:text-2xl" style="background-color: green;"
+            > 
+            Completed
+            </div>
+            {% else %}
+            <button
+              class="flex justify-center rounded-lg bg-primary-600 py-4 text-lg text-white hover:bg-primary-500 md:text-2xl"
+            > 
+              Submit
+            </button>
+            
+            {% endif %}
+            
+          </div>
+          
+        </div>
+      </form>
+      {% endif %}
+      <script src="./checkout.js"></script>
+    </main>
+
+    {% include 'user/footer.html' %}
+    <script src="../../static/user/index.js"></script>
+  </body>
+</html>
