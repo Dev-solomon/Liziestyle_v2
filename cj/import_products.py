@@ -70,7 +70,7 @@ def store_new_catalog_data(catalog_list):
     # Load existing catalog Excel or create a new one
     try:
         # Open existing catalog.xlsx (if exists)
-        wb = load_workbook('cj/catalog.xlsx')
+        wb = load_workbook('catalog.xlsx')
         ws = wb.active
     except FileNotFoundError:
         # If the file does not exist, create a new one
