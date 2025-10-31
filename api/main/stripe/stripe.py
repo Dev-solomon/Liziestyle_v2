@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify
 from bson import ObjectId
 import stripe
 from dotenv import load_dotenv
-import stripe.error
 from main.user.models.order_model import Order
 from main.user.models.user_model import User
 from main.user.controllers import order_controller

@@ -14,6 +14,7 @@ Here's a quick video of the setup process (no audio): [flask-mongo-api-boilerpla
 ## Running the app
 
 1. Run `pipenv shell` to activate the virtual environment
+chmod +x ./run - to make file executable
 2. Run `./run` to start the Flask application
 
 ## Further configuration
