@@ -102,7 +102,7 @@ def store_new_catalog_data(catalog_list):
         ])
 
     # Save the updated catalog to the file
-    wb.save('cj/catalog.xlsx')
+    wb.save('catalog.xlsx')
     print("Catalog data saved to catalog.xlsx")
 
 
