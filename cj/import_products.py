@@ -140,7 +140,7 @@ def products_list():
             'CJ-Access-Token': "API@CJ3297540@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxveWNtZ0dKMTFMNnJPbENGN245bFRHMXU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0iLCJpYXQiOjE3NjE4NjIwNjF9.GJVY63nZ8nwZVdKyJoKgjqMpPDabgG2mP2_T4-95czo",  # Replace `token()` with your token function
         }
         params = { #PARAMS FOR THE REQUESTS 
-            'pageNum': 2,
+            'pageNum': 3,
             'pageSize': 95,
             'categoryId': "2FE8A083-5E7B-4179-896D-561EA116F730",  
             'minPrice': 1.0,

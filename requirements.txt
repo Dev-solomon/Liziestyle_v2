@@ -20,3 +20,4 @@ mailtrap
 flask-ckeditor[all]
 openpyxl
 openai
+pipenv

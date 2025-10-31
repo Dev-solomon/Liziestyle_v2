@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-pipenv run python api/run.py
+pipenv run py api/run.py
