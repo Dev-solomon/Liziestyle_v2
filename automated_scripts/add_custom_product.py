@@ -89,7 +89,7 @@ def create_new_custom_product():
     # Make a product description from func
     product_description = write_description(product_title, product_images[0])
     # the product category
-    product_category = input("Enter Product Category")
+    product_category = input("Enter Product Category: ")
     # tags for the product
     product_tags = create_tags_list(input("Enter tags separated by commas: "))
     sales_offer = 0 # sales-offer
