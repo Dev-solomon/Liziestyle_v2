@@ -115,6 +115,27 @@ def get_products(pageNum=1):
         return print({"message-Products": str(e)})
     
 
+def get_custom_products(pageNum=1):
+    try:
+        pageSize = 9
+        skip = (int(pageNum) - 1) * pageSize
+        
+        
+        # Count the total number of matching products for customs (for pagination calculation)
+        total_count = Product.collection.count_documents({"category":"customs"})
+
+        # Calculate total pages
+        total_pages = (total_count + pageSize - 1) // pageSize  # Equivalent to ceiling division
+        
+        
+        shop_custom_products = list(Product.collection.find({"category":"customs"}).sort('createdAt', DESCENDING).limit(pageSize).skip(skip))
+        
+        
+        return [shop_custom_products, total_pages]
+    except Exception as e:
+        return print({"message-Products": str(e)})
+    
+
 # search for products with tag, and price range
 def get_search_products(product_name, tag, min_price, max_price, pageNum):
     try:

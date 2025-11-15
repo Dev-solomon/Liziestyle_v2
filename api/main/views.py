@@ -17,6 +17,7 @@ get_all_products,
 get_user_reviews,
 get_all_reviews, 
 get_other_products, 
+get_custom_products,
 get_related_products )
 from main.user.models.user_model import User
 from main.user.controllers.order_controller import get_cart
@@ -94,6 +95,13 @@ def checkout(current_user):
     user_orders = get_order_by_id(order_id)
     return render_template('user/checkout.html', user=current_user, cart=cart, orders=user_orders,  messageError=message_error, message=message)
   
+
+def customs():
+    # for all products
+    custom_products = get_custom_products()[0]
+    
+    return render_template('user/customs.html', custom_products=custom_products)
+   
   
 # product single detail page
 def product_detail(product_id): 

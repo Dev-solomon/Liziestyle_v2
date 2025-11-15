@@ -7,7 +7,7 @@ import os
 import datetime #datetime
 import time #time
 import string #string
-import random #random module
+import random #random module 
 from product_model import Product #get the product model
 from pymongo import MongoClient, errors #mongodb
 from openpyxl import Workbook, load_workbook #for excel sheets
@@ -140,9 +140,9 @@ def products_list():
             'CJ-Access-Token': "API@CJ3297540@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxveWNtZ0dKMTFMNnJPbENGN245bFRHMXU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0iLCJpYXQiOjE3NjE4NjIwNjF9.GJVY63nZ8nwZVdKyJoKgjqMpPDabgG2mP2_T4-95czo",  # Replace `token()` with your token function
         }
         params = { #PARAMS FOR THE REQUESTS 
-            'pageNum': 2,
+            'pageNum': 1,
             'pageSize': 95,
-            'categoryId': "B8302697-CF47-4211-9BD0-DFE8995AEB30",  
+            'categoryId': "4B397425-26C1-4D0E-B6D2-96B0B03689DB",  
             'minPrice': 1.0,
             'countryCode': "CN",
             'productType': "SUPPLIER_PRODUCT",

@@ -78,6 +78,7 @@ def create_app():
         "/dashboard": "main.views.user_dashboard",
         "/orders": "main.views.orders",
         "/checkout": "main.views.checkout",
+        "/customs":"main.views.customs",
         "/product_detail/<string:product_id>": "main.views.product_detail",
         "/catalog": "main.views.catalog",
         "/signup": "main.views.signup",

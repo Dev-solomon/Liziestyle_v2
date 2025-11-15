@@ -1,0 +1,173 @@
+<style>
+  .products-section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 16px 40px;
+  }
+
+  .products-section h2 {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  /* GRID LAYOUT */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* mobile: 2 columns */
+    gap: 24px;
+  }
+
+  /* medium & large devices: 3 columns */
+  @media (min-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .product-image-wrapper img {
+      width: 100%;
+      display: block;
+      height: 400px !important;
+      object-fit: cover;
+    }
+    .product-title {
+      font-size: 20px !important;
+      margin-bottom: 10px;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 25px !important;
+    }
+  }
+
+  .product-card {
+    background: #f1f8fa;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .product-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: #f0f0f0;
+    margin-bottom: 14px;
+  }
+
+  .product-image-wrapper img {
+    width: 100%;
+    display: block;
+    height: 170px;
+    object-fit: cover;
+  }
+
+  .product-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+
+  .card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+
+  .price {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .icon-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: #00a3c4;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-btn:hover {
+    opacity: 0.85;
+  }
+</style>
+
+<h2 class="text-xl md:text-2xl lg:text-4xl mt-12" style="margin-bottom: 15px">
+  Available Products
+</h2>
+
+<div class="products-grid">
+  {% if custom_products != None and custom_products != [] %} 
+  {% for product in custom_products %}
+
+  <!-- Card  Template -->
+    <article class="product-card">
+      <a href="/product_detail/{{product['_id']}}" style="text-decoration: none;">
+      <div class="product-image-wrapper">
+        <img
+          src="{{product['images'][0]}}"
+          alt="product['title']"
+        />
+      </div>
+      <div class="product-title">{{product["title"] | upper | truncate(20, True, '...')}}</div>
+      <div class="flex flex-row items-center">
+        {% for i in range(0, 5) %}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xml:space="preserve"
+          width="15"
+          height="15"
+          style="
+            shape-rendering: geometricPrecision;
+            text-rendering: geometricPrecision;
+            image-rendering: optimizeQuality;
+            fill-rule: evenodd;
+            clip-rule: evenodd;
+          "
+          viewBox="0 0 6.827 6.827"
+        >
+          <path
+            style="fill: #ff8f00; fill-rule: nonzero"
+            d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923-1.343.923-.239.164.082-.278.462-1.564-1.292-.992-.23-.176.29-.008 1.63-.044.544-1.535.097-.274z"
+          />
+          <path
+            style="fill: #e68100; fill-rule: nonzero"
+            d="m3.51 1.252.546 1.536 1.628.043.29.008-.23.176-1.293.993.463 1.563.082.277-.239-.163-1.344-.923V.98z"
+          />
+          <path style="fill: none" d="M0 0h6.827v6.827H0z" />
+        </svg>
+
+        {% endfor %}
+
+        <!-- reviews is constant, DONT CHANGE EXCEPT AUTHORIZED! -->
+       <span class="ml-1 text-sm text-secondary-500 md:text-base">(65)</span> 
+
+      </div>
+      <div class="card-bottom">
+        <span class="price">€{{ product['price'] }}</span>
+        <div class="card-actions">
+          <button class="icon-btn">
+            <img
+              src="../../static/user/assets/icons/Vector.png"
+              alt=""
+              srcset=""
+            />
+          </button>
+        </div>
+      </div></a></article>
+
+  <!-- Add more product-card blocks if needed -->
+   {% endfor %}
+   {% endif %}
+</div>

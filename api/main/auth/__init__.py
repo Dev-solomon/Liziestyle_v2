@@ -1,6 +1,8 @@
 from flask import current_app as app, make_response, redirect, url_for, session, render_template
 from flask import request
 from functools import wraps
+from dotenv import load_dotenv
+load_dotenv()
 from main.tools import JsonResp
 import jwt
 import os

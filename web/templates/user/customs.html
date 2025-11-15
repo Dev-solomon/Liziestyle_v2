@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+  {% include 'user/head.html' %}
+  <body>
+    <header>
+      {% include 'user/header.html' %}
+
+      <!-- search -->
+      <div class="mx-5 mt-4 md:mx-[60px] md:mt-[52px] lg:hidden">
+        <form action="/catalog" method="get" class="relative w-full">
+          <div
+            class="absolute left-[14px] top-1/2 flex -translate-y-1/2 transform items-center justify-center rounded-full bg-primary-100 p-[3px]"
+          >
+            <img
+              loading="lazy"
+              src="../../static/user/assets/icons/search.svg"
+              alt="search product"
+            />
+          </div>
+          <input
+            type="text"
+            name="product_name"
+            class="form-input w-full pl-[50px] pr-[14px] text-base shadow-sm"
+            placeholder="Search dress, skirt, top, necklace..."
+          />
+        </form>
+      </div>
+
+      <!-- For messages  -->
+      {% if message %}
+      <div class="message">{{message}}</div>
+      {% endif %} {% if messageError %}
+      <div class="messageError">{{messageError}}</div>
+      {% endif %}
+
+      <!-- Banner -->
+      <div
+        class="relative mt-8 flex h-36 items-center md:mt-[42px] md:h-44 lg:mx-[5%] lg:mt-[60px] lg:h-80"
+        style="background-color: black"
+      >
+        <div class="z-10 ml-[18%] md:ml-[30%]" style="margin: auto;">
+          <h2 class="font-bold text-white md:text-3xl lg:text-4xl">
+            UP TO 30% OFF SELECTED <br />
+            <p style="text-align: center">STYLES</p>
+          </h2>
+          <button class="primary-btn--large bg-white mt-3" style="margin: auto">
+            <a
+              href="/customs"
+              style="color: rgb(39 166 205)"
+              aria-label="explore our catalogs for products"
+            >
+              Fashionable Health With Uniqueness!
+            </a>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 flex-grow mt-2">
+      <!-- categories -->
+
+      <!-- Top deals -->
+      <section
+        class="mt-2 w-full px-5 md:mt-[72px] md:px-[60px] lg:mt-[120px] lg:px-20"
+      >
+        <style>
+          .collection-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+          }
+
+          /* Title centered on top of images */
+          .collection-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 35px;
+            font-weight: 700;
+            z-index: 10;
+            margin: 0;
+            pointer-events: none;
+            text-shadow: 0 3px 8px black;
+          }
+
+          /* 4 equal images — no gap */
+          .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+          }
+
+          .collection-grid img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover; /* keeps faces centered */
+            display: block;
+          }
+
+          /* Mobile image height smaller */
+          @media (max-width: 768px) {
+            .collection-grid img {
+              height: 150px;
+            }
+            /* Title centered on top of images */
+            .collection-title {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              color: white;
+              font-size: 14px;
+              text-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+              font-weight: 700;
+              z-index: 10;
+              margin: 0;
+              pointer-events: none;
+            }
+          }
+        </style>
+
+        <div class="collection-wrapper">
+          <h2 class="collection-title">Bespoke Collections</h2>
+          <div class="collection-grid">
+            <img
+              src="https://res.cloudinary.com/dns8ckviy/image/upload/v1763225468/woman-6115105_1280_ed2dwh.jpg"
+              alt=""
+            />
+            <img
+              src="https://res.cloudinary.com/dns8ckviy/image/upload/v1763225270/Screenshot_2025-02-23-18-52-36-546_com.android.chrome_dg6of4.jpg"
+              alt=""
+            />
+            <img
+              src="https://res.cloudinary.com/dns8ckviy/image/upload/v1763225271/1000019529_xhnlgr.png"
+              alt=""
+              style="background-color: grey"
+            />
+            <img
+              src="https://res.cloudinary.com/dns8ckviy/image/upload/v1763225272/1000015991_yuvbjp.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+        <!-- End of the carousel for product highlights -->
+
+
+        <!-- Import Custom Products Available for sale -->
+         {% include 'user/custom_products.html' %}
+      </section>
+
+      <section
+        class="mt-2 w-full px-5 md:mt-[72px] md:px-[60px] lg:mt-[120px] lg:px-20">
+      <!-- This section is just to allow for space and that is all -->
+    </section>
+    </main>
+
+    {% include 'user/footer.html' %}
+
+    <script src="../../static/user/index.js"></script>
+  </body>
+</html>
