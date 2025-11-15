@@ -116,7 +116,7 @@ def create_new_custom_product():
                         "user": ObjectId('676716d67602c42f64f06f94'),
                         "title": product_title,
                         "images": product_images,
-                        "price": round(product_price * 10, 1),
+                        "price": product_price,
                         "description": product_description,
                         "category": "customs", #category in database
                         "tags": product_tags,
@@ -141,4 +141,5 @@ def create_new_custom_product():
          print(colored(f"Database Error:=>  {e}", "red"))
 
 
-        
+# CALL THE FUNCTION TO RUN SCRIPT
+create_new_custom_product()
