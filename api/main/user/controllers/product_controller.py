@@ -134,6 +134,9 @@ def get_search_products(product_name, tag, min_price, max_price, pageNum):
        # If product_name is provided, split it into words and check in tags and title
         if product_name:
             words = product_name.split()  # Split the product name into words
+
+            # Whole word match with optional 's
+            word_boundary_regex = r"\b(" + "|".join(words) + r")(?:'s)?\b"
             
            # Process the title: split it into words (assuming spaces as word separators)
             # This is done after retrieving the products to check for word matches
@@ -143,8 +146,8 @@ def get_search_products(product_name, tag, min_price, max_price, pageNum):
             ]
             
             # Add a regex condition to check if any word in product_name matches a word in title
-            query_data["$or"].append(
-                {"title": {"$regex": "|".join(words), "$options": "i"}}  # Use regular expression for case-insensitive match
+            query_data["$or"].append(  
+                {"title": {"$regex": word_boundary_regex, "$options": "i"}} # Use regular expression for matching whole words with 's as optional
             )
 
             # Count the total number of matching products (for pagination calculation)
