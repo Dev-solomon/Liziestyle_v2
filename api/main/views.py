@@ -186,7 +186,7 @@ def catalog():
                              all_reviews=reviews,
                              variants=variants, 
                              searched_products=searched_products, 
-                             searched_pages=searched_pages )
+                             searched_pages=searched_pages)
     
     
   

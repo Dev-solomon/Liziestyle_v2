@@ -59,7 +59,7 @@ def store_new_catalog_data(reviews_catalog_list):
     # Load existing catalog Excel or create a new one
     try: 
         # Open existing catalog.xlsx (if exists)
-        wb = load_workbook('cj/reviews_catalog.xlsx')
+        wb = load_workbook('reviews_catalog.xlsx')
         ws = wb.active
     except FileNotFoundError:
         # If the file does not exist, create a new one
@@ -81,7 +81,7 @@ def store_new_catalog_data(reviews_catalog_list):
         ])
 
     # Save the updated catalog to the file
-    wb.save('cj/reviews_catalog.xlsx')
+    wb.save('reviews_catalog.xlsx')
     print("Reviews-Catalog data saved to catalog.xlsx")
 
 
@@ -96,7 +96,7 @@ def get_product_reviews(product_pid):
         
         url = 'https://developers.cjdropshipping.com/api2.0/v1/product/productComments'
         headers = {
-            'CJ-Access-Token': "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxvMDBhSjhTQlZlSWJ0TDNIVFc5U1JQQnU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0ifQ.YiLZw9VginUjuiA6zTmNORsj8ZKwYhGlPdjglVsR0J4",  # Replace `token()` with your token function
+            'CJ-Access-Token': "API@CJ3297540@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxveWNtZ0dKMTFMNnJPbENGN245bFRHMXU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0iLCJpYXQiOjE3NjE4NjIwNjF9.GJVY63nZ8nwZVdKyJoKgjqMpPDabgG2mP2_T4-95czo",  # Replace `token()` with your token function
         }
         params = {
             'pid': product_pid,

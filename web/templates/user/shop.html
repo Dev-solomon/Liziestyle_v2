@@ -287,35 +287,38 @@
     {% set min_price = request.args.get('min', 1) %}
     {% set max_price = request.args.get('max', 99999999) %}
 
-    {% if page_num >= 1 %}
+    {% if page_num > 1 %}
     <button class="flex-rows gap-3 text-white py-3 px-4 text-xs rounded font-semibold bg-primary-600"
       style="border-radius: 4px; padding: 10px 20px;" onclick="updatePageNumber({{ page_num - 1 }});">Previous</button>
     {% endif %}
 
 
-    {% if page_num == 1 %}
-    <a aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num}} </a>
-{% elif page_num > 1 and page_num <= 5 %}
-    {% for num in range(1, page_num + 1) %}
-      {% if num == page_num %}
-      <a aria-label="pagination" id="pgN" style="border-radius: 4px; padding: 5px 15px;"
-      class="bg-white-600 text-primary-600 border">
-      {{num}}
-    </a>
-      {% else %}
-      <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{num}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{num}} </a>
-      {% endif %}
-    {% endfor %}
-{% elif page_num >  5 %}
-<a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{page_num - 2}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num - 2}} </a>
-<a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{page_num - 1}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num - 1}} </a>
-<a aria-label="pagination" id="pgN" style="border-radius: 4px; padding: 5px 15px;"
-class="bg-white-600 text-primary-600 border">
-{{page_num}}
-</a>
-    <a aria-label="pagination">...</a>
-    <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{searched_pages}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{searched_pages}} </a>
-{% endif %}
+    {% if page_num >= 1 and page_num <= 5 %}
+      {% for num in range(1, page_num + 1) %}
+        {% if num == page_num %}
+              <a aria-label="pagination" id="pgN" style="border-radius: 4px; padding: 5px 15px;" class="bg-white-600 text-primary-600 border">
+                  {{num}}
+              </a>
+        {% else %}
+                  <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{num}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{num}} </a>
+        {% endif %}
+      {% endfor %}
+          <a aria-label="pagination">...</a>
+          {% if page_num != searched_pages %}
+              <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{searched_pages}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{searched_pages}} </a>
+          {% endif %}
+
+    {% elif page_num >  5 %}
+        <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{page_num - 2}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num - 2}} </a>
+        <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{page_num - 1}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{page_num - 1}} </a>
+        {% if page_num != searched_pages %}
+          <a aria-label="pagination" id="pgN" style="border-radius: 4px; padding: 5px 15px;"class="bg-white-600 text-primary-600 border">
+            {{page_num}}
+        </a>
+        {% endif %}
+         <a aria-label="pagination">...</a>
+        <a href="/catalog?product_name={{product_name}}&product_tag={{product_tag}}&min={{min_price}}&max={{max_price}}&page_num={{searched_pages}}" aria-label="pagination" style="padding: 5px;" class="text-secondary-600"> {{searched_pages}} </a>
+    {% endif %}
 
 
 
@@ -323,7 +326,7 @@ class="bg-white-600 text-primary-600 border">
    
 
 
-    {% if page_num != searched_pages + 1 %}
+    {% if page_num < searched_pages  %}
     <button onclick="updatePageNumber_nextButton()"
       class="flex-rows gap-3 text-white py-3 px-4 text-xs rounded font-semibold bg-primary-600"
       style="border-radius: 4px; padding: 10px 20px;">Next</button>
