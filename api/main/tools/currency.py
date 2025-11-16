@@ -1,4 +1,5 @@
 import requests
+from termcolor import colored
 
 
 # Try to get User's Location
