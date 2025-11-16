@@ -135,7 +135,7 @@ def get_product_reviews(product_pid):
 # overall function to import products
 def import_reviews_to_database():
     # get products from database
-    pageNum = 2
+    pageNum = 3
     pageSize = 85
     skip = pageNum * pageSize
     db_products = list(Product.collection.find().sort("createdAt", DESCENDING).limit(pageSize).skip(skip))

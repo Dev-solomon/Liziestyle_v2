@@ -28,7 +28,7 @@ def cart(order_items):
                 'product_data': {
                     'name': item['title'],
                     'images': [item['images'][0]],
-                    'description': f"Variante: taglia e colore: {item['variant']}",
+                    'description': f"Variant(s) - size and color: {item['variant']}",
                     'metadata': {
                         'id': item['product_id'],
                     },
@@ -78,7 +78,7 @@ def checkout(order_id):
                             'amount': round(shipping_amount *100),
                             'currency': pay_currency,
                         },
-                        'display_name': 'Spedizione + Tasse',
+                        'display_name': 'Shipping + Tax',
                         'delivery_estimate': {
                             'minimum': {
                                 'unit': 'business_day',
