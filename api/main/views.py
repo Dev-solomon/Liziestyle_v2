@@ -6,7 +6,7 @@ from dateutil.relativedelta import relativedelta
 
 # EXPORTS FUNCTIONS START
 from main.auth import token_required
-from main.tools import get_currency_symbol
+from main.tools.currency import get_currency_symbol
 from main.user.models.user_model import User
 from main.user.controllers.order_controller import get_user_orders, get_order_by_id, track_order
 from main.user.controllers.product_controller import (

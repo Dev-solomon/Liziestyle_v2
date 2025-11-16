@@ -1,4 +1,4 @@
-from main.tools import get_currency_symbol
+from main.tools.currency import get_currency_symbol
 # Get the Location of User to Determine Currency
 currency = get_currency_symbol()
 
