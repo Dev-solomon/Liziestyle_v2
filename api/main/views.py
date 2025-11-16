@@ -237,13 +237,14 @@ def change_profile(current_user):
 
 # URL for blogs
 def blog():
+  cart = get_cart()
   currency_symbol = get_currency_symbol()
   page_num = request.args.get('page_num', default=1)
   cat = request.args.get('cat', default="all")
   blogs = get_blogs(page_num, cat)[0]
   total_pages = get_blogs(page_num, cat)[1]
   blog_tags = get_blog_tags()
-  return render_template('user/blog.html', blogs=blogs, tags=blog_tags, total_pages=total_pages, currency=currency_symbol)
+  return render_template('user/blog.html', blogs=blogs, tags=blog_tags, cart=cart, total_pages=total_pages, currency=currency_symbol)
  
 # URL for blog post detail
 def blog_post(blog_id):
