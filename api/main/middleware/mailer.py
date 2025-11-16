@@ -29,11 +29,11 @@ def send_email(to_email_user, subject, content, order):
             ],
             "from": {
                 "email": EMAIL_SENDER,
-                "name": "Conferma del nuovo ordine"
+                "name": "Confirmation of the New Order"
             },
             "reply_to": {
                 "email": REPLY_SENDER,
-                "name": "risposta all'e-mail"
+                "name": "Reply to Email"
             },
             "custom_variables": {
                 "user_id": "45982",
@@ -66,7 +66,7 @@ def send_email_signup(to_email_user, subject, content):
 
         # Create mailtrap message
         mail = mt.Mail(
-        sender=mt.Address(email=EMAIL_SENDER, name="Verify your account"),
+        sender=mt.Address(email=EMAIL_SENDER, name="Verify Your Account!"),
         to=[mt.Address(email=to_email_user)],
         subject=subject,
         text=content,

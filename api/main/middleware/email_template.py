@@ -27,10 +27,10 @@ def order_template(order):
     # Generate total cost rows
     def generate_cost_rows(order):
         cost_rows = [
-            {"label": "Totale parziale", "value": f"{ currency }{float(order['subTotal']):,.2f}"},
-            {"label": "Costo di spedizione", "value": f"{ currency }{float(order['shippingCost']):,.2f}"},
-            {"label": "Tassare", "value": f"{ currency }{float(order['taxPrice']):,.2f}"},
-            {"label": "Totale", "value": f"{ currency }{float(order['totalPrice']):,.2f}"},
+            {"label": "Subtotal", "value": f"{ currency }{float(order['subTotal']):,.2f}"},
+            {"label": "Shipping Cost", "value": f"{ currency }{float(order['shippingCost']):,.2f}"},
+            {"label": "Tax", "value": f"{ currency }{float(order['taxPrice']):,.2f}"},
+            {"label": "Total", "value": f"{ currency }{float(order['totalPrice']):,.2f}"},
         ]
         
         cost_rows_html = []
@@ -70,12 +70,12 @@ def order_template(order):
                                                         </a>
                                                     </div>
                                                     <div style="color: #000000; font-size: 15px; font-family: Verdana, sans-serif; text-align: center;margin: 30px 0;">
-                                                      Grazie per aver acquistato con noi. Ecco i dettagli del tuo ordine.
+                                                      Thank you for shopping with us. Here are your order details.
                                                     </div>
                                                     <div style="text-align: center;">
                                                         <button style="background-color: #09d4fc; width:27%; padding: 14px 0px; border: none; border-radius: 10px 10px; font-size: 15px; font-family: Verdana, sans-serif;">
                                                             <a href="{order['orderUrl']}" target="_blank" style="color: #ffffff; text-decoration: none;">
-                                                                Visualizza ordine
+                                                             View order
                                                             </a>
                                                         </button>
                                                     </div>
@@ -135,7 +135,7 @@ def order_template(order):
                                 Copyright © 2023 <a href="https://www.liziestyle.com" target="_blank" style="text-decoration: none; color: #09d4fc">{order["siteName"]}</a>
                             </td>
                             <td style="font-family: Verdana, sans-serif; font-weight: normal; font-size: 10px; line-height: 24px; color: black; text-align: right;  padding: 15px 15px;">
-                                Offerto da <a href="https://www.linkedin.com/company/105483484" target="_blank" style="text-decoration: none; color: #09d4fc;">{order["siteName"]} Azienda</a>
+                               Powered by <a href="https://www.linkedin.com/company/105483484" target="_blank" style="text-decoration: none; color: #09d4fc;">{order["siteName"]} Company</a>
                             </td>
                         </tr>
                     </table>
