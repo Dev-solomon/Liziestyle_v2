@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from main.user.models.order_model import Order
 from main.user.models.user_model import User
 from main.user.controllers import order_controller
-from main.tools import get_currency_symbol
+from main.tools.currency import get_currency_symbol
 
 # Load environment variables
 load_dotenv()
