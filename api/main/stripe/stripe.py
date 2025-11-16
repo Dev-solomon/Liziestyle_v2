@@ -17,7 +17,7 @@ stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 # Get User's Location
 currency = get_currency_symbol()
 # Determine the pay currency
-pay_currency = 'eur' if currency != '$' else 'usd'
+pay_currency = 'eur' if currency != "$" else 'usd'
 
 def cart(order_items):
     cart_items = []
