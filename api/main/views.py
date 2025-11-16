@@ -102,11 +102,12 @@ def checkout(current_user):
   
 
 def customs():
+    cart = get_cart()
     currency_symbol = get_currency_symbol()
     # for all products
     custom_products = get_custom_products()[0]
     
-    return render_template('user/customs.html', custom_products=custom_products, currency=currency_symbol)
+    return render_template('user/customs.html', custom_products=custom_products, currency=currency_symbol, cart=cart)
    
   
 # product single detail page
