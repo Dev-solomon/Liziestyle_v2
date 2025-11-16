@@ -142,7 +142,7 @@ def products_list():
         params = { #PARAMS FOR THE REQUESTS 
             'pageNum': 1,
             'pageSize': 95,
-            'categoryId': "4B397425-26C1-4D0E-B6D2-96B0B03689DB ",  
+            'categoryId': "2FE8A083-5E7B-4179-896D-561EA116F730",  
             'minPrice': 1.0,
             'countryCode': "CN",
             'productType': "SUPPLIER_PRODUCT",
