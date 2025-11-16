@@ -66,7 +66,7 @@ def send_email_signup(to_email_user, subject, content):
 
         # Create mailtrap message
         mail = mt.Mail(
-        sender=mt.Address(email=EMAIL_SENDER, name="Verifica il tuo account"),
+        sender=mt.Address(email=EMAIL_SENDER, name="Verify your account"),
         to=[mt.Address(email=to_email_user)],
         subject=subject,
         text=content,

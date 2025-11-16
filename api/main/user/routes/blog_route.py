@@ -23,7 +23,7 @@ def create_blog():
         # print(data)
         new_blog = create_blog_post(data) 
         if new_blog == True:
-            return "Nuovo post del blog creato con successo!"
+            return "New blog post created successfully!"
         # return data
         return "Something Went Wrong"
             

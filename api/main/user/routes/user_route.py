@@ -139,7 +139,7 @@ def signup_authorized():
     try:
         user = User.collection.find_one({'email': session['user']['email']})
         if user:
-            return redirect(url_for('user.registration', message="L'utente esiste già!"))
+            return redirect(url_for('user.registration', message="The user already exists!"))
         else:
             data = {
                 "fullName": session['user']['name'],
@@ -150,9 +150,9 @@ def signup_authorized():
             new_user = User.collection.insert_one(data).inserted_id
             created_user = User.collection.find_one({'email': data['email']})
             if(created_user):
-                return redirect(url_for('user.user_login', messageSuccess="Utente creato con successo, Accedi!"))
+                return redirect(url_for('user.user_login', messageSuccess="User created with success, Login!"))
             else:
-                 return  redirect(url_for('user.registration', message="Errore durante la creazione dell'utente, riprova!!"))
+                 return  redirect(url_for('user.registration', message="Error creating user, please try again!"))
     except Exception as e:
         return jsonify({'message': str(e)}), 400
 

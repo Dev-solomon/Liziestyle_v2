@@ -53,8 +53,8 @@ def update_order_to_paid(customer_order_id, payment_data):
         
         if order:
             order_status = {
-                'completed': 'completato',
-                'canceled': 'annullata'
+                'completed': 'completed',
+                'canceled': 'cancelled'
             }
             
             # Check for payment status and update accordingly
@@ -109,8 +109,8 @@ def update_order_to_paid(customer_order_id, payment_data):
 
             new_email = send_email(
                     customer_email,
-                    f"Nuovo ordine di {customer_name}",
-                    "Grazie per aver acquistato con liziestyle. \n Il tuo ordine è stato ricevuto ed è in fase di elaborazione sulla piattaforma. In allegato di seguito è riportato il riepilogo del tuo ordine.",
+                    f"New order from {customer_name}",
+                    "Thank you for shopping with liziestyle. Your order has been received and is being processed on the platform. Please find your order summary attached below.",
                     email_order_to_customer
             )
             new_email_to_admin = send_email(
@@ -143,9 +143,9 @@ def delete_order(order_id):
     try: 
         result = Order.collection.delete_one({'_id': ObjectId(order_id)})
         if result.deleted_count == 1:
-            return redirect(url_for('user_dashboard', message="Ordine eliminato!"))
+            return redirect(url_for('user_dashboard', message="Order deleted!"))
         else:
-            return redirect(url_for('user_dashboard', message="Impossibile eliminare l'ordine!"))
+            return redirect(url_for('user_dashboard', message="Unable to delete order!"))
     except Exception as e:
         return jsonify({'message': str(e)}), 400
 
@@ -224,7 +224,7 @@ def delete_cart_cookie(order_id):
     """
     Deletes the 'cart' cookie from the browser.
     """
-    response = make_response(redirect(url_for('checkout', order_id=order_id, message="Il tuo ordine è stato effettuato!")))  # Create a response object
+    response = make_response(redirect(url_for('checkout', order_id=order_id, message="Your order has been placed!")))  # Create a response object
     response.delete_cookie('cart')  # Specify the cookie name and path
     return response
 

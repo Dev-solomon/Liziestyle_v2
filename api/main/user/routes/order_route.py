@@ -25,7 +25,7 @@ def create_new_orders(current_user):
         new_order = create_order()
         if new_order != False:
             return delete_cart_cookie(new_order)
-        return render_template('user/index.html', messageError="Inserimento dell'ordine non riuscito!")
+        return render_template('user/index.html', messageError="Order placement failed!")
     return  None
 
 # @order_blueprint.route('/<id>', methods=['GET', 'PUT', 'DELETE'])
@@ -97,7 +97,7 @@ def add_to_cart():
                 break
             
         if product_variant == "":
-            return render_template('user/product.html', product_id=product['_id'], messageError="Scegli 1 variante!")
+            return render_template('user/product.html', product_id=product['_id'], messageError="Choose 1 variant")
         
         if product.get('salesOffer'):
             new_price = float(product['price']) - (float(product['price']) * float(product['salesOffer']) / 100)
@@ -122,12 +122,12 @@ def add_to_cart():
             
         
             # Create a response and set the cart in the cookie
-            response  = make_response(redirect(url_for('product_detail', product_id=product['_id'], message="Articolo aggiunto al carrello")))
+            response  = make_response(redirect(url_for('product_detail', product_id=product['_id'], message="Item added to cart")))
             response.set_cookie('cart', cart_json, max_age=int(timedelta(days=30).total_seconds()))  # Store the cart as a cookie
             
             return response
         
-        return render_template('user/product.html', product_id=product['_id'], messageError="Articolo già nel carrello!")
+        return render_template('user/product.html', product_id=product['_id'], messageError="Item already in cart!")
     except Exception as e:
         return jsonify({'message_add_to_cart': str(e)}), 400
 
@@ -172,7 +172,7 @@ def remove_from_cart():
         cart_json = json.dumps(cart)
         
         # Create a response and set the updated cart in the cookie
-        response =  make_response(redirect(url_for('product_detail', product_id=item_id, message="Articolo rimosso dal carrello carrello")))
+        response =  make_response(redirect(url_for('product_detail', product_id=item_id, message="Item removed from cart!")))
         response.set_cookie('cart', cart_json, max_age=int(timedelta(days=30).total_seconds()))  # Store the updated cart in the cookie
         
         return response
