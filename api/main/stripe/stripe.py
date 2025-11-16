@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from main.user.models.order_model import Order
 from main.user.models.user_model import User
 from main.user.controllers import order_controller
+from main.tools import get_currency_symbol
 
 # Load environment variables
 load_dotenv()
@@ -13,7 +14,10 @@ load_dotenv()
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 # endpoint_secret = os.getenv('STRIPE_WEBHOOK_SECRET')  # Set this if you have a webhook secret
 
-pay_currency = 'eur'
+# Get User's Location
+currency = get_currency_symbol()
+# Determine the pay currency
+pay_currency = 'eur' if currency != '$' else 'usd'
 
 def cart(order_items):
     cart_items = []
