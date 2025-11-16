@@ -27,7 +27,8 @@
           <p>selected dresses!</p>
         </h2>
         <button class="primary-btn--large mt-3">
-          Explore Custom <span class="hidden md:block">Designs</span>
+          <a href="/customs" style="text-decoration: none;">
+          Custom Designs</a>
         </button>
       </div>
     </div>
@@ -238,9 +239,9 @@
                 {% if product['salesOffer'] is defined and product['salesOffer'] | int > 0 %}
                 {% set price = product['price'] | float - (product['price'] | float * product['salesOffer'] | int / 100)
                 %}
-                € <s>{{product['price']}} </s> {{ price | round(1) }}
+                {{ currency }} <s>{{product['price']}} </s> {{ price | round(1) }}
                 {% else %}
-                €{{product['price']}}
+                {{ currency }}{{product['price']}}
                 {% endif %}
 
               </span>

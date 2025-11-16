@@ -188,7 +188,7 @@
                       Color: {{color | capitalize}}, Size: {{size | upper}}
                     </p>
                   </div>
-                  <span class="ml-auto text-lg md:ml-0">€{{order['price']}}</span>
+                  <span class="ml-auto text-lg md:ml-0">{{ currency }}{{order['price']}}</span>
                 </div>
               </div>
               <div class="flex lg:ml-auto lg:items-end">
@@ -224,15 +224,15 @@
               class="flex flex-col gap-3 text-sm md:gap-4 md:text-lg lg:text-xl"
             >
               <div class="flex justify-between" style="font-family: Arial, Helvetica, sans-serif;">
-                <span>Sub-total:-</span>€{{orders['sub_total_price']}}
+                <span>Sub-total:-</span>{{ currency }}{{orders['sub_total_price']}}
               </div>
-              <div class="flex justify-between"  style="font-family: Arial, Helvetica, sans-serif;"><span>Tax</span>€{{orders['tax_price']}}</div>
+              <div class="flex justify-between"  style="font-family: Arial, Helvetica, sans-serif;"><span>Tax</span>{{ currency }}{{orders['tax_price']}}</div>
               <div class="flex justify-between"  style="font-family: Arial, Helvetica, sans-serif;">
-                <span>Shipping:-</span>€{{orders['shipping_address']['shipping_cost']}}
+                <span>Shipping:-</span>{{ currency }}{{orders['shipping_address']['shipping_cost']}}
               </div>
               <hr/>
               <div class="mt-3 flex justify-between md:mt-4"  style="font-family: Arial, Helvetica, sans-serif;">
-                <span>Total:-</span>€{{orders['total_price']}}
+                <span>Total:-</span>{{ currency }}{{orders['total_price']}}
               </div>
             </div>
 

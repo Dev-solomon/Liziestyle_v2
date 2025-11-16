@@ -254,7 +254,7 @@
 																		Order ID: <span class="text-dark font-size-base">{{ order_details._id }}</span>
 																	</h5>
 																	<h5 class="font-size-h5 mt-3 mb-0 font-size-bold text-body">
-																		Amount: <span class="text-dark font-size-base">€ {{ order_details.total_price }} </span>
+																		Amount: <span class="text-dark font-size-base">{{ currency }} {{ order_details.total_price }} </span>
 																	</h5>
 																</div>
 																<div class="col-12 col-lg-6 col-xl-4 payment-detail">
@@ -377,14 +377,14 @@
 																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
 																								SUBTOTAL
 																						</th>
-																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€{{ order_details.sub_total_price }}</td>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">{{ currency }}{{ order_details.sub_total_price }}</td>
 																						
 																					  </tr>
 																					  <tr class="d-flex align-items-center justify-content-between">
 																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
 																								TAX
 																						</th>
-																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€{{ order_details.tax_price }}</td>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">{{ currency }}{{ order_details.tax_price }}</td>
 																						
 																					  </tr>
 																					  <tr class="d-flex align-items-center justify-content-between">
@@ -398,7 +398,7 @@
 																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
 																								TOTAL
 																						</th>
-																						<td class="border-0 justify-content-end d-flex text-dark font-size-base">€{{ order_details.total_price }}</td>
+																						<td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ currency }}{{ order_details.total_price }}</td>
 																						
 																					  </tr>
 																				
@@ -457,23 +457,23 @@
 																		  <tr class="row">
 																			
 																			<td class="col-lg-6 col-4">Mackbook Pro 15"</td>
-																			<td class="col-lg-2 col-2">€2500</td>
+																			<td class="col-lg-2 col-2">{{ currency }}2500</td>
 																			<td class="col-lg-2 col-3 text-center">100</td>
-																			<td class="col-lg-2 col-3 text-end">€25000</td>
+																			<td class="col-lg-2 col-3 text-end">{{ currency }}25000</td>
 																			
 																		  </tr>
 																		  <tr class="row">
 																			<td class="col-lg-6 col-4">Mackbook Pro 15"</td>
-																			<td class="col-lg-2 col-2">€2500</td>
+																			<td class="col-lg-2 col-2">{{ currency }}2500</td>
 																			<td class="col-lg-2 col-3 text-center">100</td>
-																			<td class="col-lg-2 col-3 text-end">€25000</td>
+																			<td class="col-lg-2 col-3 text-end">{{ currency }}25000</td>
 																		
 																		  </tr>
 																		  <tr class="row">
 																			<td class="col-lg-6 col-4">Mackbook Pro 15"</td>
-																			<td class="col-lg-2 col-2">€2500</td>
+																			<td class="col-lg-2 col-2">{{ currency }}2500</td>
 																			<td class="col-lg-2 col-3 text-center">100</td>
-																			<td class="col-lg-2 col-3 text-end">€25000</td>
+																			<td class="col-lg-2 col-3 text-end">{{ currency }}25000</td>
 																			
 																		  </tr>
 																		</tbody>
@@ -488,7 +488,7 @@
 																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
 																								SUBTOTAL
 																						</th>
-																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€75000</td>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">{{ currency }}75000</td>
 																						
 																					  </tr>
 																					  <tr class="d-flex align-items-center justify-content-between">
@@ -496,7 +496,7 @@
 																							
 																								TAX(20%)
 																						</th>
-																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">€90000</td>
+																						<td class="border-0 justify-content-end d-flex text-black-50 font-size-base">{{ currency }}90000</td>
 																						
 																					  </tr>
 																					  <tr class="d-flex align-items-center justify-content-between">
@@ -511,7 +511,7 @@
 																						<th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
 																								TOTAL
 																						</th>
-																						<td class="border-0 justify-content-end d-flex text-dark font-size-base">€81000</td>
+																						<td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ currency }}81000</td>
 																						
 																					  </tr>
 																				

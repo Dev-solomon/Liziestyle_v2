@@ -170,9 +170,9 @@
               <h4 class="text-xl font-semibold md:text-2xl lg:text-4xl">
                 {% if product['salesOffer'] is defined and product['salesOffer'] | int > 0 %}
                 {% set price = product['price'] | float - (product['price'] | float * product['salesOffer'] | int / 100) %}
-                  € <s>{{product['price']}} </s>  {{ price  | round(1) }}
+                  {{ currency }} <s>{{product['price']}} </s>  {{ price  | round(1) }}
                 {% else %}
-                    €{{product['price']}}
+                    {{ currency }}{{product['price']}}
                 {% endif %}
               </h4>
             </div>
@@ -260,9 +260,9 @@
               <h4 class="text-xl font-semibold md:text-2xl lg:text-4xl">
                 {% if product['salesOffer'] is defined and product['salesOffer'] | int > 0 %}
                 {% set price = product['price'] | float - (product['price'] | float * product['salesOffer'] | int / 100) %}
-                  € <s>{{product['price']}} </s>  {{ price  | round(1) }}
+                  {{ currency }} <s>{{product['price']}} </s>  {{ price  | round(1) }}
                 {% else %}
-                    €{{product['price']}}
+                    {{ currency }}{{product['price']}}
                 {% endif %}
               </h4>
             </div>
@@ -490,9 +490,9 @@
                       <span class="mt-1 text-xs font-semibold md:mt-2 md:text-sm lg:text-lg">
                          {% if related_product['salesOffer'] is defined and related_product['salesOffer'] | int > 0 %}
                         {% set price = related_product['price'] | float - (related_product['price'] | float * related_product['salesOffer'] | int / 100) %}
-                            € <s>{{related_product['price']}} </s>  {{ price  | round(1) }}
+                            {{ currency }} <s>{{related_product['price']}} </s>  {{ price  | round(1) }}
                           {% else %}
-                              €{{related_product['price']}}
+                              {{ currency }}{{related_product['price']}}
                           {% endif %}
                         
                       </span>
@@ -658,9 +658,9 @@
                       <span class="mt-1 text-xs font-semibold md:mt-2 md:text-sm lg:text-lg">
                         {% if other_product['salesOffer'] is defined and other_product['salesOffer'] | int > 0 %}
                           {% set price = other_product['price'] | float - (other_product['price'] | float * other_product['salesOffer'] | int / 100) %}
-                            € <s>{{other_product['price']}} </s>  {{ price  | round(1) }}
+                            {{ currency }} <s>{{other_product['price']}} </s>  {{ price  | round(1) }}
                           {% else %}
-                              €{{other_product['price']}}
+                              {{ currency }}{{other_product['price']}}
                           {% endif %}
 
                       </span>

@@ -606,7 +606,7 @@
                                             <div class="col-6">
                                                 <span class="text-muted mb-3 lh-1 d-block text-truncate">My Wallet</span>
                                                 <h4 class="mb-3">
-                                                    €<span class="counter-value" data-target="865.2">0</span>k
+                                                    {{ currency }}<span class="counter-value" data-target="865.2">0</span>k
                                                 </h4>
                                             </div>
 
@@ -615,7 +615,7 @@
                                             </div>
                                         </div>
                                         <div class="text-nowrap">
-                                            <span class="badge bg-success-subtle text-success">+€20.9k</span>
+                                            <span class="badge bg-success-subtle text-success">+{{ currency }}20.9k</span>
                                             <span class="ms-1 text-muted font-size-13">Since last week</span>
                                         </div>
                                     </div><!-- end card body -->
@@ -655,7 +655,7 @@
                                             <div class="col-6">
                                                 <span class="text-muted mb-3 lh-1 d-block text-truncate">Invested Amount</span>
                                                 <h4 class="mb-3">
-                                                    €<span class="counter-value" data-target="4.32">0</span>M
+                                                    {{ currency }}<span class="counter-value" data-target="4.32">0</span>M
                                                 </h4>
                                             </div>
                                             <div class="col-6">
@@ -663,7 +663,7 @@
                                             </div>
                                         </div>
                                         <div class="text-nowrap">
-                                            <span class="badge bg-success-subtle text-success">+ €2.8k</span>
+                                            <span class="badge bg-success-subtle text-success">+ {{ currency }}2.8k</span>
                                             <span class="ms-1 text-muted font-size-13">Since last week</span>
                                         </div>
                                     </div><!-- end card body -->
@@ -729,17 +729,17 @@
                                                 <div class="mt-4 mt-sm-0">
                                                     <div>
                                                         <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-success"></i> Bitcoin</p>
-                                                        <h6>0.4412 BTC = <span class="text-muted font-size-14 fw-normal">€ 4025.32</span></h6>
+                                                        <h6>0.4412 BTC = <span class="text-muted font-size-14 fw-normal">{{ currency }} 4025.32</span></h6>
                                                     </div>
     
                                                     <div class="mt-4 pt-2">
                                                         <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-primary"></i> Ethereum</p>
-                                                        <h6>4.5701 ETH = <span class="text-muted font-size-14 fw-normal">€ 1123.64</span></h6>
+                                                        <h6>4.5701 ETH = <span class="text-muted font-size-14 fw-normal">{{ currency }} 1123.64</span></h6>
                                                     </div>
     
                                                     <div class="mt-4 pt-2">
                                                         <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-info"></i> Litecoin</p>
-                                                        <h6>35.3811 LTC = <span class="text-muted font-size-14 fw-normal">€ 2263.09</span></h6>
+                                                        <h6>35.3811 LTC = <span class="text-muted font-size-14 fw-normal">{{ currency }} 2263.09</span></h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -777,7 +777,7 @@
                                                     <div class="col-sm align-self-center">
                                                         <div class="mt-4 mt-sm-0">
                                                             <p class="mb-1">Invested Amount</p>
-                                                            <h4>€ 6134.39</h4>
+                                                            <h4>{{ currency }} 6134.39</h4>
 
                                                             <p class="text-muted mb-4"> + 0.0012.23 ( 0.2 % ) <i class="mdi mdi-arrow-up ms-1 text-success"></i></p>
 
@@ -785,13 +785,13 @@
                                                                 <div class="col-6">
                                                                     <div>
                                                                         <p class="mb-2 text-muted text-uppercase font-size-11">Income</p>
-                                                                        <h5 class="fw-medium">€ 2632.46</h5>
+                                                                        <h5 class="fw-medium">{{ currency }} 2632.46</h5>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <div>
                                                                         <p class="mb-2 text-muted text-uppercase font-size-11">Expenses</p>
-                                                                        <h5 class="fw-medium">-€ 924.38</h5>
+                                                                        <h5 class="fw-medium">-{{ currency }} 924.38</h5>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1095,7 +1095,7 @@
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="buy-tab" role="tabpanel">
                                                 <div class="float-end ms-2">
-                                                    <h5 class="font-size-14"><i class="bx bx-wallet text-primary font-size-16 align-middle me-1"></i> <a href="index.html#!" class="text-reset text-decoration-underline">€4335.23</a></h5>
+                                                    <h5 class="font-size-14"><i class="bx bx-wallet text-primary font-size-16 align-middle me-1"></i> <a href="index.html#!" class="text-reset text-decoration-underline">{{ currency }}4335.23</a></h5>
                                                 </div>
                                                 <h5 class="font-size-14 mb-4">Buy Coins</h5>
                                                 <div>
@@ -1124,13 +1124,13 @@
 
                                                         <div class="input-group mb-3">
                                                             <label class="input-group-text">Price</label>
-                                                            <input type="text" class="form-control" placeholder="€58,245">
-                                                            <label class="input-group-text">€</label>
+                                                            <input type="text" class="form-control" placeholder="{{ currency }}58,245">
+                                                            <label class="input-group-text">{{ currency }}</label>
                                                         </div>
 
                                                         <div class="input-group mb-3">
                                                             <label class="input-group-text">Total</label>
-                                                            <input type="text" class="form-control" placeholder="€36,854.25">
+                                                            <input type="text" class="form-control" placeholder="{{ currency }}36,854.25">
                                                         </div>
                                                     </div>  
 
@@ -1142,7 +1142,7 @@
                                             <!-- end tab pane -->
                                             <div class="tab-pane" id="sell-tab" role="tabpanel">
                                                 <div class="float-end ms-2">
-                                                    <h5 class="font-size-14"><i class="bx bx-wallet text-primary font-size-16 align-middle me-1"></i> <a href="index.html#!" class="text-reset text-decoration-underline">€4235.23</a></h5>
+                                                    <h5 class="font-size-14"><i class="bx bx-wallet text-primary font-size-16 align-middle me-1"></i> <a href="index.html#!" class="text-reset text-decoration-underline">{{ currency }}4235.23</a></h5>
                                                 </div>
                                                 <h5 class="font-size-14 mb-4">Sell Coins</h5>
 
@@ -1170,14 +1170,14 @@
                                                         
                                                             <label class="input-group-text">Price</label>
                                                             
-                                                            <input type="text" class="form-control" placeholder="€23,754.25">
+                                                            <input type="text" class="form-control" placeholder="{{ currency }}23,754.25">
                                                             
-                                                            <label class="input-group-text">€</label>
+                                                            <label class="input-group-text">{{ currency }}</label>
                                                         </div>
 
                                                         <div class="input-group mb-3">
                                                             <label class="input-group-text">Total</label>
-                                                            <input type="text" class="form-control" placeholder="€6,852.41">
+                                                            <input type="text" class="form-control" placeholder="{{ currency }}6,852.41">
                                                         </div>
                                                     </div>  
 
@@ -1251,7 +1251,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€125.20</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}125.20</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1280,7 +1280,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€112.34</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}112.34</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1309,7 +1309,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€94.22</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}94.22</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1338,7 +1338,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€84.32</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}84.32</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1367,7 +1367,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€145.80</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}145.80</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1396,7 +1396,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€125.20</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}125.20</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1425,7 +1425,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€112.34</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}112.34</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1462,7 +1462,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€125.20</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}125.20</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1491,7 +1491,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€145.80</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}145.80</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1520,7 +1520,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€94.22</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}94.22</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1549,7 +1549,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€112.34</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}112.34</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1578,7 +1578,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€84.32</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}84.32</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1607,7 +1607,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€112.34</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}112.34</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1636,7 +1636,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€125.20</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}125.20</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1675,7 +1675,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€112.34</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}112.34</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1704,7 +1704,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€125.20</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}125.20</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1733,7 +1733,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€145.80</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}145.80</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1762,7 +1762,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€112.34</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}112.34</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1791,7 +1791,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€94.22</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}94.22</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1820,7 +1820,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€84.32</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}84.32</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1851,7 +1851,7 @@
 
                                                                 <td>
                                                                     <div class="text-end">
-                                                                        <h5 class="font-size-14 text-muted mb-0">€125.20</h5>
+                                                                        <h5 class="font-size-14 text-muted mb-0">{{ currency }}125.20</h5>
                                                                         <p class="text-muted mb-0 font-size-12">Amount</p>
                                                                     </div>
                                                                 </td>
@@ -1902,7 +1902,7 @@
                                                             </div>
                                                             <div class="flex-shrink-0 text-end me-3">
                                                                 <h6 class="mb-1">+0.5 BTC</h6>
-                                                                <div class="font-size-13">€178.53</div>
+                                                                <div class="font-size-13">{{ currency }}178.53</div>
                                                             </div>
 
                                                             <div class="flex-shrink-0 text-end">
@@ -1938,7 +1938,7 @@
                                                             </div>
                                                             <div class="flex-shrink-0 text-end me-3">
                                                                 <h6 class="mb-1">-20.5 ETH</h6>
-                                                                <div class="font-size-13">€3541.45</div>
+                                                                <div class="font-size-13">{{ currency }}3541.45</div>
                                                             </div>
 
                                                             <div class="flex-shrink-0 text-end">
@@ -1974,7 +1974,7 @@
                                                             </div>
                                                             <div class="flex-shrink-0 text-end me-3">
                                                                 <h6 class="mb-1">+0.5 BTC</h6>
-                                                                <div class="font-size-13">€5791.45</div>
+                                                                <div class="font-size-13">{{ currency }}5791.45</div>
                                                             </div>
 
                                                             <div class="flex-shrink-0 text-end">
@@ -2010,7 +2010,7 @@
                                                             </div>
                                                             <div class="flex-shrink-0 text-end me-3">
                                                                 <h6 class="mb-1">-1.5 LTC</h6>
-                                                                <div class="font-size-13">€5791.45</div>
+                                                                <div class="font-size-13">{{ currency }}5791.45</div>
                                                             </div>
 
                                                             <div class="flex-shrink-0 text-end">
@@ -2047,7 +2047,7 @@
                                                             </div>
                                                             <div class="flex-shrink-0 text-end me-3">
                                                                 <h6 class="mb-1">+0.5 BTC</h6>
-                                                                <div class="font-size-13">€5791.45</div>
+                                                                <div class="font-size-13">{{ currency }}5791.45</div>
                                                             </div>
 
                                                             <div class="flex-shrink-0 text-end">
@@ -2083,7 +2083,7 @@
                                                             </div>
                                                             <div class="flex-shrink-0 text-end me-3">
                                                                 <h6 class="mb-1">+.55 LTC</h6>
-                                                                <div class="font-size-13">€91.45</div>
+                                                                <div class="font-size-13">{{ currency }}91.45</div>
                                                             </div>
 
                                                             <div class="flex-shrink-0 text-end">

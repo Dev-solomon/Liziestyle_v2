@@ -238,7 +238,7 @@
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-[14px] md:gap-5">
-                <span class="mt-4 text-lg" style="color: rgb(94, 93, 93);">€{{item['price'] | float * item['qty'] |
+                <span class="mt-4 text-lg" style="color: rgb(94, 93, 93);">{{ currency }}{{item['price'] | float * item['qty'] |
                   float}}</span>
               </div>
               <form action="/api/orders/delete_from_cart" method="post">

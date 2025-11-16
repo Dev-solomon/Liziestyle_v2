@@ -6,6 +6,7 @@ from dateutil.relativedelta import relativedelta
 
 # EXPORTS FUNCTIONS START
 from main.auth import token_required
+from main.tools import get_currency_symbol
 from main.user.models.user_model import User
 from main.user.controllers.order_controller import get_user_orders, get_order_by_id, track_order
 from main.user.controllers.product_controller import (
@@ -33,6 +34,7 @@ app.config.from_pyfile("config/config.cfg")
   # Index Route
 def home():
     one_month_ago = datetime.datetime.now() - relativedelta(months=1)
+    currency_symbol = get_currency_symbol()
     
     message_error = request.args.get('messageError')
     message = request.args.get('message')
@@ -50,7 +52,7 @@ def home():
     products = get_all_products()
     
     if not token:  # Token doesn't exist
-        return render_template('user/index.html', cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago)
+        return render_template('user/index.html', cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago, currency=currency_symbol)
     else:
         try:
             # Decode the token and fetch the user
@@ -59,52 +61,57 @@ def home():
             if not current_user:
                 raise Exception("User not found")
         except Exception as e:
-            return render_template('user/login.html')
+            return render_template('user/login.html', currency=currency_symbol)
 
         # Render the page with the current user's details
-        return render_template('user/index.html', user=current_user, cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago)
+        return render_template('user/index.html', user=current_user, cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago, currency=currency_symbol)
     
     
   # dashboard normal user/ Buyer
 @token_required
 def user_dashboard(current_user):
+    currency_symbol = get_currency_symbol()
     message_error = request.args.get('messageError')
     message = request.args.get('message')
     cart = get_cart()
     user_orders = get_user_orders(current_user['_id'])
-    return render_template('user/dashboard.html', cart=cart, user=current_user, orders=user_orders,  messageError=message_error, message=message)
+    return render_template('user/dashboard.html', cart=cart, user=current_user, orders=user_orders,  messageError=message_error, message=message, currency=currency_symbol)
   
    
   # orders page for user
 @token_required
 def orders(current_user): 
+    currency_symbol = get_currency_symbol()
     tracking_no = request.args.get('tracking_no')
     tracked_order = track_order(tracking_no)
     cart = get_cart()
     user_orders = get_user_orders(current_user['_id'])
-    return render_template('user/orders.html', user=current_user, cart=cart, orders=user_orders, tracking=tracked_order)
+    return render_template('user/orders.html', user=current_user, cart=cart, orders=user_orders, tracking=tracked_order, currency=currency_symbol)
   
   
   # checkout page
 @token_required
 def checkout(current_user): 
+    currency_symbol = get_currency_symbol()
     cart = get_cart()
     order_id = request.args.get('order_id')
     message_error = request.args.get('messageError')
     message = request.args.get('message')
     user_orders = get_order_by_id(order_id)
-    return render_template('user/checkout.html', user=current_user, cart=cart, orders=user_orders,  messageError=message_error, message=message)
+    return render_template('user/checkout.html', user=current_user, cart=cart, orders=user_orders,  messageError=message_error, message=message, currency=currency_symbol)
   
 
 def customs():
+    currency_symbol = get_currency_symbol()
     # for all products
     custom_products = get_custom_products()[0]
     
-    return render_template('user/customs.html', custom_products=custom_products)
+    return render_template('user/customs.html', custom_products=custom_products, currency=currency_symbol)
    
   
 # product single detail page
 def product_detail(product_id): 
+    currency_symbol =  get_currency_symbol()
     token = request.cookies.get('token')
     
      # get the cart information
@@ -140,14 +147,14 @@ def product_detail(product_id):
                               relatedProducts=relatedProducts, 
                               otherProducts=otherProducts,  
                               messageError=message_error, 
-                              message=message )
+                              message=message, currency=currency_symbol )
     else:
       try:
         # Decode the token and fetch the user
         data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
         current_user = User.collection.find_one({'email': data['email']})
         if not current_user:
-            return render_template('user/login.html')
+            return render_template('user/login.html', currency=currency_symbol)
             
           
        
@@ -161,7 +168,7 @@ def product_detail(product_id):
                               relatedProducts=relatedProducts, 
                               otherProducts=otherProducts,  
                               messageError=message_error, 
-                              message=message )
+                              message=message, currency=currency_symbol )
       except Exception as e:
         return {"message": "Internal server error"}, 500
         
@@ -169,6 +176,7 @@ def product_detail(product_id):
       
   # shop page for good list
 def catalog():
+      currency_symbol = get_currency_symbol()
       cart = get_cart() # products in cart
       tags = get_popular_tags() # popular tags list
       variants = get_popular_variants() # popular variants list
@@ -194,7 +202,7 @@ def catalog():
                              all_reviews=reviews,
                              variants=variants, 
                              searched_products=searched_products, 
-                             searched_pages=searched_pages)
+                             searched_pages=searched_pages, currency=currency_symbol)
     
     
   
@@ -211,27 +219,30 @@ def login():
   # update password
 @token_required
 def change_password(current_user):
+    currency_symbol = get_currency_symbol()
     message_error = request.args.get('messageError')
     message = request.args.get('message')
     cart = get_cart()
-    return render_template('user/change_password.html', user=current_user, cart=cart, messageError=message_error, message=message)
+    return render_template('user/change_password.html', user=current_user, cart=cart, messageError=message_error, message=message, currency=currency_symbol)
    
   # update user profile
 @token_required
 def change_profile(current_user):
+    currency_symbol = get_currency_symbol()
     message_error = request.args.get('messageError')
     message = request.args.get('message')
     cart = get_cart()
-    return render_template('user/update_profile.html', user=current_user, cart=cart, messageError=message_error, message=message, delete_="yes")
+    return render_template('user/update_profile.html', user=current_user, cart=cart, messageError=message_error, message=message, delete_="yes", currency=currency_symbol)
 
 # URL for blogs
 def blog():
+  currency_symbol = get_currency_symbol()
   page_num = request.args.get('page_num', default=1)
   cat = request.args.get('cat', default="all")
   blogs = get_blogs(page_num, cat)[0]
   total_pages = get_blogs(page_num, cat)[1]
   blog_tags = get_blog_tags()
-  return render_template('user/blog.html', blogs=blogs, tags=blog_tags, total_pages=total_pages)
+  return render_template('user/blog.html', blogs=blogs, tags=blog_tags, total_pages=total_pages, currency=currency_symbol)
  
 # URL for blog post detail
 def blog_post(blog_id):
@@ -254,12 +265,14 @@ def payment_failed():
     return render_template('user/payfailed.html')
   
 def about_us():  # terms and conditions page
+    currency_symbol = get_currency_symbol()
     cart = get_cart()
-    return render_template('user/about.html', cart=cart)
+    return render_template('user/about.html', cart=cart, currency=currency_symbol)
   
 def contact_us():  # terms and conditions page
+    currency_symbol = get_currency_symbol()
     cart = get_cart()
-    return render_template('user/contact.html', cart=cart)
+    return render_template('user/contact.html', cart=cart, currency=currency_symbol)
   
 def faqs():  # terms and conditions page
     return render_template('user/faqs.html') 

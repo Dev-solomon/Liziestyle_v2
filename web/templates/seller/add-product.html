@@ -807,8 +807,8 @@
 				const [color, size] = item.split('-');
 				const row = `
                 <tr>
-                    <td>€{color}</td>
-                    <td>€{size}</td>
+                    <td>{{ currency }}{color}</td>
+                    <td>{{ currency }}{size}</td>
                     <td>
                         <button class="btn btn-danger" onclick="removeItem(${index})">Delete</button>
                     </td>

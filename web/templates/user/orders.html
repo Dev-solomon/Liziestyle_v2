@@ -89,7 +89,7 @@
                    <span class="rounded-2xl bg-[#FEF3F2] px-2 py-[2px] text-[#B42318]">Failed</span>
                    {% endif %}
                  </td>
-                 <td class="p-4 align-middle">€{{ order.total_price }}</td>
+                 <td class="p-4 align-middle">{{ currency }}{{ order.total_price }}</td>
                  <td class="p-4 align-middle">{{ order.payments.payment_date.strftime('%Y-%m-%d') if order.payments.payment_date else 'Not Available' }}</td>
                  
                </tr>

@@ -166,7 +166,7 @@
 																	{{ order.order_items | length }}
 																</td>
 																<td>{{ order.payments.method }}</td>
-																<td>€{{ order.total_price }}</td>
+																<td>{{ currency }}{{ order.total_price }}</td>
 																<td>{{ order.payments.payment_date.strftime('%Y-%m-%d') }}</td>
 																<td>	
 																	{% if order.payments.status | lower == 'pending'   %}

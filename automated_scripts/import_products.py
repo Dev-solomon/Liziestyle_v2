@@ -140,9 +140,9 @@ def products_list():
             'CJ-Access-Token': "API@CJ3297540@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxveWNtZ0dKMTFMNnJPbENGN245bFRHMXU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0iLCJpYXQiOjE3NjE4NjIwNjF9.GJVY63nZ8nwZVdKyJoKgjqMpPDabgG2mP2_T4-95czo",  # Replace `token()` with your token function
         }
         params = { #PARAMS FOR THE REQUESTS 
-            'pageNum': 1,
+            'pageNum': 2,
             'pageSize': 95,
-            'categoryId': "4B397425-26C1-4D0E-B6D2-96B0B03689DB",  
+            'categoryId': "2415A90C-5D7B-4CC7-BA8C-C0949F9FF5D8",  
             'minPrice': 1.0,
             'countryCode': "CN",
             'productType': "SUPPLIER_PRODUCT",
@@ -200,7 +200,7 @@ def get_product_details(product_sku):
                         "images": result['productImageSet'],
                         "price": round(split_ranges(result['sellPrice']) * 10, 1),
                         "description": write_description(result['productNameEn'], result['productImageSet'][0]),
-                        "category": "womens", #category in database
+                        "category": "shoes", #category in database
                         "tags": create_tags_array(result['categoryName']),
                         "salesOffer": "25",
                         "stock": result['listedNum'],
@@ -214,7 +214,7 @@ def get_product_details(product_sku):
                         "createdAt": datetime.datetime.now()
                 })
                 return type(result)
-            else:
+            else: 
                 print(colored(f"Less ImageSet for {result['productSku']}", 'red'))
 
 

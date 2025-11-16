@@ -1,3 +1,7 @@
+from main.tools import get_currency_symbol
+# Get the Location of User to Determine Currency
+currency = get_currency_symbol()
+
 def order_template(order):
     # Generate product rows
     def generate_product_rows(products):
@@ -23,10 +27,10 @@ def order_template(order):
     # Generate total cost rows
     def generate_cost_rows(order):
         cost_rows = [
-            {"label": "Totale parziale", "value": f"€{float(order['subTotal']):,.2f}"},
-            {"label": "Costo di spedizione", "value": f"€{float(order['shippingCost']):,.2f}"},
-            {"label": "Tassare", "value": f"€{float(order['taxPrice']):,.2f}"},
-            {"label": "Totale", "value": f"€{float(order['totalPrice']):,.2f}"},
+            {"label": "Totale parziale", "value": f"{ currency }{float(order['subTotal']):,.2f}"},
+            {"label": "Costo di spedizione", "value": f"{ currency }{float(order['shippingCost']):,.2f}"},
+            {"label": "Tassare", "value": f"{ currency }{float(order['taxPrice']):,.2f}"},
+            {"label": "Totale", "value": f"{ currency }{float(order['totalPrice']):,.2f}"},
         ]
         
         cost_rows_html = []
