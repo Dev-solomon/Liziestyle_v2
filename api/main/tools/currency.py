@@ -1,35 +1,38 @@
 import requests
-from flask import request
+from flask import Flask, request, jsonify
 
-def get_currency_symbol():
+# This is the single function implementing the required logic
+# It accepts the web request object to correctly determine the client's IP.
+def get_currency_symbol(req):
     """
-    Reads the user's IP from proxy headers (Render),
-    looks up the country, and returns '$' if US, else '€'.
+    Determines the currency symbol ($ or €) based on the user's geographic location
+    by resolving the client IP from the incoming request headers.
     """
+    # 1. Get the Client IP address, prioritizing headers used by cloud proxies (e.g., Render)
+    # X-Forwarded-For holds the client's original IP before it hits the proxy/load balancer.
+    client_ip = req.headers.get('X-Forwarded-For', req.remote_addr).split(',')[0].strip()
+
+    # Fallback/default for non-US locations, as per the request
+    currency_symbol = '€' 
+    country_code = 'N/A'
+    
+    # 2. Use a Geolocation API (ip-api.com) to find the country
     try:
-        # 1. Get IP from common proxy headers
-        xff = request.headers.get("X-Forwarded-For", "")
-        if xff:
-            # 'X-Forwarded-For' may be a comma-separated list: client, proxy1, proxy2, ...
-            ip = xff.split(",")[0].strip()
-        else:
-            # Other possible headers used by some proxies/CDNs
-            ip = (
-                request.headers.get("CF-Connecting-IP")  # Cloudflare
-                or request.headers.get("X-Real-IP")      # Nginx / some proxies
-                or request.remote_addr                   # last resort (often Render IP)
-            )
+        geo_api_url = f"http://ip-api.com/json/{client_ip}"
+        response = requests.get(geo_api_url, timeout=3)
+        response.raise_for_status()
+        geo_data = response.json()
 
-        if not ip:
-            return "€"
+        if geo_data.get('status') == 'success':
+            country_code = geo_data.get('countryCode', 'N/A')
+            
+            # 3. Determine the currency symbol
+            if country_code == 'US':
+                currency_symbol = '$'
+            # else, it remains the default '€'
 
-        # 2. Geo lookup using the *client* IP, not Render's
-        resp = requests.get(f"https://ipapi.co/{ip}/json/", timeout=3)
-        data = resp.json()
-        country = data.get("country")
+    except requests.RequestException:
+        # If API fails or times out, we use the default (€)
+        pass 
 
-        # 3. Map country to currency symbol
-        return "$" if country == "US" else "€"
-    except Exception:
-        # On any failure, default to €
-        return "€"
+    return currency_symbol
