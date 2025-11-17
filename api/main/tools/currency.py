@@ -3,14 +3,14 @@ from flask import Flask, request, jsonify
 
 # This is the single function implementing the required logic
 # It accepts the web request object to correctly determine the client's IP.
-def get_currency_symbol(req):
+def get_currency_symbol():
     """
     Determines the currency symbol ($ or €) based on the user's geographic location
     by resolving the client IP from the incoming request headers.
     """
     # 1. Get the Client IP address, prioritizing headers used by cloud proxies (e.g., Render)
     # X-Forwarded-For holds the client's original IP before it hits the proxy/load balancer.
-    client_ip = req.headers.get('X-Forwarded-For', req.remote_addr).split(',')[0].strip()
+    client_ip = request.headers.get('X-Forwarded-For', req.remote_addr).split(',')[0].strip()
 
     # Fallback/default for non-US locations, as per the request
     currency_symbol = '€' 
