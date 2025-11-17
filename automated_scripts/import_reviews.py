@@ -135,7 +135,7 @@ def get_product_reviews(product_pid):
 # overall function to import products
 def import_reviews_to_database():
     # get products from database
-    pageNum = 3
+    pageNum = 13
     pageSize = 85
     skip = pageNum * pageSize
     db_products = list(Product.collection.find().sort("createdAt", DESCENDING).limit(pageSize).skip(skip))
@@ -152,7 +152,7 @@ def import_reviews_to_database():
         if add_to_catalog != None:
             print(colored('NEW PRODUCT ENTERED TO REVIEW-CATALOG', 'cyan'))
             
-    store_new_catalog_data(reviews_catalog)
+    # store_new_catalog_data(reviews_catalog)
             
     print(colored(f'REVIEW-CATALOG HAS {len(reviews_catalog)} - TOTAL REVIEWS', 'green'))
 
