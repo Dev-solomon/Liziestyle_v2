@@ -43,16 +43,22 @@ def get_country_code_from_ip():
 	
 # Get the Exact Location of the Client Shopping to detech which currency to show
 def get_currency_symbol():
-    country_code = get_country_code_from_ip()
+    """
+    Extracts user IP from request headers and returns
+    '$' if IP is from the US, otherwise '€'.
+    """
+    try:
+        # Extract IP from headers (works on Render)
+        xff = request.headers.get("X-Forwarded-For")
+        if xff:
+            ip = xff.split(",")[0].strip()
+        else:
+            ip = getattr(request, "remote_addr", None) or getattr(request.client, "host", None)
 
-    if country_code == "US":
-        print(colored(f"Country Detected:=> {country_code}", "cyan"))
-        return "$"
-    elif country_code is None:
-        # total failure – choose a default for your store
-        print(colored(f"Country Detected Is None", "cyan"))
-        return "€"   # or "$" depending on your main market
-    else:
-        # For now: anything not US → euro
-        print(colored(f"Country Detected:=> {country_code}", "cyan"))
+        # Geo lookup
+        res = requests.get(f"https://ipapi.co/{ip}/json/", timeout=3)
+        country = res.json().get("country")
+
+        return "$" if country == "US" else "€"
+    except:
         return "€"
