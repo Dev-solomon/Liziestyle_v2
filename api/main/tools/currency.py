@@ -9,7 +9,7 @@ def get_currency_symbol():
         if client_ip and ',' in client_ip:
             # If multiple IPs, take the first one
             client_ip = client_ip.split(',')[0].strip()
-        app.logger.debug(colored(f"Detected Client IP Address: {client_ip}", "yellow"))
+        app.logger.info(colored(f"Detected Client IP Address: {client_ip}", "yellow"))
 
         # 2. Query IP geolocation for that specific IP
         url = f"https://ipinfo.io/{client_ip}/json"
@@ -20,14 +20,14 @@ def get_currency_symbol():
 
         # 3. Get country code and choose symbol
         country = data.get("country", "").upper()
-        app.logger.debug(colored(f"Detected Country Code: {country}", "cyan"))
+        app.logger.info(colored(f"Detected Country Code: {country}", "cyan"))
 
         symbol = "$" if country == "US" else "€"
-        app.logger.debug(colored(f"Returning Currency Symbol:=> {symbol}","cyan"))
+        app.logger.info(colored(f"Returning Currency Symbol:=> {symbol}","cyan"))
         return symbol
 
     except Exception as e:
-        app.logger.debug(f"Error in get_currency_symbol: {e}")
+        app.logger.info(f"Error in get_currency_symbol: {e}")
         # Safe default
         return "€"
         
