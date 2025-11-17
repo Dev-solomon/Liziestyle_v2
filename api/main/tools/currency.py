@@ -1,6 +1,8 @@
 import requests
-from flask import Flask, request, jsonify
+import logging 
+from flask import current_app as app, request, jsonify
 
+app.logger.setLevel(logging.DEBUG)
 # This is the single function implementing the required logic
 # It accepts the web request object to correctly determine the client's IP.
 def get_currency_symbol():
@@ -25,6 +27,7 @@ def get_currency_symbol():
 
         if geo_data.get('status') == 'success':
             country_code = geo_data.get('countryCode', 'N/A')
+            app.logger.info(colored(f"SITE ACCESSED FROM: {country_code}", "cyan"))
             
             # 3. Determine the currency symbol
             if country_code == 'US':
