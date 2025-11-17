@@ -1,4 +1,5 @@
 import requests
+from termcolor import colored
 from flask import request, current_app as app
 
 def get_currency_symbol():
@@ -8,21 +9,21 @@ def get_currency_symbol():
         if client_ip and ',' in client_ip:
             # If multiple IPs, take the first one
             client_ip = client_ip.split(',')[0].strip()
-        app.logger.debug(f"Detected client IP: {client_ip}")
+        app.logger.debug(colored(f"Detected Client IP Address: {client_ip}", "yellow"))
 
         # 2. Query IP geolocation for that specific IP
         url = f"https://ipinfo.io/{client_ip}/json"
-        app.logger.debug(f"Requesting IP info from: {url}")
+        #app.logger.debug(f"Requesting IP info from: {url}")
         resp = requests.get(url, timeout=2)
         data = resp.json()
-        app.logger.debug(f"IP info response: {data}")
+        #app.logger.debug(f"IP info response: {data}")
 
         # 3. Get country code and choose symbol
         country = data.get("country", "").upper()
-        app.logger.debug(f"Detected country code: {country}")
+        app.logger.debug(colored(f"Detected Country Code: {country}", "cyan"))
 
         symbol = "$" if country == "US" else "€"
-        app.logger.debug(f"Returning currency symbol: {symbol}")
+        app.logger.debug(colored(f"Returning Currency Symbol:=> {symbol}","cyan"))
         return symbol
 
     except Exception as e:
