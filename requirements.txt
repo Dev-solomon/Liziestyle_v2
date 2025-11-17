@@ -21,3 +21,4 @@ flask-ckeditor[all]
 openpyxl
 openai
 pipenv
+geopy
