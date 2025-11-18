@@ -81,7 +81,7 @@ def set_cookies(token, redirect_url):
   return resp
 
 def del_cookies():
-    resp = make_response(redirect(url_for('user.user_login', message="Non effettuato l'accesso"))) 
+    resp = make_response(redirect(url_for('user.user_login', message="User Does Not Exist! Create An Account."))) 
     resp.delete_cookie('session')
     return resp
 

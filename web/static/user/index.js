@@ -193,10 +193,10 @@ function validateEmail() {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (emailRegex.test(email)) {
-    errorMessage.textContent = "L'e-mail è valida!";
+    errorMessage.textContent = "The email is valid!";
     errorMessage.style.color = "green";
   } else {
-    errorMessage.textContent = "Si prega di inserire un indirizzo email valido.";
+    errorMessage.textContent = "Please enter a valid email address.";
     errorMessage.style.color = "red";
     emailInput.value = ""; // Clear the email input field
   }
@@ -209,10 +209,10 @@ function validatePassword() {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   if (passwordRegex.test(password)) {
-    errorMessage.textContent = "La password è valida!";
+    errorMessage.textContent = "The password is valid!";
     errorMessage.style.color = "green";
   } else {
-    errorMessage.textContent = "La password deve essere lunga almeno 8 caratteri, contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e 1 carattere speciale.";
+    errorMessage.textContent = "The password must be at least 8 characters long, contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.";
     errorMessage.style.color = "red";
     // passwordInput.value = ""; // Clear the password input field
   }
@@ -225,10 +225,10 @@ function showPassword() {
 
   if (passwordInput.type === "password") {
     passwordInput.type = "text"; // Change type to text to show the password
-    showpassbtn.innerHTML = "nascondere la password"
+    showpassbtn.innerHTML = "Hide Password"
   } else {
     passwordInput.type = "password";
-    showpassbtn.innerHTML = "mostra la password" // Change type back to password to hide it
+    showpassbtn.innerHTML = "Show Password" // Change type back to password to hide it
   }
 }
 

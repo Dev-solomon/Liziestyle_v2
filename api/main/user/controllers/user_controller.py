@@ -32,7 +32,7 @@ def login():
         user = User.collection.find_one({'email': data['email']})
         
         if user and 'password' not in user:
-            return render_template("user/login.html", messageError="No password, try logging into Google") 
+            return render_template("user/login.html", messageError="No password, Try logging in with Google") 
         
         if user and bcrypt.check_password_hash(user['password'], data['password']):
             token = encodeAccessToken(user['email'])
