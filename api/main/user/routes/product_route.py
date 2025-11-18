@@ -54,8 +54,8 @@ def user_write_reviews(current_user):
     data['user_id'] = current_user['_id']
     files = request.files
     if write_product_review(data, files) == True:
-        return render_template('user/product.html', product_id=data['product_id'], message="Review submitted")
-    return render_template('user/product.html', product_id=data['product_id'], messageError="Unable to submit review")
+        return redirect(url_for('product_detail', product_id=data['product_id'], message="Review submitted")) 
+    return redirect(url_for('product_detail', product_id=data['product_id'], messageError="Unable to submit review"))
 
 
 

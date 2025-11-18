@@ -4,7 +4,6 @@ from flask import jsonify, request
 import requests
 from main.user.models.product_model import Product
 from main.user.models.reviews_model import Review
-import datetime
 import random
 import os
 import string
@@ -77,7 +76,7 @@ def create_product(data, files):
             "featured": featured,
             "units": int(data['units']),
             "video": data['video'],
-            "createdAt": datetime.datetime.now()
+            "createdAt": datetime.now()
         }
         
 
@@ -412,12 +411,12 @@ def write_product_review(data, files):
             "message": data['message'],
             "images": imageArray,
             "rating": data['rating'],
-            "createdAt": datetime.datetime.utcnow()
+            "createdAt": datetime.now()
         }
         
 
         # Insert the new product into MongoDB
-        result = Review.collection.insert_one(json_data)
+        result = Review.collection.insert_one(json_data) 
 
         # Return the created Review
         created_review = Review.collection.find_one({"_id": result.inserted_id})

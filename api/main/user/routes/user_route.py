@@ -43,7 +43,7 @@ def user_login():
         message_success = request.args.get('messageSuccess')
         return render_template('user/login.html', messageError=message_error, message=message_success)
 
-@user_blueprint.route('/', methods=['POST'])
+@user_blueprint.route('/update_profile', methods=['POST'])
 @token_required
 def profile(current_user):
     if request.method == 'POST' and request.form.get('_method') == 'PUT':

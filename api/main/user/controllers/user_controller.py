@@ -32,13 +32,13 @@ def login():
         user = User.collection.find_one({'email': data['email']})
         
         if user and 'password' not in user:
-            return render_template("user/login.html", messageError="Nessuna password, prova ad accedere a Google") 
+            return render_template("user/login.html", messageError="No password, try logging into Google") 
         
         if user and bcrypt.check_password_hash(user['password'], data['password']):
             token = encodeAccessToken(user['email'])
             return set_cookies(token, 'home')
         else:
-             return render_template("user/login.html", messageError="E-mail o password non valide")
+             return render_template("user/login.html", messageError="Invalid email or password")
     except Exception as e:
         return jsonify({'message': str(e)}), 400
     
@@ -66,20 +66,10 @@ def get_user_by_email(email):
 def update_profile():
     try:
         data = request.form.to_dict()
-        files = request.files.get('image')
         
         # Exclude '_id' from the update operation
         update_data = {key: value for key, value in data.items() if key != '_method' and key != 'check_email'}
-        
-        # code for saving file uploaded in profile
-        file_path = os.path.join('uploads/', secure_filename(files.filename))
-        files.save(file_path)
-        # upload file to cloudinary for storage there
-        image_url = upload_profile_image(file_path)
-        update_data['image'] = str(image_url)
-        # Remove the file after successful upload
-        os.remove(file_path)
-        print(f"Local file removed: {file_path}")
+      
        
         
         update_user = User.collection.update_one(
@@ -87,32 +77,35 @@ def update_profile():
             {'$set': update_data}
         )
         if update_user.modified_count > 0:
-            return render_template('user/update_profile.html', message="Password aggiornata correttamente")
+            return redirect(url_for('change_profile', message="Password updated successfully"))
         else:
-            return render_template('user/update_profile.html', messageError="Qualcosa è andato storto, riprova!")
+            return redirect(url_for('change_profile', message="Something went wrong, please try again!"))
     except Exception as e:
         return jsonify({'message': str(e)}), 400
 
 # Change user password
-def change_password():
+def change_password(): 
     try:
         data = request.form.to_dict()
+        print(type(data['email']))
         user = User.collection.find_one({'email': data['email']})
+        # print(user)
         if "password" not in user:
             User.collection.update_one(
                 {'email': data['email']},
                 {'$set': {'password': bcrypt.generate_password_hash(data['newPassword']).decode('utf-8')}}
             )
-            return render_template('user/change_password.html', message="Password aggiornata correttamente")
+            return redirect(url_for('change_password', message="Password updated successfully"))
+        
         
         elif bcrypt.check_password_hash(user['password'], data['oldPassword']):
             User.collection.update_one(
                 {'email': data['email']},
                 {'$set': {'password': bcrypt.generate_password_hash(data['newPassword']).decode('utf-8')}}
             )
-            return render_template('user/change_password.html', message="Password aggiornata correttamente")
+            return redirect(url_for('change_password', message="Password updated successfully"))
         else:
-            return render_template('user/change_password.html', messageError="Vecchia password non valida")
+            return redirect(url_for('change_password', messageError="Old invalid password"))
     except Exception as e:
         return jsonify({'message': str(e)}), 400
 
@@ -122,7 +115,7 @@ def delete_user():
         data = request.form.to_dict()
         user = User.collection.delete_one({'_id': ObjectId(data['_id'])})
         if user.deleted_count > 0:  
-            return render_template('user/login.html', message="Utente eliminato correttamente")
+            return render_template('user/login.html', message="User successfully deleted")
     except Exception as e:
         return jsonify({'message': str(e)}), 400
 
@@ -134,7 +127,7 @@ def register_user():
         ip = request.headers.get("CF-Connecting-IP")
         user = User.collection.find_one({'email': data['email']})
         if (user):
-           return render_template("user/signup.html", message="L'utente esiste già")
+           return render_template("user/signup.html", message="The user already exists")
         else:
             outcome = validate_turnstile_token(cloudfare_token, ip)
             if outcome.get("success") == True:
@@ -145,11 +138,11 @@ def register_user():
                 # print(mail_sent)
                 if mail_sent == True:
                     # Alert User to check email for verification link.
-                    return render_template("user/signup.html", message="Ti è stata inviata un'e-mail di verifica")
+                    return render_template("user/signup.html", message="A verification email has been sent to you")
                 # Something Wrong with the Email Provided, Could not deliver Email verification to user.
-                return render_template("user/signup.html", messageError="Errore nell'invio della verifica all'e-mail!")
+                return render_template("user/signup.html", messageError="Error sending verification email!")
             # Alert User, This must be a spam attack, Cloudfare token not verified.
-            return render_template("user/signup.html", messageError="Token non valido: verifica di essere umano!")
+            return render_template("user/signup.html", messageError="Invalid token: Human verification failed!")
     except Exception as e:
         return jsonify({'message': str(e)}), 400
     
@@ -160,7 +153,7 @@ def register_verified_user(token):
     user = User.collection.find_one({'email': data['email']})
     
     if (user):
-           return render_template("user/signup.html", message="L'utente esiste già")
+           return render_template("user/signup.html", message="The user already exists")
     elif data:
             data['createdAt'] = datetime.datetime.now().isoformat()   
             data['isAdmin'] = False
@@ -171,10 +164,10 @@ def register_verified_user(token):
             if(created_user):
                 # token = encodeAccessToken(created_user['email'])
                 # print(token)
-                return render_template("user/login.html", message="Email verificata con successo, Accedi!")
+                return render_template("user/login.html", message="Email successfully verified, please log in!")
             else:
-                return render_template("user/signup.html", messageError="Il link di verifica non è valido o è scaduto, riprova!")
-   
+                return render_template("user/signup.html", messageError="The verification link is invalid or has expired, please try again!")
+
 
 #  Logout a user  and delete cookies
 def logout():
