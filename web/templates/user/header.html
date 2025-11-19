@@ -48,6 +48,10 @@
       <i class="fas fa-home"></i>
       <span>Home</span>
     </a>
+     <a href="/customs" aria-label="go to the products catalog page" id="menu_a">
+      <i class="fas fa-gifts"></i>
+      <span> Shop LIZIES</span>
+    </a>
     <a href="/catalog" aria-label="go to the products catalog page" id="menu_a">
       <i class="fas fa-cart-plus"></i>
       <span>Shop</span>
@@ -98,12 +102,12 @@
 
 
 
-    {% if user is defined and user['isAdmin'] == True %}
+    <!-- {% if user is defined and user['isAdmin'] == True %}
     <a href="/api/sellers/" aria-label="login to sellers dashboard" id="menu_a">
       <i class="fas fa-bullhorn"></i>
       <span>Seller Account</span>
     </a>
-    {% endif %}
+    {% endif %} -->
 
 
   </div>

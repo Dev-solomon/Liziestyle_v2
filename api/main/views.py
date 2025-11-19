@@ -80,7 +80,7 @@ def user_dashboard(current_user):
    
   # orders page for user
 @token_required
-def orders(current_user): 
+def orders(current_user):  
     currency_symbol = get_currency_symbol()
     tracking_no = request.args.get('tracking_no')
     tracked_order = track_order(tracking_no)
@@ -100,14 +100,31 @@ def checkout(current_user):
     user_orders = get_order_by_id(order_id)
     return render_template('user/checkout.html', user=current_user, cart=cart, orders=user_orders,  messageError=message_error, message=message, currency=currency_symbol)
   
-
+# Page for custom products
 def customs():
+    token = request.cookies.get('token')
     cart = get_cart()
     currency_symbol = get_currency_symbol()
     # for all products
     custom_products = get_custom_products()[0]
+    reviews = get_all_reviews()
+
+    if not token:  # Token doesn't exist
+        return render_template('user/customs.html', custom_products=custom_products, currency=currency_symbol, cart=cart, all_reviews=reviews)
+    else:
+        try:
+            # Decode the token and fetch the user
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user = User.collection.find_one({'email': data['email']})
+            if not current_user:
+                raise Exception("User not found")
+        except Exception as e:
+            return render_template('user/login.html', currency=currency_symbol)
+
+        # Render the page with the current user's details
+        return render_template('user/customs.html', user=current_user, custom_products=custom_products, currency=currency_symbol, cart=cart, all_reviews=reviews)
     
-    return render_template('user/customs.html', custom_products=custom_products, currency=currency_symbol, cart=cart)
+    
    
   
 # product single detail page
@@ -177,6 +194,7 @@ def product_detail(product_id):
       
   # shop page for good list
 def catalog():
+      token = request.cookies.get('token')
       currency_symbol = get_currency_symbol()
       cart = get_cart() # products in cart
       tags = get_popular_tags() # popular tags list
@@ -195,15 +213,39 @@ def catalog():
       searched_products = get_search_products(product_name, product_tag, min_price, max_price, page_num)[0]
       random.shuffle(searched_products)
       searched_pages = get_search_products(product_name, product_tag, min_price, max_price, page_num)[1]
-      
-      
-      return render_template('user/shop.html', cart=cart, 
+
+
+      # check token of user or guest
+      if not token:  # Token doesn't exist
+        return render_template('user/shop.html', cart=cart, 
                              show_login="no", 
                              tags=tags, 
                              all_reviews=reviews,
                              variants=variants, 
                              searched_products=searched_products, 
                              searched_pages=searched_pages, currency=currency_symbol)
+      else:
+          try:
+              # Decode the token and fetch the user
+              data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+              current_user = User.collection.find_one({'email': data['email']})
+              if not current_user:
+                  raise Exception("User not found")
+          except Exception as e:
+              return render_template('user/login.html', currency=currency_symbol)
+
+          # Render the page with the current user's details
+          return render_template('user/shop.html', user=current_user, cart=cart, 
+                             show_login="no", 
+                             tags=tags, 
+                             all_reviews=reviews,
+                             variants=variants, 
+                             searched_products=searched_products, 
+                             searched_pages=searched_pages, currency=currency_symbol)
+    
+      
+      
+      
     
     
   
@@ -237,6 +279,7 @@ def change_profile(current_user):
 
 # URL for blogs
 def blog():
+  token = request.cookies.get('token')
   cart = get_cart()
   currency_symbol = get_currency_symbol()
   page_num = request.args.get('page_num', default=1)
@@ -244,18 +287,53 @@ def blog():
   blogs = get_blogs(page_num, cat)[0]
   total_pages = get_blogs(page_num, cat)[1]
   blog_tags = get_blog_tags()
-  return render_template('user/blog.html', blogs=blogs, tags=blog_tags, cart=cart, total_pages=total_pages, currency=currency_symbol)
+
+  if not token:  # Token doesn't exist
+        return render_template('user/blog.html', blogs=blogs, tags=blog_tags, cart=cart, total_pages=total_pages, currency=currency_symbol)
+  else:
+      try:
+          # Decode the token and fetch the user
+          data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+          current_user = User.collection.find_one({'email': data['email']})
+          if not current_user:
+              raise Exception("User not found")
+      except Exception as e:
+          return render_template('user/login.html', currency=currency_symbol)
+
+      # Render the page with the current user's details
+      return render_template('user/blog.html', user=current_user, blogs=blogs, tags=blog_tags, cart=cart, total_pages=total_pages, currency=currency_symbol)
+  
+
+  
  
 # URL for blog post detail
 def blog_post(blog_id):
+  token = request.cookies.get('token')
+  currency_symbol = get_currency_symbol()
   single_blog_post = get_blog_by_id(blog_id)
   other_blogs = get_other_blog_categories(blog_id)
   related_blogs = get_related_blog_categories(blog_id)
-  return render_template('user/blog_post.html', single_blog=single_blog_post, other_blogs=other_blogs, related_blogs=related_blogs)
 
+  if not token:  # Token doesn't exist
+        return render_template('user/blog_post.html', single_blog=single_blog_post, other_blogs=other_blogs, related_blogs=related_blogs)
+  else:
+      try:
+          # Decode the token and fetch the user
+          data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+          current_user = User.collection.find_one({'email': data['email']})
+          if not current_user:
+              raise Exception("User not found")
+      except Exception as e:
+          return render_template('user/login.html', currency=currency_symbol)
 
-def post():
-  return render_template('user/add_post.html')
+      # Render the page with the current user's details
+      return render_template('user/blog_post.html', user=current_user, single_blog=single_blog_post, other_blogs=other_blogs, related_blogs=related_blogs)
+
+  
+
+@token_required
+def post(current_user):
+  return render_template('user/add_post.html', user=current_user)
 
 
 # URL for payments
@@ -267,14 +345,45 @@ def payment_failed():
     return render_template('user/payfailed.html')
   
 def about_us():  # terms and conditions page
+    token = request.cookies.get('token')
     currency_symbol = get_currency_symbol()
     cart = get_cart()
-    return render_template('user/about.html', cart=cart, currency=currency_symbol)
+
+
+    if not token:  # Token doesn't exist
+        return render_template('user/about.html', cart=cart, currency=currency_symbol)
+    else:
+        try:
+            # Decode the token and fetch the user
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user = User.collection.find_one({'email': data['email']})
+            if not current_user:
+                raise Exception("User not found")
+        except Exception as e:
+            return render_template('user/login.html', currency=currency_symbol)
+
+        # Render the page with the current user's details
+        return render_template('user/about.html', user=current_user, cart=cart, currency=currency_symbol)
   
 def contact_us():  # terms and conditions page
+    token = request.cookies.get('token')
     currency_symbol = get_currency_symbol()
     cart = get_cart()
-    return render_template('user/contact.html', cart=cart, currency=currency_symbol)
+
+    if not token:  # Token doesn't exist
+        return render_template('user/contact.html', cart=cart, currency=currency_symbol)
+    else:
+        try:
+            # Decode the token and fetch the user
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user = User.collection.find_one({'email': data['email']})
+            if not current_user:
+                raise Exception("User not found")
+        except Exception as e:
+            return render_template('user/login.html', currency=currency_symbol)
+
+        # Render the page with the current user's details
+        return render_template('user/contact.html', user=current_user, cart=cart, currency=currency_symbol)
   
 def faqs():  # terms and conditions page
     return render_template('user/faqs.html') 

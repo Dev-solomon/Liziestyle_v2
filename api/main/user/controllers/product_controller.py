@@ -454,6 +454,7 @@ def get_all_reviews():
         return all_reviews
     except Exception as e:
         return print({"message-Products": str(e)})
+
     
     
 # def get_userReviews_related_and_other_products(related_product_id, other_product_id) -> list:
