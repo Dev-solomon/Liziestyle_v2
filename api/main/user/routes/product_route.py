@@ -46,7 +46,7 @@ def delete_products_route():
 def import_products():
     return import_products()
 
-
+ 
 @product_blueprint.route('/writereview', methods=['POST'])
 @token_required
 def user_write_reviews(current_user):
