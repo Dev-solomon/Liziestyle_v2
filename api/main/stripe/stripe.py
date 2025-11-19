@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from main.user.models.order_model import Order
 from main.user.models.user_model import User
 from main.user.controllers import order_controller
-from main.tools.currency import get_currency_symbol
 
 # Load environment variables
 load_dotenv()
@@ -14,17 +13,16 @@ load_dotenv()
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 # endpoint_secret = os.getenv('STRIPE_WEBHOOK_SECRET')  # Set this if you have a webhook secret
 
-# Get User's Location
-currency = get_currency_symbol()
-# Determine the pay currency
-pay_currency = 'eur' if currency != "$" else 'usd'
 
-def cart(order_items):
+
+def cart(order_items, currency):
+    # Get the currency 
+
     cart_items = []
     for item in order_items:
         cart_items.append({
             'price_data': {
-                'currency': pay_currency,
+                'currency': currency,
                 'product_data': {
                     'name': item['title'],
                     'images': [item['images'][0]],
@@ -40,7 +38,7 @@ def cart(order_items):
     return cart_items
 
 
-def checkout(order_id):
+def checkout(order_id, pay_currency):
 
     order = Order.collection.find_one({'_id': ObjectId(order_id)})
     
@@ -92,7 +90,7 @@ def checkout(order_id):
                     },
                 },
             ],
-            line_items=cart(order_items),
+            line_items=cart(order_items, pay_currency),
             phone_number_collection={
                 'enabled': True,
             },

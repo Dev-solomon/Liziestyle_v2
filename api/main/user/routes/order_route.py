@@ -9,7 +9,7 @@ import json
 from datetime import timedelta
 from termcolor import colored
 import requests
-
+from main.tools.currency import get_currency_symbol
 order_blueprint = Blueprint("order",  __name__, "api/orders")
 
 @order_blueprint.route('allorders/<userId>', methods=['GET'])
@@ -56,7 +56,9 @@ def clear_orders_all(userId):
 @order_blueprint.route('/<orderID>/checkout', methods=['POST'])
 @token_required
 def check_out_stripe(current_user, orderID):
-    response_content = checkout(orderID).get_data().decode('utf-8')
+    currency = get_currency_symbol()
+    pay_currency = "eur" if currency == "€" else "usd"
+    response_content = checkout(orderID, pay_currency).get_data().decode('utf-8')
     # print(json.loads(response_content)['url'])
     checkout_url = json.loads(response_content)['url']
     return redirect(checkout_url)
