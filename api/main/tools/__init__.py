@@ -79,7 +79,7 @@ def upload_image(file_path):
 # response = cloudinary.uploader.upload("path/to/image.jpg", folder="my_images", tags=["sample", "test"])
     try: 
         # Upload the image to Cloudinary
-        response = cloudinary.uploader.upload(file_path, folder="products_images")
+        response = cloudinary.uploader.upload(file_path, folder="liziestyle/review_images")
         
         # Get the URL of the uploaded image
         url = response.get("url")
@@ -100,7 +100,7 @@ def upload_profile_image(file_path):
 # response = cloudinary.uploader.upload("path/to/image.jpg", folder="my_images", tags=["sample", "test"])
     try:
         # Upload the image to Cloudinary
-        response = cloudinary.uploader.upload(file_path, folder="profile_images")
+        response = cloudinary.uploader.upload(file_path, folder="liziestyle/profile_images")
         
         # Get the URL of the uploaded image
         url = response.get("url")
@@ -119,10 +119,10 @@ def generate_verification_token(user_data):
 def send_verification_email(user_email, token):
     verification_url = url_for('user.verify_email', token=token, _external=True, _scheme='https')
     
-    send_a_mail = send_email_signup(user_email, "[Azione richiesta] - liziestyle", f"Verifica la tua email facendo clic sul collegamento riportato di seguito: \n {verification_url}. \n Il collegamento scade tra 15 minuti.")
+    send_a_mail = send_email_signup(user_email, "[Action required] - liziestyle", f"Please verify your email by clicking the link below: \n {verification_url}. \n The link expires in 1 Hour Time!")
     return send_a_mail
-    
-def verify_email_token(token, expiration=900): # 900 seconds = 15 minutes
+
+def verify_email_token(token, expiration=3600): # 3600 seconds = 1 hour
     try:
         user_data = serializer.loads(token, salt='email-confirmation-salt', max_age=expiration)
         return user_data
