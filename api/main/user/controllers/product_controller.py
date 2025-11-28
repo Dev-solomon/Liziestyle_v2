@@ -12,6 +12,7 @@ from bson import ObjectId
 from werkzeug.utils import secure_filename
 from main.tools import upload_image
 from datetime import datetime, timedelta
+import time
 
 
 
@@ -41,6 +42,7 @@ def create_product(data, files):
             file.save(file_path)
             # upload file to cloudinary for storage there
             image_url = upload_image(file_path)
+            time.sleep(3)  # Pause for 3 seconds between uploads
             imageArray.append(str(image_url))
             # Remove the file after successful upload
             os.remove(file_path)
