@@ -22,13 +22,49 @@
         </form>
       </div>
     </header>
+    <style>
+      .message {
+  position: fixed; /* Keeps the message at the top */
+  top: 0; /* Aligns the message at the top */
+  left: 50%; /* Horizontally centers the message */
+  transform: translateX(-50%); /* Adjusts for the width of the element */
+  background-color: #c9e2ff; /* Light red background for visibility */
+  color: #218aff; /* Dark red text color */
+  padding: 10px 20px; /* Adds some padding */
+  border: 1px solid #c6d3f5; /* Adds a border matching the background */
+  border-radius: 5px; /* Rounds the corners */
+  text-align: center; /* Centers the text */
+  font-family: Arial, sans-serif; /* Sets a clean font */
+  font-size: 16px; /* Adjust font size */
+  z-index: 1000; /* Ensures it appears above other content */
+}
+.messageError {
+  position: fixed; /* Keeps the message at the top */
+  top: 0; /* Aligns the message at the top */
+  left: 50%; /* Horizontally centers the message */
+  transform: translateX(-50%); /* Adjusts for the width of the element */
+  background-color: #f8d7da; /* Light red background for visibility */
+  color: #721c24; /* Dark red text color */
+  padding: 10px 20px; /* Adds some padding */
+  border: 1px solid #f5c6cb; /* Adds a border matching the background */
+  border-radius: 5px; /* Rounds the corners */
+  text-align: center; /* Centers the text */
+  font-family: Arial, sans-serif; /* Sets a clean font */
+  font-size: 16px; /* Adjust font size */
+  z-index: 1000; /* Ensures it appears above other content */
+}
+    </style>
 
     {% if message %}
-    <div class="message ">{{message}}</div>
+    <div class="message">
+      {{message}}
+    </div>
     {% endif %}
 
     {% if messageError %}
-    <div class="messageError">{{messageError}}</div>
+    <div class="messageError"> 
+      {{messageError}}
+    </div>
     {% endif %}
 
     <main class="size-full">
