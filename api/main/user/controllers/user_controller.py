@@ -149,11 +149,11 @@ def register_user():
     
 def register_verified_user(token):
     
-    data = verify_email_token(token)
+    data = verify_email_token(token) 
     user = User.collection.find_one({'email': data['email']})
     
     if (user):
-           return render_template("user/signup.html", message="The user already exists")
+           return redirect(url_for("login", message="The user already exists"))
     elif data:
             data['createdAt'] = datetime.datetime.now().isoformat()   
             data['isAdmin'] = False
@@ -164,9 +164,9 @@ def register_verified_user(token):
             if(created_user):
                 # token = encodeAccessToken(created_user['email'])
                 # print(token)
-                return render_template("user/login.html", message="Email successfully verified, please log in!")
+                return redirect(url_for("login", message="Email successfully verified, please log in!"))
             else:
-                return render_template("user/signup.html", messageError="The verification link is invalid or has expired, please try again!")
+                return redirect(url_for("signup", messageError="The verification link is invalid or has expired, please try again!"))
 
 
 #  Logout a user  and delete cookies
