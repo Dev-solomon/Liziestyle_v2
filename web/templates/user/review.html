@@ -16,7 +16,7 @@
 
     <div class="comment-body">
         <h3 class="flex flex-row"><i class="fa fa-user-circle" aria-hidden="true" style="margin-top: 4px;"></i> {{ review['name'] }}
-            ({{ review['createdAt'].strftime('%d-%m-%Y') }}) 
+            ({{ review['createdAt'].strftime('%m-%d-%Y') }}) 
 
             
             {% if review['rating'] | int != 0 %}
