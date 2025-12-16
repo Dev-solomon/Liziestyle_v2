@@ -21,13 +21,13 @@ def get_currency_symbol():
         # 3. Get country code and choose symbol
         country = data.get("country", "").upper()
         app.logger.info(colored(f"Detected Country Code: {country}", "cyan"))
-
-        symbol = "$" if country == "US" else "€"
+        # "€" - euro symbol
+        symbol = "$" if country == "US" else "$"
         app.logger.info(colored(f"Returning Currency Symbol:=> {symbol}","cyan"))
         return symbol
 
     except Exception as e:
         app.logger.info(f"Error in get_currency_symbol: {e}")
         # Safe default
-        return "€"
+        return "$"
         
