@@ -74,7 +74,8 @@ def create_app():
     
     # LazyView routes
     lazy_routes = {
-        "/": "main.views.home",
+        # "/": "main.views.home", original home route
+        "/": "main.views.customs",
         "/dashboard": "main.views.user_dashboard",
         "/orders": "main.views.orders",
         "/checkout": "main.views.checkout",
