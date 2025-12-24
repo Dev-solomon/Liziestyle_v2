@@ -26,12 +26,14 @@
         </form>
       </div>
 
-      <!-- For messages  -->
+         <!-- For messages  -->
       {% if message %}
       <div class="message">{{message}}</div>
-      {% endif %} {% if messageError %}
+      {% endif %}
+      {% if messageError %}
       <div class="messageError">{{messageError}}</div>
       {% endif %}
+
 
       <!-- Banner -->
       <div
@@ -39,10 +41,10 @@
         style="background-color: black"
       >
         <div class="z-10 ml-[18%] md:ml-[30%]" style="margin: auto;">
-          <h2 class="font-bold text-white md:text-3xl lg:text-4xl">
-            UP TO 30% OFF SELECTED <br />
-            <p style="text-align: center">STYLES</p>
-          </h2>
+          <h2 class="font-bold text-white md:text-3xl lg:text-4xl" style="text-align: center">
+            UP TO 30% OFF SELECTED ON  </h2>
+            <h2 class="font-bold text-white md:text-3xl lg:text-4xl" style="text-align: center">STYLES</h2>
+         
           <button class="primary-btn--large bg-white mt-3" style="margin: auto">
             <a
               href="/customs"
