@@ -5,7 +5,9 @@ from termcolor import colored
 def delete_database_products():
     try:
         # Delete all existing documents in the collection
-        delete_result = Product.collection.delete_many({})  # Deletes all documents in the collection
+        delete_result = Product.collection.delete_many({
+            "category": { "$ne": "custom" }  #
+        })  # # Delete documents where category is NOT "custom"
         print(colored(f"Deleted {delete_result.deleted_count} documents from the product collection.", 'cyan'))
 
         # Verify if the collection is empty

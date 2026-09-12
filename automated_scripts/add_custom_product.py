@@ -67,7 +67,7 @@ def create_variants_list(input_string):
         return []
 
     # Split by commas and clean each URL
-    variants_list = [[variant.strip(), "Custom Lizies Slip on Shoe"] for variant in  input_string.split(',')]
+    variants_list = [[variant.strip(), "Standard Customized LIZIES"] for variant in  input_string.split(',')]
 
     return variants_list
 
