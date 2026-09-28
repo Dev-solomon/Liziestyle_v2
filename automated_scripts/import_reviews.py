@@ -14,6 +14,14 @@ from pymongo import MongoClient, errors, DESCENDING #mongodb
 from openpyxl import Workbook, load_workbook #for excel sheets
 from openai import OpenAI
 
+
+# -----------------------------------------------------------------------
+from dotenv import load_dotenv
+# Force Python to overwrite system variables with your .env file values
+load_dotenv(override=True) 
+# ---------------------------------------------------------------------------
+
+
 # product catalog for storing the final products before adding in bulk to db
 reviews_catalog = []
 
@@ -96,12 +104,12 @@ def get_product_reviews(product_pid):
         
         url = 'https://developers.cjdropshipping.com/api2.0/v1/product/productComments'
         headers = {
-            'CJ-Access-Token': "API@CJ3297540@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxveWNtZ0dKMTFMNnJPbENGN245bFRHMXU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0iLCJpYXQiOjE3NjE4NjIwNjF9.GJVY63nZ8nwZVdKyJoKgjqMpPDabgG2mP2_T4-95czo",  # Replace `token()` with your token function
+            'CJ-Access-Token': "API@CJ3297540@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxvNlZpTGNoYVNEaGs4ZlNzWWF2a2NGMXU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0iLCJpYXQiOjE3OTA2Mjc4OTd9.r10MZOYsado4d2ExXJpYOK5wN0WcXZp2Jp2oYw8y4mU",  # Replace `token()` with your token function
         }
         params = {
             'pid': product_pid,
             "pageNum": 1,
-            "pageSize": 35
+            "pageSize": 30
         }
         response = requests.get(url, headers=headers, params=params)
         result = response.json()['data']['list']

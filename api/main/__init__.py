@@ -32,7 +32,7 @@ def create_app():
   app.config.from_pyfile("config/config.cfg")
   cors = CORS(app, resources={r"/*": { "origins": app.config["FRONTEND_DOMAIN"] }})
   # Assuming you've initialized your Flask app with Flask-Caching
-  cache = Cache(config={'CACHE_TYPE': 'simple'})
+  cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
   cache.init_app(app)
   
 
