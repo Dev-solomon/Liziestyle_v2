@@ -32,53 +32,27 @@ app.config.from_pyfile("config/config.cfg")
 
 
   # Index Route | Note: Do not delete this route function for any reason except on admin permissions
-# def home():
-#     one_month_ago = datetime.datetime.now() - relativedelta(months=1)
-#     currency_symbol = get_currency_symbol()
-    
-#     message_error = request.args.get('messageError')
-#     message = request.args.get('message')
-#     token = request.cookies.get('token')
-#     cart = get_cart()
-#     # get all products reviews
-#     reviews = get_all_reviews()
-    
-#     # for all products
-#     page_num = request.args.get('page_num', default=1)
-#     product_name = request.args.get('product_name', default=None)
-#     product_tag = request.args.get('product_tag', default=None)
-#     min_price = request.args.get('min', default=1)
-#     max_price = request.args.get('max', default=99999999)
-#     products = get_all_products()
-    
-#     if not token:  # Token doesn't exist
-#         return render_template('user/index.html', cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago, currency=currency_symbol)
-#     else:
-#         try:
-#             # Decode the token and fetch the user
-#             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-#             current_user = User.collection.find_one({'email': data['email']})
-#             if not current_user:
-#                 raise Exception("User not found")
-#         except Exception as e:
-#             return render_template('user/login.html', currency=currency_symbol)
-
-#         # Render the page with the current user's details
-#         return render_template('user/index.html', user=current_user, cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago, currency=currency_symbol)
-
-# Index Route 2 For Making Customs Page the Home
 def home():
+    one_month_ago = datetime.datetime.now() - relativedelta(months=1)
+    currency_symbol = get_currency_symbol()
+    
     message_error = request.args.get('messageError')
     message = request.args.get('message')
     token = request.cookies.get('token')
     cart = get_cart()
-    currency_symbol = get_currency_symbol()
-    # for all products
-    custom_products = get_custom_products()[0]
+    # get all products reviews
     reviews = get_all_reviews()
-
+    
+    # for all products
+    page_num = request.args.get('page_num', default=1)
+    product_name = request.args.get('product_name', default=None)
+    product_tag = request.args.get('product_tag', default=None)
+    min_price = request.args.get('min', default=1)
+    max_price = request.args.get('max', default=99999999)
+    products = get_all_products()
+    
     if not token:  # Token doesn't exist
-        return render_template('user/customs.html', custom_products=custom_products, messageError=message_error, message=message, currency=currency_symbol, cart=cart, all_reviews=reviews)
+        return render_template('user/index.html', cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago, currency=currency_symbol)
     else:
         try:
             # Decode the token and fetch the user
@@ -90,7 +64,33 @@ def home():
             return render_template('user/login.html', currency=currency_symbol)
 
         # Render the page with the current user's details
-        return render_template('user/customs.html', user=current_user, custom_products=custom_products, messageError=message_error, message=message, currency=currency_symbol, cart=cart, all_reviews=reviews)
+        return render_template('user/index.html', user=current_user, cart=cart, messageError=message_error, message=message, all_reviews=reviews, products=products, one_month_ago=one_month_ago, currency=currency_symbol)
+
+# Index Route 2 For Making Customs Page the Home
+# def home():
+#     message_error = request.args.get('messageError')
+#     message = request.args.get('message')
+#     token = request.cookies.get('token')
+#     cart = get_cart()
+#     currency_symbol = get_currency_symbol()
+#     # for all products
+#     custom_products = get_custom_products()[0]
+#     reviews = get_all_reviews()
+
+#     if not token:  # Token doesn't exist
+#         return render_template('user/customs.html', custom_products=custom_products, messageError=message_error, message=message, currency=currency_symbol, cart=cart, all_reviews=reviews)
+#     else:
+#         try:
+#             # Decode the token and fetch the user
+#             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+#             current_user = User.collection.find_one({'email': data['email']})
+#             if not current_user:
+#                 raise Exception("User not found")
+#         except Exception as e:
+#             return render_template('user/login.html', currency=currency_symbol)
+
+#         # Render the page with the current user's details
+#         return render_template('user/customs.html', user=current_user, custom_products=custom_products, messageError=message_error, message=message, currency=currency_symbol, cart=cart, all_reviews=reviews)
   
     
   # dashboard normal user/ Buyer
