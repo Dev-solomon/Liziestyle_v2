@@ -146,9 +146,9 @@ def products_list():
             'CJ-Access-Token': "API@CJ3297540@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzA4NiIsInR5cGUiOiJBQ0NFU1NfVE9LRU4iLCJzdWIiOiJicUxvYnFRMGxtTm55UXB4UFdMWnlyK2FrM2QxTU9HTURrWlU4RHF2bU5vWGtFZWlyenRIc29Na3pkamVSQUwzN1pQUEJ6Y1RYWFhEZzNyOHdqYWxvNlZpTGNoYVNEaGs4ZlNzWWF2a2NGMXU4VTU4Tkw4dXRCaEZSd25iM1pqRmJLM2l5QkxaamoxeGg1Zkh1MmNNbDdKdEwxMkVjYkNRdnM3cnJsWWhueDIxdWMvMUpPV2pPK0V3ZHk5Tm1QRGF3M0VWMHJ6ZUJhVnpNY2lTWnYySTE0L2JOd2lnMTFXVi9DaVdGVllkWUQ3Q0lXZi8xQjVDRVI2UGh2MnZ6UDR5R3lpRjFXS28yZWpNOUpCRVBEODZsa1ZvaTN6OC91M3M1Y1pjOXZjY0MxMD0iLCJpYXQiOjE3OTA2Mjc4OTd9.r10MZOYsado4d2ExXJpYOK5wN0WcXZp2Jp2oYw8y4mU",  # Replace `token()` with your token function
         }
         params = { #PARAMS FOR THE REQUESTS 
-            'pageNum': 1,
+            'pageNum': 6,
             'pageSize': 95,
-            'categoryId': "52FC6CA5-669B-4D0B-B1AC-415675931399",  
+            'categoryId': "2FE8A083-5E7B-4179-896D-561EA116F730",  
             'minPrice': 1.0,
             'countryCode': "CN",
             'productType': "SUPPLIER_PRODUCT",
@@ -206,9 +206,9 @@ def get_product_details(product_sku):
                         "images": result['productImageSet'],
                         "price": round(split_ranges(result['sellPrice']) * 10, 1),
                         "description": write_description(result['productNameEn'], result['productImageSet'][0]),
-                        "category": "household", #category in database
+                        "category": "womens", #category in database
                         "tags": create_tags_array(result['categoryName']),
-                        "salesOffer": "10",
+                        "salesOffer": "5",
                         "stock": result['listedNum'],
                         "variants": variants_list,
                         "weight": split_ranges(result['productWeight']),
