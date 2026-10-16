@@ -99,7 +99,10 @@ def add_to_cart():
                 break
             
         if product_variant == "":
-            return render_template('user/product.html', product_id=product['_id'], messageError="Choose 1 variant")
+            return redirect(url_for(
+             'product_detail',
+              product_id=product['_id'],
+               messageError="Choose 1 variant"))
         
         if product.get('salesOffer'):
             new_price = float(product['price']) - (float(product['price']) * float(product['salesOffer']) / 100)
